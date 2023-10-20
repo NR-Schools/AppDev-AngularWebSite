@@ -1,1 +1,69 @@
-<p>user-dashboard works!</p>
+<header>
+  <nav>
+    <a href="">Favorites</a>
+    <a href="">Dashboard</a>
+    <a href="">Username</a>
+  </nav>
+</header>
+
+<section class="main-header">
+  <input type="text" placeholder="Dog Name" />
+</section>
+
+<aside>
+  <label for="breeds">Dog Breed</label>
+  <select name="breeds" id="breeds">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+
+  <label for="colors">Dog Color</label>
+  <select name="colors" id="colors">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+
+  <form action="">
+    <label for="sizes">Size</label>
+    <select name="sizes" id="sizes">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+
+    <label for="sex">Sex</label>
+    <select name="sex" id="sex">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+
+    <label for="ages">Age</label>
+    <select name="ages" id="ages">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+
+    <button type="reset">Reset</button>
+    <button type="submit">Search</button>
+  </form>
+</aside>
+
+<main>
+  <div *ngFor="let dog of dogs">
+    <div class="dog-container">
+      <a href="/dog/{{ dog.id }}">
+        <h1>{{ dog.name }}</h1>
+        <h1>{{ dog.breed }}</h1>
+      </a>
+    </div>
+  </div>
+</main>
