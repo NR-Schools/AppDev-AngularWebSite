@@ -5,22 +5,21 @@ export class DogAdopt {
     id?: number;
     dogInfo: Dog;
     requestUserInfo: Account;
+
+    dateRequested: Date;
+    dateAccepted?: Date;
     
     // If admin has response
-    isAccepted: boolean;   // Server will always check for admin credentials before using this value
+    isRequestAccepted: boolean;   // Server will always check for admin credentials before using this value
 
-    constructor(_dog_info: Dog, _req_user_info: Account)
+    constructor(_dog_info: Dog, _req_user_info: Account, _date_requested: Date)
     {
         // This is only created whenever user adopts dog
         this.dogInfo = _dog_info;
         this.requestUserInfo = _req_user_info;
+        this.dateRequested = _date_requested;
 
         // By Default
-        this.isAccepted = false;
-    }
-
-    confirmRequest()
-    {
-        this.isAccepted = true;
+        this.isRequestAccepted = false;
     }
 }

@@ -8,12 +8,11 @@ export class Dog {
     weight: number;
     colorCoat: string;
     description?: string;
-    adoptDate?: Date;
 
     constructor(
         _name: string, _breed: string, _dob: Date, _sex: string,
         _height: number, _weight: number, _colorCoat: string,
-        _description: string, _adoptDate: Date) {
+        _description: string) {
         this.name = _name;
         this.breed = _breed;
         this.dob = _dob;
@@ -22,6 +21,5 @@ export class Dog {
         this.weight = _weight;
         this.colorCoat = _colorCoat;
         this.description = _description;
-        this.adoptDate = _adoptDate;
     }
 }
