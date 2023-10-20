@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DogService implements IDogService {
@@ -14,26 +15,36 @@ public class DogService implements IDogService {
 
     @Override
     public Dog addDogRecord(Dog newDog) {
-        return null;
+        return repository.save(newDog);
     }
 
     @Override
     public List<Dog> getAllDogRecords() {
-        return null;
+        return (List<Dog>) repository.findAll();
     }
 
     @Override
     public Dog getDogRecord(long dogId) {
-        return null;
+        Optional<Dog> opt_dog = repository.findById(dogId);
+        return opt_dog.orElse(null);
     }
 
     @Override
-    public Dog updateDogRecord(long dogId, Dog updatedDog) {
-        return null;
+    public Dog updateDogRecord(Dog updatedDog) {
+        Optional<Dog> opt_dog = repository.findById(updatedDog.getId());
+        if (opt_dog.isEmpty())
+            return null;
+
+        return repository.save(updatedDog);
     }
 
     @Override
     public Dog deleteDogRecord(long dogId) {
-        return null;
+        Optional<Dog> opt_dog = repository.findById(dogId);
+        if (opt_dog.isEmpty())
+            return null;
+
+        repository.delete(opt_dog.get());
+        return opt_dog.get();
     }
 }

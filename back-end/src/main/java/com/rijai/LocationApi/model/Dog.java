@@ -15,13 +15,16 @@ public class Dog {
 
     private String name;
     private String breed;
-    private LocalDate dob;
+    private int age;
     private String sex;
-    private double height;
-    private double weight;
     private String colorCoat;
     private String description;
+    private LocalDate arrivedDate;
+    private LocalDate arrivedFrom;
+    private String size;
+    private String location;
     private LocalDateTime adoptionDate;
+
 
     public long getId() {
         return id;
@@ -47,12 +50,12 @@ public class Dog {
         this.breed = breed;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public int getAge() {
+        return age;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getSex() {
@@ -61,22 +64,6 @@ public class Dog {
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
     }
 
     public String getColorCoat() {
@@ -95,6 +82,38 @@ public class Dog {
         this.description = description;
     }
 
+    public LocalDate getArrivedDate() {
+        return arrivedDate;
+    }
+
+    public void setArrivedDate(LocalDate arrivedDate) {
+        this.arrivedDate = arrivedDate;
+    }
+
+    public LocalDate getArrivedFrom() {
+        return arrivedFrom;
+    }
+
+    public void setArrivedFrom(LocalDate arrivedFrom) {
+        this.arrivedFrom = arrivedFrom;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public LocalDateTime getAdoptionDate() {
         return adoptionDate;
     }
@@ -106,16 +125,18 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(long id, String name, String breed, LocalDate dob, String sex, double height, double weight, String colorCoat, String description, LocalDateTime adoptionDate) {
+    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location, LocalDateTime adoptionDate) {
         this.id = id;
         this.name = name;
         this.breed = breed;
-        this.dob = dob;
+        this.age = age;
         this.sex = sex;
-        this.height = height;
-        this.weight = weight;
         this.colorCoat = colorCoat;
         this.description = description;
+        this.arrivedDate = arrivedDate;
+        this.arrivedFrom = arrivedFrom;
+        this.size = size;
+        this.location = location;
         this.adoptionDate = adoptionDate;
     }
 
@@ -124,12 +145,12 @@ public class Dog {
         if (this == o) return true;
         if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-        return id == dog.id && Double.compare(height, dog.height) == 0 && Double.compare(weight, dog.weight) == 0 && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(dob, dog.dob) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(adoptionDate, dog.adoptionDate);
+        return id == dog.id && age == dog.age && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Objects.equals(adoptionDate, dog.adoptionDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, breed, dob, sex, height, weight, colorCoat, description, adoptionDate);
+        return Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location, adoptionDate);
     }
 
     @Override
@@ -138,12 +159,14 @@ public class Dog {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", breed='" + breed + '\'' +
-                ", dob=" + dob +
+                ", age=" + age +
                 ", sex='" + sex + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
                 ", colorCoat='" + colorCoat + '\'' +
                 ", description='" + description + '\'' +
+                ", arrivedDate=" + arrivedDate +
+                ", arrivedFrom=" + arrivedFrom +
+                ", size='" + size + '\'' +
+                ", location='" + location + '\'' +
                 ", adoptionDate=" + adoptionDate +
                 '}';
     }

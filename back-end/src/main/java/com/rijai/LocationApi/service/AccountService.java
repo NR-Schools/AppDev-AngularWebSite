@@ -58,4 +58,19 @@ public class AccountService implements IAccountService {
         opt_account.setSessionAuthString("");
         return repository.save(opt_account);
     }
+
+    @Override
+    public boolean isAdmin(Account possiblyAdminAccount) {
+        // Check if non-null
+        if (possiblyAdminAccount == null)
+            return false;
+
+        // Check email
+        if (!possiblyAdminAccount.getEmail().equals("Admin"))
+            return false;
+
+        // Check session_auth_string
+        Account admin_act = repository.findByEmail(possiblyAdminAccount.getEmail());
+        return admin_act.getSessionAuthString().equals(possiblyAdminAccount.getSessionAuthString());
+    }
 }

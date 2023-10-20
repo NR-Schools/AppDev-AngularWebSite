@@ -8,6 +8,6 @@ public interface IDogService {
     Dog addDogRecord(Dog newDog);
     List<Dog> getAllDogRecords();
     Dog getDogRecord(long dogId);
-    Dog updateDogRecord(long dogId, Dog updatedDog);
+    Dog updateDogRecord(Dog updatedDog);
     Dog deleteDogRecord(long dogId);
 }
