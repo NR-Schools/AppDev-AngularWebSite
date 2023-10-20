@@ -1,7 +1,5 @@
 package com.rijai.LocationApi.service;
 
-import com.rijai.LocationApi.model.Country;
-
 import java.util.List;
 
 public interface ICountryService {
