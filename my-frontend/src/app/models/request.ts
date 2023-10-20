@@ -8,7 +8,7 @@ export class Request {
     dogPayload?: Dog;
     dogAdoptPayload?: DogAdopt;
 
-    setAuthDate(_auth: Account)
+    setAuthData(_auth: Account)
     {
         this.auth = _auth;
     }

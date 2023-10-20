@@ -10,14 +10,4 @@ export class Account {
         this.email = _email;
         this.password = _password;
     }
-
-    get_auth_string()
-    {
-        return this.sessionAuthString;
-    }
-
-    set_auth_string(_auth_string: string)
-    {
-        this.sessionAuthString = _auth_string;
-    }
 }

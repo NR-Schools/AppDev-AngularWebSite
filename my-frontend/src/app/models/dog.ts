@@ -22,4 +22,8 @@ export class Dog {
         this.colorCoat = _colorCoat;
         this.description = _description;
     }
+
+    static NoDog(): Dog {
+        return new Dog('', '', new Date(), '', -1, -1, '', '');
+    }
 }
