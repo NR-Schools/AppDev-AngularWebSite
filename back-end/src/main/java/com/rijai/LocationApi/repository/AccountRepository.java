@@ -1,9 +1,18 @@
 package com.rijai.LocationApi.repository;
 
+import com.rijai.LocationApi.model.Account;
 import com.rijai.LocationApi.model.Country;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface AccountRepository extends CrudRepository<Country, Long> {
+public interface AccountRepository extends CrudRepository<Account, Long> {
+    @Query(
+            value = "SELECT * FROM accounts WHERE email= ?1",
+            nativeQuery = true
+    )
+    Account findByEmail(String email);
 }
