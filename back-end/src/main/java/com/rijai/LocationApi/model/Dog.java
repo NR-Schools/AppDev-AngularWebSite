@@ -23,7 +23,6 @@ public class Dog {
     private LocalDate arrivedFrom;
     private String size;
     private String location;
-    private LocalDateTime adoptionDate;
 
 
     public long getId() {
@@ -114,18 +113,10 @@ public class Dog {
         this.location = location;
     }
 
-    public LocalDateTime getAdoptionDate() {
-        return adoptionDate;
-    }
-
-    public void setAdoptionDate(LocalDateTime adoptionDate) {
-        this.adoptionDate = adoptionDate;
-    }
-
     public Dog() {
     }
 
-    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location, LocalDateTime adoptionDate) {
+    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location) {
         this.id = id;
         this.name = name;
         this.breed = breed;
@@ -137,7 +128,6 @@ public class Dog {
         this.arrivedFrom = arrivedFrom;
         this.size = size;
         this.location = location;
-        this.adoptionDate = adoptionDate;
     }
 
     @Override
@@ -145,12 +135,12 @@ public class Dog {
         if (this == o) return true;
         if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-        return id == dog.id && age == dog.age && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Objects.equals(adoptionDate, dog.adoptionDate);
+        return id == dog.id && age == dog.age && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location, adoptionDate);
+        return Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location);
     }
 
     @Override
@@ -167,7 +157,7 @@ public class Dog {
                 ", arrivedFrom=" + arrivedFrom +
                 ", size='" + size + '\'' +
                 ", location='" + location + '\'' +
-                ", adoptionDate=" + adoptionDate +
+                ", adoptionDate=" +
                 '}';
     }
 }

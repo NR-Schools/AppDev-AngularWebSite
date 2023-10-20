@@ -1,6 +1,7 @@
 package com.rijai.LocationApi.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="dog_adopt_requests")
@@ -18,16 +19,21 @@ public class DogAdopt {
     @JoinColumn(name = "user_ref_id", unique = true)
     private Account requestUserInfo;
 
-    private boolean isAccepted;
+    private LocalDate dateRequested;
+    private LocalDate dateAccepted;
+
+    private boolean isRequestAccepted;
 
     public DogAdopt() {
     }
 
-    public DogAdopt(long id, Dog dogInfo, Account requestUserInfo, boolean isAccepted) {
+    public DogAdopt(long id, Dog dogInfo, Account requestUserInfo, LocalDate dateRequested, LocalDate dateAccepted, boolean isRequestAccepted) {
         this.id = id;
         this.dogInfo = dogInfo;
         this.requestUserInfo = requestUserInfo;
-        this.isAccepted = isAccepted;
+        this.dateRequested = dateRequested;
+        this.dateAccepted = dateAccepted;
+        this.isRequestAccepted = isRequestAccepted;
     }
 
     public long getId() {
@@ -54,11 +60,28 @@ public class DogAdopt {
         this.requestUserInfo = requestUserInfo;
     }
 
-    public boolean isAccepted() {
-        return isAccepted;
+    public LocalDate getDateRequested() {
+        return dateRequested;
     }
 
-    public void setAccepted(boolean accepted) {
-        isAccepted = accepted;
+    public void setDateRequested(LocalDate dateRequested) {
+        this.dateRequested = dateRequested;
     }
+
+    public LocalDate getDateAccepted() {
+        return dateAccepted;
+    }
+
+    public void setDateAccepted(LocalDate dateAccepted) {
+        this.dateAccepted = dateAccepted;
+    }
+
+    public boolean isAccepted() {
+        return isRequestAccepted;
+    }
+
+    public void setRequestAccepted(boolean requestAccepted) {
+        isRequestAccepted = requestAccepted;
+    }
+
 }

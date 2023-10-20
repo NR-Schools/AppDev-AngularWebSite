@@ -5,14 +5,16 @@ import com.rijai.LocationApi.model.Request;
 import com.rijai.LocationApi.model.Response;
 import com.rijai.LocationApi.service.IAccountService;
 import com.rijai.LocationApi.service.IDogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 public class DogController {
-
+    @Autowired
     private IAccountService accountService;
+    @Autowired
     private IDogService dogService;
 
     @RequestMapping(value = "/api/dog/add-dog", method = RequestMethod.POST)
