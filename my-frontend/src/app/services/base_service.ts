@@ -1,4 +1,3 @@
-export class BaseService
-{
-    countriesUrl: string = 'http://localhost:18080/api';
+export class BaseService {
+  dogssUrl: string = 'http://localhost:18080/api';
 }
