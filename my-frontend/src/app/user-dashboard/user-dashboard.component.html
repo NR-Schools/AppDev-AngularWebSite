@@ -1,68 +1,89 @@
 <header>
   <nav>
-    <a href="">Favorites</a>
-    <a href="">Dashboard</a>
-    <a href="">Username</a>
+    <img src="../../assets/images/furever-logo.png" alt="logo image" />
+
+    <div class="links">
+      <div class="favorites">
+        <img src="../../assets/images/favorites-icon.png" alt="" />
+        <a href="">Favorites</a>
+      </div>
+
+      <div class="dashboard">
+        <img src="../../assets/images/dog-icon.png" alt="" />
+        <a href="">Dashboard</a>
+      </div>
+
+      <div class="user">
+        <img src="../../assets/images/user-icon.png" alt="" />
+        <a href="">Username</a>
+      </div>
+    </div>
   </nav>
 </header>
 
-<section class="main-header">
-  <input type="text" placeholder="Dog Name" />
-</section>
-
-<aside>
-  <label for="breeds">Dog Breed</label>
-  <select name="breeds" id="breeds">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </select>
-
-  <label for="colors">Dog Color</label>
-  <select name="colors" id="colors">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </select>
-
-  <form action="">
-    <label for="sizes">Size</label>
-    <select name="sizes" id="sizes">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
-
-    <label for="sex">Sex</label>
-    <select name="sex" id="sex">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
-
-    <label for="ages">Age</label>
-    <select name="ages" id="ages">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
-
-    <button type="reset">Reset</button>
-    <button type="submit">Search</button>
-  </form>
-</aside>
+<div class="search-container">
+  <input class="search-bar" type="text" placeholder="Dog Name" />
+  <div>
+    <img src="../../assets/images/search-icon.png" alt="search-icon" />
+  </div>
+</div>
 
 <main>
-  <div *ngFor="let dog of dogs">
-    <div class="dog-container">
+  <aside>
+    <form action="">
+      <label for="breeds">Breed</label>
+      <select name="breeds" id="breeds">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+      <label for="colors">Color</label>
+      <select name="colors" id="colors">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+      <label for="sizes">Size</label>
+      <select name="sizes" id="sizes">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+      <label for="sex">Sex</label>
+      <select name="sex" id="sex">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+      <label for="ages">Age</label>
+      <select name="ages" id="ages">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+      <div class="button-container">
+        <button class="reset" type="reset">Reset</button>
+        <button class="search" type="submit">Search</button>
+      </div>
+    </form>
+  </aside>
+  <div class="dog-container">
+    <div *ngFor="let dog of dogs" class="dog-card">
       <a href="/dog/{{ dog.id }}">
-        <h1>{{ dog.name }}</h1>
-        <h1>{{ dog.breed }}</h1>
+        <img src="" alt="dog-image" />
+        <h2 class="dog-name">{{ dog.name }}</h2>
+        <h4 class="dog-details">{{ dog.breed }}</h4>
+        <h4 class="dog-details">year(s) old</h4>
       </a>
     </div>
   </div>
