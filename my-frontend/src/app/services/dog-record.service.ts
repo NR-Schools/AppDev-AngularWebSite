@@ -1,156 +1,99 @@
 import { Injectable } from '@angular/core';
 import { Dog } from '../models/dog';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base_service';
+import { Account } from '../models/account';
+import { Request } from '../models/request';
+import { Response } from '../models/response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DogRecordService extends BaseService {
-  dogList: Array<Dog> = [
-    new Dog(
-      'Miles',
-      'Golden Retriever',
-      3,
-      'Male',
-      'Gold',
-      'Buddy is a friendly and playful dog. He loves to fetch and go on long walks.',
-      new Date('2023-05-15'),
-      'Rescue Shelter',
-      'Medium',
-      'New York, NY'
-    ),
-    new Dog(
-      'Luna',
-      'Labrador Retriever',
-      2,
-      'Female',
-      'Black, short coat with a white blaze on her forehead',
-      'Luna is a gentle and well-behaved dog. She enjoys cuddling and playing with toys.',
-      new Date('2023-04-20'),
-      'Foster Home',
-      'Large',
-      'Los Angeles, CA'
-    ),
-    new Dog(
-      'Rocky',
-      'German Shepherd',
-      4,
-      'Male',
-      'Sable, medium-length coat with a black mask',
-      'Rocky is a loyal and protective dog. He is great for families and enjoys outdoor activities.',
-      new Date('2023-03-10'),
-      'Animal Rescue',
-      'Large',
-      'Chicago, IL'
-    ),
-    new Dog(
-      'Daisy',
-      'Dachshund',
-      5,
-      'Female',
-      'Red, short coat with a dark stripe down her back',
-      'Daisy is a sweet and energetic dog. She loves to play fetch and go on adventures.',
-      new Date('2023-06-05'),
-      'Animal Shelter',
-      'Small',
-      'Houston, TX'
-    ),
-
-    new Dog(
-      'Daisy',
-      'Dachshund',
-      5,
-      'Female',
-      'Red, short coat with a dark stripe down her back',
-      'Daisy is a sweet and energetic dog. She loves to play fetch and go on adventures.',
-      new Date('2023-06-05'),
-      'Animal Shelter',
-      'Small',
-      'Houston, TX'
-    ),
-
-    new Dog(
-      'Daisy',
-      'Dachshund',
-      5,
-      'Female',
-      'Red, short coat with a dark stripe down her back',
-      'Daisy is a sweet and energetic dog. She loves to play fetch and go on adventures.',
-      new Date('2023-06-05'),
-      'Animal Shelter',
-      'Small',
-      'Houston, TX'
-    ),
-
-    new Dog(
-      'Daisy',
-      'Dachshund',
-      5,
-      'Female',
-      'Red, short coat with a dark stripe down her back',
-      'Daisy is a sweet and energetic dog. She loves to play fetch and go on adventures.',
-      new Date('2023-06-05'),
-      'Animal Shelter',
-      'Small',
-      'Houston, TX'
-    ),
-
-    new Dog(
-      'Daisy',
-      'Dachshund',
-      5,
-      'Female',
-      'Red, short coat with a dark stripe down her back',
-      'Daisy is a sweet and energetic dog. She loves to play fetch and go on adventures.',
-      new Date('2023-06-05'),
-      'Animal Shelter',
-      'Small',
-      'Houston, TX'
-    ),
-
-    new Dog(
-      'Daisy',
-      'Dachshund',
-      5,
-      'Female',
-      'Red, short coat with a dark stripe down her back',
-      'Daisy is a sweet and energetic dog. She loves to play fetch and go on adventures.',
-      new Date('2023-06-05'),
-      'Animal Shelter',
-      'Small',
-      'Houston, TX'
-    ),
-  ];
-
   constructor(private http: HttpClient) {
     super();
   }
 
-  addDogRecord(dog: Dog): void {
-    // Send dog to server
+  addDogRecord(dog: Dog): Observable<boolean> {
+    // Get Auth Data
+    let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+    // Prepare request
+    let request: Request = new Request();
+    request.setAuthData(account);
+    request.setDogPayload(dog);
+
+    // Add dog to server
+    return this.http.post<Response>(this.MainUrl + 'dog/add-dog', request).pipe(
+      map((response: Response) => {
+        if (response.status == 'success') return true;
+        return false;
+      })
+    );
   }
 
-  viewAllDogRecords(): Array<Dog> {
+  viewAllDogRecords(): Observable<Array<Dog>> {
     // Get all dogs
-    // If user, return only dogs that are not yet adopted
-    // If admin, return all dogs
-    //return this.http.get<Dog[]>(this.dogssUrl + '/dogs/');
-    return this.dogList;
+    return this.http.get<Response>(this.MainUrl + 'dog/dogs').pipe(
+      map((response: Response) => {
+        if (response.status == 'success') return response.result as Array<Dog>;
+        return Array();
+      })
+    );
   }
 
-  viewDogRecord(dog_id: number): Dog {
+  viewDogRecord(dog_id: number): Observable<Dog> {
     // Get specific dog record
-    return this.dogList[0];
+    return this.http
+      .get<Response>(this.MainUrl + `dog/show-dog/${dog_id}`)
+      .pipe(
+        map((response: Response) => {
+          if (response.status == 'success') return response.result as Dog;
+          return Dog.NoDog();
+        })
+      );
   }
 
-  updateDogRecord(dog_id: number, updated_dog_info: Dog): void {
-    // Create new dog object, merging id and updated info
-    // Send dog to server
+  updateDogRecord(dog_id: number, updated_dog_info: Dog): Observable<boolean> {
+    // Get Auth Data
+    let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+    // Create updated dog object, merging id and updated info
+    updated_dog_info.id = dog_id;
+
+    // Prepare request
+    let request: Request = new Request();
+    request.setAuthData(account);
+    request.setDogPayload(updated_dog_info);
+
+    // Update dog on server
+    return this.http
+      .put<Response>(this.MainUrl + 'dog/update-dog', request)
+      .pipe(
+        map((response: Response) => {
+          if (response.status == 'success') return true;
+          return false;
+        })
+      );
   }
 
-  deleteDogRecord(dog_id: number): void {
+  deleteDogRecord(dog_id: number): Observable<boolean> {
+    // Get Auth Data
+    let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+    // Prepare request
+    let request: Request = new Request();
+    request.setAuthData(account);
+
     // Delete dog from server
+    return this.http
+      .delete<Response>(this.MainUrl + `dog/delete-dog/${dog_id}`)
+      .pipe(
+        map((response: Response) => {
+          if (response.status == 'success') return true;
+          return false;
+        })
+      );
   }
 }

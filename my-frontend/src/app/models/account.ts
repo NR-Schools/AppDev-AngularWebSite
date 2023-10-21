@@ -1,23 +1,12 @@
 export class Account {
-    id?: number;
-    email?: string; // For Admin, email will always be Admin
-    password?: string;
-    
-    sessionAuthString?: string;
+  id?: number;
+  email?: string; // For Admin, email will always be Admin
+  password?: string;
 
-    signup_login(_email: string, _password: string)
-    {
-        this.email = _email;
-        this.password = _password;
-    }
+  sessionAuthString?: string;
 
-    get_auth_string()
-    {
-        return this.sessionAuthString;
-    }
-
-    set_auth_string(_auth_string: string)
-    {
-        this.sessionAuthString = _auth_string;
-    }
+  signup_login(_email: string, _password: string) {
+    this.email = _email;
+    this.password = _password;
+  }
 }

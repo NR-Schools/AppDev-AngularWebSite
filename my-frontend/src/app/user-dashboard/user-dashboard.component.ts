@@ -13,6 +13,8 @@ export class UserDashboardComponent implements OnInit {
   constructor(private dogRecordService: DogRecordService) {}
 
   ngOnInit(): void {
-    this.dogs = this.dogRecordService.viewAllDogRecords();
+    this.dogRecordService.viewAllDogRecords().subscribe((data: Dog[]) => {
+      this.dogs = data;
+    });
   }
 }

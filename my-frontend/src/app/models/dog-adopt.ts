@@ -1,26 +1,28 @@
-import { Account } from "./account";
-import { Dog } from "./dog";
+import { Account } from './account';
+import { Dog } from './dog';
 
 export class DogAdopt {
-    id?: number;
-    dogInfo: Dog;
-    requestUserInfo: Account;
-    
-    // If admin has response
-    isAccepted: boolean;   // Server will always check for admin credentials before using this value
+  id?: number;
+  dogInfo: Dog;
+  requestUserInfo: Account;
 
-    constructor(_dog_info: Dog, _req_user_info: Account)
-    {
-        // This is only created whenever user adopts dog
-        this.dogInfo = _dog_info;
-        this.requestUserInfo = _req_user_info;
+  dateRequested: Date;
+  dateAccepted?: Date;
 
-        // By Default
-        this.isAccepted = false;
-    }
+  // If admin has response
+  isRequestAccepted: boolean; // Server will always check for admin credentials before using this value
 
-    confirmRequest()
-    {
-        this.isAccepted = true;
-    }
+  constructor(_dog_info: Dog, _req_user_info: Account, _date_requested: Date) {
+    // This is only created whenever user adopts dog
+    this.dogInfo = _dog_info;
+    this.requestUserInfo = _req_user_info;
+    this.dateRequested = _date_requested;
+
+    // By Default
+    this.isRequestAccepted = false;
+  }
+
+  static NoDogAdopt(): DogAdopt {
+    return new DogAdopt(Dog.NoDog(), new Account(), new Date());
+  }
 }
