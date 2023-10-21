@@ -3,6 +3,7 @@ package com.rijai.LocationApi.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
@@ -23,7 +24,26 @@ public class Dog {
     private LocalDate arrivedFrom;
     private String size;
     private String location;
+    @Lob
+    private byte[] photoBytes;
 
+    public Dog() {
+    }
+
+    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location, byte[] photoBytes) {
+        this.id = id;
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.sex = sex;
+        this.colorCoat = colorCoat;
+        this.description = description;
+        this.arrivedDate = arrivedDate;
+        this.arrivedFrom = arrivedFrom;
+        this.size = size;
+        this.location = location;
+        this.photoBytes = photoBytes;
+    }
 
     public long getId() {
         return id;
@@ -113,21 +133,12 @@ public class Dog {
         this.location = location;
     }
 
-    public Dog() {
+    public byte[] getPhotoBytes() {
+        return photoBytes;
     }
 
-    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location) {
-        this.id = id;
-        this.name = name;
-        this.breed = breed;
-        this.age = age;
-        this.sex = sex;
-        this.colorCoat = colorCoat;
-        this.description = description;
-        this.arrivedDate = arrivedDate;
-        this.arrivedFrom = arrivedFrom;
-        this.size = size;
-        this.location = location;
+    public void setPhotoBytes(byte[] photoBytes) {
+        this.photoBytes = photoBytes;
     }
 
     @Override
@@ -135,12 +146,14 @@ public class Dog {
         if (this == o) return true;
         if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-        return id == dog.id && age == dog.age && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location);
+        return id == dog.id && age == dog.age && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Arrays.equals(photoBytes, dog.photoBytes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location);
+        int result = Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location);
+        result = 31 * result + Arrays.hashCode(photoBytes);
+        return result;
     }
 
     @Override
@@ -157,7 +170,7 @@ public class Dog {
                 ", arrivedFrom=" + arrivedFrom +
                 ", size='" + size + '\'' +
                 ", location='" + location + '\'' +
-                ", adoptionDate=" +
+                ", photoBytes=" + Arrays.toString(photoBytes) +
                 '}';
     }
 }
