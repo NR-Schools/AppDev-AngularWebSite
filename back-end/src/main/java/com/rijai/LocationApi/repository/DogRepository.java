@@ -1,9 +1,9 @@
 package com.rijai.LocationApi.repository;
 
-import com.rijai.LocationApi.model.Country;
+import com.rijai.LocationApi.model.Dog;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CountryRepository extends CrudRepository <Country, Long> {
+public interface DogRepository extends CrudRepository<Dog, Long> {
 }
