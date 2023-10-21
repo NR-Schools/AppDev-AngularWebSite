@@ -8,7 +8,7 @@ import com.rijai.LocationApi.service.IDogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 public class DogController {
@@ -38,7 +38,7 @@ public class DogController {
     }
 
     @RequestMapping(value = "/api/dog/dogs", method = RequestMethod.GET)
-    public Response getAllDogs(@RequestBody Request request)
+    public Response getAllDogs()
     {
         Response response = new Response();
 
@@ -48,7 +48,7 @@ public class DogController {
     }
 
     @RequestMapping(value = "/api/dog/show-dog/{dogId}", method = RequestMethod.GET)
-    public Response getDog(@PathVariable long dogId, @RequestBody Request request)
+    public Response getDog(@PathVariable long dogId)
     {
         Response response = new Response();
 

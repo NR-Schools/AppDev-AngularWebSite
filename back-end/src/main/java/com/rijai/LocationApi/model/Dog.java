@@ -20,7 +20,7 @@ public class Dog {
     private String colorCoat;
     private String description;
     private LocalDate arrivedDate;
-    private LocalDate arrivedFrom;
+    private String arrivedFrom;
     private String size;
     private String location;
 
@@ -89,11 +89,11 @@ public class Dog {
         this.arrivedDate = arrivedDate;
     }
 
-    public LocalDate getArrivedFrom() {
+    public String getArrivedFrom() {
         return arrivedFrom;
     }
 
-    public void setArrivedFrom(LocalDate arrivedFrom) {
+    public void setArrivedFrom(String arrivedFrom) {
         this.arrivedFrom = arrivedFrom;
     }
 
@@ -116,7 +116,7 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location) {
+    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, String arrivedFrom, String size, String location) {
         this.id = id;
         this.name = name;
         this.breed = breed;
