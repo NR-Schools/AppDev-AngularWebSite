@@ -44,6 +44,7 @@ nav {
   border: 1px solid var(--secondary-color);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  outline: none;
 }
 
 .search-container div {
