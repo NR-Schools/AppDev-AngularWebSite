@@ -21,7 +21,7 @@ public class Dog {
     private String colorCoat;
     private String description;
     private LocalDate arrivedDate;
-    private LocalDate arrivedFrom;
+    private String arrivedFrom;
     private String size;
     private String location;
     @Lob
@@ -109,11 +109,11 @@ public class Dog {
         this.arrivedDate = arrivedDate;
     }
 
-    public LocalDate getArrivedFrom() {
+    public String getArrivedFrom() {
         return arrivedFrom;
     }
 
-    public void setArrivedFrom(LocalDate arrivedFrom) {
+    public void setArrivedFrom(String arrivedFrom) {
         this.arrivedFrom = arrivedFrom;
     }
 

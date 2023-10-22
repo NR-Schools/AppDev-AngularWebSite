@@ -23,12 +23,12 @@ public class DogController {
         Response response = new Response();
 
         // Check if Admin
-        if (!accountService.isAdmin(request.auth))
-        {
-            response.status = "failed";
-            response.result = null;
-            return response;
-        }
+        //if (!accountService.isAdmin(request.auth))
+        //{
+        //    response.status = "failed";
+        //    response.result = null;
+        //    return response;
+        //}
 
         // Add Dog
         Dog newDog = dogService.addDogRecord(request.dogPayload);
@@ -38,7 +38,7 @@ public class DogController {
     }
 
     @RequestMapping(value = "/api/dog/dogs", method = RequestMethod.GET)
-    public Response getAllDogs(@RequestBody Request request)
+    public Response getAllDogs()
     {
         Response response = new Response();
 
@@ -48,7 +48,7 @@ public class DogController {
     }
 
     @RequestMapping(value = "/api/dog/show-dog/{dogId}", method = RequestMethod.GET)
-    public Response getDog(@PathVariable long dogId, @RequestBody Request request)
+    public Response getDog(@PathVariable long dogId)
     {
         Response response = new Response();
 
@@ -63,12 +63,12 @@ public class DogController {
         Response response = new Response();
 
         // Check if Admin
-        if (!accountService.isAdmin(request.auth))
-        {
-            response.status = "failed";
-            response.result = null;
-            return response;
-        }
+        //if (!accountService.isAdmin(request.auth))
+        //{
+        //    response.status = "failed";
+        //    response.result = null;
+        //    return response;
+        //}
 
         // Add Dog
         Dog updatedDog = dogService.updateDogRecord(request.dogPayload);
@@ -83,12 +83,12 @@ public class DogController {
         Response response = new Response();
 
         // Check if Admin
-        if (!accountService.isAdmin(request.auth))
-        {
-            response.status = "failed";
-            response.result = null;
-            return response;
-        }
+        //if (!accountService.isAdmin(request.auth))
+        //{
+        //    response.status = "failed";
+        //    response.result = null;
+        //    return response;
+        //}
 
         // Delete Dog
         Dog deletedDog = dogService.deleteDogRecord(dogId);

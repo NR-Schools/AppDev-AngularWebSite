@@ -1,0 +1,129 @@
+main {
+  width: 75.5%;
+  margin: auto;
+  margin-top: -70px;
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.image-container {
+  width: 55%;
+  min-width: 497px;
+  min-height: 495px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  height: 95%;
+  width: 95%;
+  border-radius: 20px;
+}
+
+.dog-details-container {
+  width: 43%;
+  min-width: 397px;
+  min-height: 495px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.dog-details-inner-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dog-details-labels {
+  width: 50%;
+  font-size: 17px;
+}
+
+.labels {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: rgba(57, 67, 63, 0.7);
+}
+
+.dog-details-values > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(232, 248, 244, 1);
+  height: 45px;
+  border-radius: 50px;
+  font-weight: bold;
+  margin-bottom: 43px;
+}
+
+.dog-details-values > div > p {
+  color: #18c17c;
+  font-weight: 500;
+}
+
+.dog-details-values {
+  width: 50%;
+}
+
+.values {
+  margin-bottom: 15px;
+  font-size: 17px;
+  color: rgba(57, 67, 63, 0.7);
+}
+
+.additional-information {
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons a {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 40px;
+  background-color: #e3bc7b;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.adopt-button {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.favorite-button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

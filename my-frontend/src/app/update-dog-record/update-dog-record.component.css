@@ -1,0 +1,215 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Farro:wght@300;400;500&family=Manrope:wght@200;300;400;500;800&family=Saira+Condensed:wght@100;400&display=swap");
+
+:root {
+  --bg-color: #efeef1;
+  --text-color: #39433f;
+  --primary-color: #a7d7c5;
+  --secondary-color: #e3bc7b;
+  --accent-color: #18c17c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text-color);
+}
+
+body,
+html {
+  background-color: var(--bg-color);
+  font-family: "Farro", "Courier New", Courier, monospace;
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--primary-color);
+  min-height: 180px;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  padding-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 75.7%;
+  margin: auto;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user,
+.favorites,
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+/* ================================================================================================== */
+main {
+  width: 75.5%;
+  margin: auto;
+  margin-top: -70px;
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.image-container {
+  width: 55%;
+  min-width: 497px;
+  min-height: 495px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.replace-image-container {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.45);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.replace-image-container p {
+  text-align: center;
+}
+
+.image-container img {
+  height: 95%;
+  width: 95%;
+  border-radius: 20px;
+}
+
+.dog-details-container {
+  width: 43%;
+  min-width: 397px;
+  min-height: 495px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.dog-details-inner-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dog-details-labels {
+  width: 50%;
+  font-size: 17px;
+}
+
+.labels {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.dog-name {
+  font-family: "Farro", "Courier New", Courier, monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+  width: 100%;
+  height: 45px;
+  padding: 5px;
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: rgba(57, 67, 63, 0.7);
+}
+
+.dog-details-values > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(232, 248, 244, 1);
+  height: 45px;
+  border-radius: 50px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.dog-details-values > div > p {
+  color: #18c17c;
+  font-weight: 500;
+}
+
+.dog-details-values {
+  width: 50%;
+}
+
+.values {
+  margin-bottom: 7px;
+  font-size: 17px;
+  color: rgba(57, 67, 63, 0.7);
+  width: 100%;
+  padding: 4px;
+}
+
+.additional-information {
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.additional-information textarea {
+  width: 100%;
+  min-height: 100px;
+  font-family: "Farro", "Courier New", Courier, monospace;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons a {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 40px;
+  background-color: #e3bc7b;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.update-button {
+  border-radius: 5px;
+}

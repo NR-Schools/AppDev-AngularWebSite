@@ -15,7 +15,7 @@
 
       <div class="user">
         <img src="../../assets/images/user-icon.png" alt="" />
-        <a href="">Username</a>
+        <a href="">Admin</a>
       </div>
     </div>
   </nav>
@@ -77,13 +77,27 @@
       </div>
     </form>
   </aside>
+
   <div class="dog-container">
-    <div *ngFor="let dog of dogs" class="dog-card">
-      <a href="/dog/{{ dog.id }}">
-        <img src="" alt="dog-image" />
-        <h2 class="dog-name">{{ dog.name }}</h2>
-        <h4 class="dog-details">{{ dog.breed }}</h4>
+    <div *ngFor="" class="dog-card">
+      <button>
+        <img class="remove-image" src="../../assets/images/remove.png" alt="" />
+      </button>
+
+      <a href="">
+        <img class="dog-image" src="#" alt="dog-image" />
+
+        <h2 class="dog-name">dogname</h2>
+
+        <h4 class="dog-details">dogbreed</h4>
         <h4 class="dog-details">year(s) old</h4>
+      </a>
+    </div>
+
+    <div class="add-dog-card">
+      <a href="#">
+        <img src="../../assets/images/add-icon.png" alt="add icon" />
+        <p>Add Dog</p>
       </a>
     </div>
   </div>

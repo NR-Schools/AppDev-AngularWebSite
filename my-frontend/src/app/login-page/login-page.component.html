@@ -1,0 +1,33 @@
+<div class="login-page">
+    <div class="inner-page">
+        <div class="login-section">
+            <img src="assets/images/furever-logo.png" width="58px" style="float: right; margin: 10px 10px 0 0 ;">
+            <div class="login-info">
+                <p>Login</p>
+                <span class="redirect_signup">
+                    Doesn't have an account yet?
+                    <a href="/signup">
+                        Sign up
+                    </a>
+                </span>
+                <br />
+                <br />
+
+                <!-- Form Group -->
+                <form [formGroup]="loginFormGroup">
+                    <label for="email">Email Address:</label>
+                    <input type="email" name="email" formControlName="Email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" formControlName="Password" required>
+
+                    <button type="submit" [disabled]="!loginFormGroup.valid" (click)="loginAccount()">LOGIN</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="image-display">
+            <img src="assets/images/login-image.png">
+        </div>
+    </div>
+</div>

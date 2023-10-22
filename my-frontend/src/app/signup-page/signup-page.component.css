@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
+
+:host {
+    height: 100vh;
+    width: 100vw;
+}
+
+.signup-page {
+    background-color: #A7D7C5;
+    height: 100%;
+    width: 100%;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-page {
+    background-color: #FFFFFF;
+    width: 80%;
+    height: 80%;
+
+    display: flex;
+}
+
+.signup-section {
+    width: 45%;
+}
+
+.image-display {
+    width: 55%;
+    background-color: #EFEFEF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+        width: 98%;
+        height: 98%;
+        object-fit: cover;
+    }
+}
+
+.signup-info {
+    padding: 45px;
+    
+    & * {
+        font-family: 'Farro';
+    }
+
+    > p {
+        font-size: 1.6em;
+        font-weight: 500;
+    }
+
+    > span {
+        font-size: 0.74em;
+    }
+
+    > form {
+        display: flex;
+        flex-direction: column;
+
+        > label {
+            font-size: 0.80em;
+            font-weight: 500;
+            margin-bottom: 3.5px;
+        }
+
+        > input {
+            margin-bottom: 20px;
+            height: 28px;
+        }
+
+        > button {
+            border: none;
+            border-radius: 5px;
+            height: 35px;
+            color: #FFFFFF;
+            background-color: #18C17C;
+            cursor: pointer;
+
+            font-weight: 500;
+            font-size: 1.1em;
+
+            &:disabled {
+                background-color: #626262;
+            }
+        }
+    }
+}
+
+.redirect_login {
+    color: #0000004D;
+    font-size: 0.7em;
+    text-align: center;
+    margin: 10px;
+
+    > a {
+        color: #18C17C;
+    }
+}
