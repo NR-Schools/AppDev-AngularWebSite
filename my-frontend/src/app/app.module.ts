@@ -9,9 +9,11 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { DogDetailsComponent } from './dog-details/dog-details.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UpdateDogRecordComponent } from './update-dog-record/update-dog-record.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
-  declarations: [AppComponent, UserDashboardComponent, DogDetailsComponent, AdminDashboardComponent, UpdateDogRecordComponent],
+  declarations: [AppComponent, UserDashboardComponent, DogDetailsComponent, AdminDashboardComponent, UpdateDogRecordComponent, SignupPageComponent, LoginPageComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

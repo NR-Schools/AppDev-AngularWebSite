@@ -21,6 +21,8 @@ html {
   background-color: var(--bg-color);
   font-family: "Farro", "Courier New", Courier, monospace;
   color: var(--text-color);
+  height: 100vh;
+  width: 100vw;
 }
 
 header {
