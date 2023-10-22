@@ -7,7 +7,8 @@ export class Dog {
   height: number;
   weight: number;
   colorCoat: string;
-  description?: string;
+  description: string;
+  photoBytes: any;
 
   constructor(
     _name: string,
@@ -17,7 +18,8 @@ export class Dog {
     _height: number,
     _weight: number,
     _colorCoat: string,
-    _description: string
+    _description: string,
+    _photoBytes: any
   ) {
     this.name = _name;
     this.breed = _breed;
@@ -27,9 +29,10 @@ export class Dog {
     this.weight = _weight;
     this.colorCoat = _colorCoat;
     this.description = _description;
+    this.photoBytes = _photoBytes;
   }
 
   static NoDog(): Dog {
-    return new Dog('', '', new Date(), '', -1, -1, '', '');
+    return new Dog('', '', new Date(), '', -1, -1, '', '', null);
   }
 }
