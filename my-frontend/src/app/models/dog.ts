@@ -10,7 +10,7 @@ export class Dog {
   arrivedFrom: string;
   size: string;
   location: string;
-  photoBytes: any;
+  photoBytes?: any;
 
   constructor(
     _name: string,

@@ -73,6 +73,10 @@ export class AddDogRecordComponent {
 
 		newDog.description = this.addDogName.trim();
 
+		if (this.addDogImage !== null) {
+			newDog.photoBytes = this.addDogImage;
+		}
+
 		this.dogRecordService.addDogRecord(newDog);
 	}
 }
