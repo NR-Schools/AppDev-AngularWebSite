@@ -1,82 +1,84 @@
 <header>
-  <nav>
-    <img src="../../assets/images/furever-logo.png" alt="logo image" />
+	<nav>
+		<img src="../../assets/images/furever-logo.png" alt="logo image" />
 
-    <div class="links">
-      <div class="favorites">
-        <img src="../../assets/images/favorites-icon.png" alt="" />
-        <a href="">Request</a>
-      </div>
+		<div class="links">
+			<div class="favorites">
+				<img src="../../assets/images/favorites-icon.png" alt="" />
+				<a href="">Request</a>
+			</div>
 
-      <div class="dashboard">
-        <img src="../../assets/images/dog-icon.png" alt="" />
-        <a href="">Dashboard</a>
-      </div>
+			<div class="dashboard">
+				<img src="../../assets/images/dog-icon.png" alt="" />
+				<a href="">Dashboard</a>
+			</div>
 
-      <div class="user">
-        <img src="../../assets/images/user-icon.png" alt="" />
-        <a href="">Admin</a>
-      </div>
-    </div>
-  </nav>
+			<div class="user">
+				<img src="../../assets/images/user-icon.png" alt="" />
+				<a href="">Admin</a>
+			</div>
+		</div>
+	</nav>
 </header>
 
 <main>
-  <div class="details-container">
-    <div class="image-container">
-      <a href="#">
-        <div>
-          <img src="../../assets/images/add-icon.png" alt="" />
-          <p>Add Image</p>
-        </div>
-      </a>
-    </div>
+	<div class="details-container">
+		<div class="image-container">
+			<img [src]="addDogPreviewImage">
+			<div class="choose-img-container">
+				<input type="file" (change)="onImageSelected($event)" accept="image/*">
+			</div>
+		</div>
 
-    <div class="dog-details-container">
-      <div class="dog-details-inner-container">
-        <div class="dog-details-labels">
-          <input class="dog-name" type="text" placeholder="Dog Name" />
-          <h3>ABOUT</h3>
-          <p class="labels">Breed</p>
-          <p class="labels">Color</p>
-          <p class="labels">Age</p>
-          <p class="labels">Sex</p>
-          <p class="labels">Arrived Date</p>
-          <p class="labels">Arrived From</p>
-          <p class="labels">Size</p>
-          <p class="labels">Location</p>
-        </div>
+		<div class="dog-details-container">
+			<div class="dog-details-inner-container">
+				<div class="dog-details-labels">
+					<input class="dog-name" type="text" placeholder="Dog Name" [(ngModel)]="addDogName" />
+					<h3>ABOUT</h3>
+					<p class="labels">Breed</p>
+					<p class="labels">Color</p>
+					<p class="labels">Age</p>
+					<p class="labels">Sex</p>
+					<p class="labels">Arrived Date</p>
+					<p class="labels">Arrived From</p>
+					<p class="labels">Size</p>
+					<p class="labels">Location</p>
+				</div>
 
-        <div class="dog-details-values">
-          <div>
-            <p>Available to Adopt</p>
-          </div>
+				<div class="dog-details-values">
+					<div>
+						<p>Available to Adopt</p>
+					</div>
 
-          <form action="">
-            <input class="values" type="text" placeholder="Dog Breed" />
-            <input class="values" type="text" placeholder="Dog Color" />
-            <input class="values" type="text" placeholder="Dog Age" />
-            <input class="values" type="text" placeholder="Dog Sex" />
-            <input class="values" type="text" placeholder="Arrived Date" />
-            <input class="values" type="text" placeholder="Arrived From" />
-            <input class="values" type="text" placeholder="Dog Size" />
-            <input class="values" type="text" placeholder="Dog Location" />
-          </form>
-        </div>
-      </div>
+					<form [formGroup]="addDogFormGroup">
+						<input class="values" type="text" formControlName="Breed" placeholder="Dog Breed" />
+						<input class="values" type="text" formControlName="Color" placeholder="Dog Color" />
+						<input class="values" type="number" formControlName="Age" placeholder="Dog Age" />
+						<input class="values" type="text" formControlName="Sex" placeholder="Dog Sex" />
+						<input class="values" type="date" formControlName="ArrivedDate" placeholder="Arrived Date" />
+						<input class="values" type="text" formControlName="ArrivedFrom" placeholder="Arrived From" />
+						<select class="values" formControlName="Size">
+							<option>Small</option>
+							<option>Medium</option>
+							<option>Large</option>
+						</select>
+						<input class="values" type="text" formControlName="Location" placeholder="Dog Location" />
+					</form>
+				</div>
+			</div>
 
-      <div class="buttons">
-        <a href="#" class="add-button">
-          <div>
-            <p>Add</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+			<div class="buttons">
+				<button class="add-button" (click)="onAddDogRecord()" [disabled]="!addDogFormGroup.valid">
+					<div>
+						<p>Add</p>
+					</div>
+				</button>
+			</div>
+		</div>
+	</div>
 
-  <div class="additional-information">
-    <h2>Description</h2>
-    <textarea cols="30" rows="10" placeholder="Add dog description"></textarea>
-  </div>
+	<div class="additional-information">
+		<h2>Description</h2>
+		<textarea cols="30" rows="10" placeholder="Add dog description" [(ngModel)]="addDogDescription"></textarea>
+	</div>
 </main>

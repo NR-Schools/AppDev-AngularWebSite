@@ -3,7 +3,7 @@
 </button>
 
 <a href="/dog/{{ dogItem.id }}">
-    <img class="dog-image" src="#" alt="dog-image" />
+    <img class="dog-image" src="#" alt="dog-image" onerror="this.src='assets/images/no_dog_placeholder.png';" />
 
     <h2 class="dog-name">{{ dogItem.name }}</h2>
 

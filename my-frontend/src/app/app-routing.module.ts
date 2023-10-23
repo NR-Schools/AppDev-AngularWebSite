@@ -23,7 +23,7 @@ const routes: Routes = [
 		component: LoginPageComponent
 	},
 	{
-		path: 'dogs',
+		path: 'user',
 		component: UserDashboardComponent
 	},
 	{
