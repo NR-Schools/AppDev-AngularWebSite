@@ -1,0 +1,52 @@
+main {
+  width: 80%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.main-text {
+  color: var(--text-color);
+  font-family: "Farro", "Courier New", Courier, monospace;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.main-text-2 {
+  color: var(--secondary-color);
+}
+
+.welcome-text {
+  color: var(--text-color);
+  font-family: "Farro", "Courier New", Courier, monospace;
+  font-size: 1.5625rem;
+  font-weight: 700;
+}
+
+span {
+  color: var(--secondary-color);
+}
+
+.button {
+  width: 17.4375rem;
+  height: 3.125rem;
+  flex-shrink: 0;
+  border: 1px solid var(--secondary-color);
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
