@@ -12,6 +12,7 @@ import { UpdateDogRecordComponent } from './update-dog-record/update-dog-record.
 import { AddDogRecordComponent } from './add-dog-record/add-dog-record.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { UdDogItemComponent } from './user-dashboard/ud-dog-item/ud-dog-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     UpdateDogRecordComponent,
     SignupPageComponent,
     LoginPageComponent
-  , AddDogRecordComponent],
+  , AddDogRecordComponent, UdDogItemComponent],
   imports: [
     BrowserModule,
     FormsModule,

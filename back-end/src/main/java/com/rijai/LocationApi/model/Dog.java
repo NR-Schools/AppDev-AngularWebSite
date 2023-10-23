@@ -30,7 +30,7 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, LocalDate arrivedFrom, String size, String location, byte[] photoBytes) {
+    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, String arrivedFrom, String size, String location, byte[] photoBytes) {
         this.id = id;
         this.name = name;
         this.breed = breed;

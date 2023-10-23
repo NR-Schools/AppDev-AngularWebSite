@@ -2,37 +2,43 @@ export class Dog {
   id?: number;
   name: string;
   breed: string;
-  dob: Date;
+  age: number;
   sex: string;
-  height: number;
-  weight: number;
   colorCoat: string;
   description: string;
+  arrivedDate: Date;
+  arrivedFrom: string;
+  size: number;
+  location: string;
   photoBytes: any;
 
   constructor(
     _name: string,
     _breed: string,
-    _dob: Date,
+    _age: number,
     _sex: string,
-    _height: number,
-    _weight: number,
     _colorCoat: string,
     _description: string,
+    _arrivedDate: Date,
+    _arrivedFrom: string,
+    _size: number,
+    _location: string,
     _photoBytes: any
   ) {
     this.name = _name;
     this.breed = _breed;
-    this.dob = _dob;
+    this.age = _age;
     this.sex = _sex;
-    this.height = _height;
-    this.weight = _weight;
     this.colorCoat = _colorCoat;
     this.description = _description;
+    this.arrivedDate = _arrivedDate;
+    this.arrivedFrom = _arrivedFrom;
+    this.size = _size;
+    this.location = _location;
     this.photoBytes = _photoBytes;
   }
 
   static NoDog(): Dog {
-    return new Dog('', '', new Date(), '', -1, -1, '', '', null);
+    return new Dog('', '', -1, '', '', '', new Date(), '', -1, '', null);
   }
 }
