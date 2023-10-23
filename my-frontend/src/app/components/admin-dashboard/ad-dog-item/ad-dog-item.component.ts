@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Dog } from 'src/app/models/dog';
+import { DogRecordService } from 'src/app/services/dog-record.service';
 
 @Component({
 	selector: 'ad-dog-item',
@@ -9,4 +10,10 @@ import { Dog } from 'src/app/models/dog';
 export class AdDogItemComponent {
 	@Input({ required: true }) dogItem!: Dog;
 	thumbnail: any;
+
+	constructor(private dogRecordService: DogRecordService) {}
+
+	onItemRemove(): void {
+		this.dogRecordService.deleteDogRecord(this.dogItem.id!);
+	}
 }
