@@ -2,7 +2,6 @@ package com.rijai.LocationApi.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
 

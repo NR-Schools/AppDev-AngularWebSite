@@ -23,12 +23,12 @@ public class DogController {
         Response response = new Response();
 
         // Check if Admin
-        //if (!accountService.isAdmin(request.auth))
-        //{
-        //    response.status = "failed";
-        //    response.result = null;
-        //    return response;
-        //}
+        if (!accountService.isAdmin(request.auth))
+        {
+            //response.status = "failed";
+            //response.result = null;
+            //return response;
+        }
 
         // Add Dog
         Dog newDog = dogService.addDogRecord(request.dogPayload);
@@ -63,12 +63,12 @@ public class DogController {
         Response response = new Response();
 
         // Check if Admin
-        //if (!accountService.isAdmin(request.auth))
-        //{
-        //    response.status = "failed";
-        //    response.result = null;
-        //    return response;
-        //}
+        if (!accountService.isAdmin(request.auth))
+        {
+            //response.status = "failed";
+            //response.result = null;
+            //return response;
+        }
 
         // Add Dog
         Dog updatedDog = dogService.updateDogRecord(request.dogPayload);
@@ -83,12 +83,12 @@ public class DogController {
         Response response = new Response();
 
         // Check if Admin
-        //if (!accountService.isAdmin(request.auth))
-        //{
-        //    response.status = "failed";
-        //    response.result = null;
-        //    return response;
-        //}
+        if (!accountService.isAdmin(request.auth))
+        {
+            //response.status = "failed";
+            //response.result = null;
+            //return response;
+        }
 
         // Delete Dog
         Dog deletedDog = dogService.deleteDogRecord(dogId);
