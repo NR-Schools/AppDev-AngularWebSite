@@ -14,6 +14,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UdDogItemComponent } from './user-dashboard/ud-dog-item/ud-dog-item.component';
 import { DogRequestsComponent } from './dog-requests/dog-requests.component';
+import { AdDogItemComponent } from './admin-dashboard/ad-dog-item/ad-dog-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { DogRequestsComponent } from './dog-requests/dog-requests.component';
     UpdateDogRecordComponent,
     SignupPageComponent,
     LoginPageComponent
-  , AddDogRecordComponent, UdDogItemComponent, DogRequestsComponent],
+  , AddDogRecordComponent, UdDogItemComponent, DogRequestsComponent, AdDogItemComponent],
   imports: [
     BrowserModule,
     FormsModule,

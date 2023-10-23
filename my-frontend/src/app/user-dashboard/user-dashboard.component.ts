@@ -3,18 +3,18 @@ import { Dog } from '../models/dog';
 import { DogRecordService } from '../services/dog-record.service';
 
 @Component({
-  selector: 'app-user-dashboard',
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css'],
+	selector: 'app-user-dashboard',
+	templateUrl: './user-dashboard.component.html',
+	styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
-  dogs: Dog[] = [];
+	dogs: Dog[] = [];
 
-  constructor(private dogRecordService: DogRecordService) {}
+	constructor(private dogRecordService: DogRecordService) { }
 
-  ngOnInit(): void {
-    this.dogRecordService.viewAllDogRecords().subscribe((data: Dog[]) => {
-      this.dogs = data;
-    });
-  }
+	ngOnInit(): void {
+		this.dogRecordService.viewAllDogRecords().subscribe((data: Dog[]) => {
+			this.dogs = data;
+		});
+	}
 }
