@@ -1,0 +1,46 @@
+<header>
+  <nav>
+    <img src="../../assets/images/furever-logo.png" alt="logo image" />
+
+    <div class="links">
+      <div class="favorites">
+        <img src="../../assets/images/favorites-icon.png" alt="" />
+        <a href="">Requests</a>
+      </div>
+
+      <div class="dashboard">
+        <img src="../../assets/images/dog-icon.png" alt="" />
+        <a href="">Dashboard</a>
+      </div>
+
+      <div class="user">
+        <img src="../../assets/images/user-icon.png" alt="" />
+        <a href="">Admin</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="header-container">
+  <h1>Requests</h1>
+</div>
+
+<main>
+  <div class="dog-container">
+    <div *ngFor="let dog of dogs" class="dog-card">
+      <p class="username">From: Adrian B. Oraya</p>
+      <p class="user-email">aboraya@mymail.mapua.edu.ph</p>
+      <a href="/dog/{{ dog.id }}">
+        <img src="../../assets/images/sample-dog-image.png" alt="dog-image" />
+        <h2 class="dog-name">Miles</h2>
+        <h4 class="dog-details">Mixed Breed</h4>
+        <h4 class="dog-details">2 year(s) old</h4>
+
+        <div class="buttons">
+          <button class="decline-button">Decline</button>
+          <button class="confirm-button">Confirm</button>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>
