@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Dog } from '../models/dog';
-import { DogRecordService } from '../services/dog-record.service';
+import { Dog } from '../../models/dog';
+import { DogRecordService } from '../../services/dog-record.service';
 
 @Component({
 	selector: 'app-view-dog-details',

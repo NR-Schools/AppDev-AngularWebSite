@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { ViewDogDetailsComponent } from './view-dog-details/view-dog-details.component';
-import { AddDogRecordComponent } from './add-dog-record/add-dog-record.component';
-import { UpdateDogRecordComponent } from './update-dog-record/update-dog-record.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { SignupPageComponent } from './components/signup-page/signup-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { ViewDogDetailsComponent } from './components/view-dog-details/view-dog-details.component';
+import { AddDogRecordComponent } from './components/add-dog-record/add-dog-record.component';
+import { UpdateDogRecordComponent } from './components/update-dog-record/update-dog-record.component';
 
 const routes: Routes = [
 	{

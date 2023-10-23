@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DogRecordService } from '../services/dog-record.service';
+import { DogRecordService } from '../../services/dog-record.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Dog } from '../models/dog';
-import { ImageUtils } from '../utils/image-utils';
+import { Dog } from '../../models/dog';
+import { ImageUtils } from '../../utils/image-utils';
 
 @Component({
 	selector: 'app-update-dog-record',

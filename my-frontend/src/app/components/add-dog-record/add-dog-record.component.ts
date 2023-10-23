@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { DogRecordService } from '../services/dog-record.service';
+import { DogRecordService } from '../../services/dog-record.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Dog } from '../models/dog';
-import { ImageUtils } from '../utils/image-utils';
+import { Dog } from '../../models/dog';
+import { ImageUtils } from '../../utils/image-utils';
 
 @Component({
 	selector: 'app-add-dog-record',
