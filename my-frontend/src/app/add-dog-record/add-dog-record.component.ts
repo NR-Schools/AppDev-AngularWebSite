@@ -21,7 +21,7 @@ export class AddDogRecordComponent {
 
 	addDogFormGroup = this.formBuilder.group({
 		Breed: ['', Validators.required],
-		Age: ['', Validators.required],
+		Age: [0, Validators.required],
 		Sex: ['', Validators.required],
 		Color: ['', Validators.required],
 		ArrivedDate: ['', Validators.required],
@@ -32,15 +32,12 @@ export class AddDogRecordComponent {
 
 	onImageSelected(event: Event): void {
 		const inputElement = event.target as HTMLInputElement;
-		console.log("HI");
 		if (inputElement.files && inputElement.files.length > 0) {
 			let selectedFile = inputElement.files[0];
 			console.log(selectedFile);
 
 			ImageUtils.fileToByteArray(selectedFile)
 				.then((byteArray) => {
-					console.log("byteArray");
-					console.log(byteArray);
 					this.addDogImage = byteArray;
 					this.addDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
 				})

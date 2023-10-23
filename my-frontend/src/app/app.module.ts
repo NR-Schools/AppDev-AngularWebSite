@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { DogDetailsComponent } from './dog-details/dog-details.component';
+import { ViewDogDetailsComponent } from './view-dog-details/view-dog-details.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UpdateDogRecordComponent } from './update-dog-record/update-dog-record.component';
 import { AddDogRecordComponent } from './add-dog-record/add-dog-record.component';
@@ -21,12 +21,17 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
   declarations: [
     AppComponent,
     UserDashboardComponent,
-    DogDetailsComponent,
+    ViewDogDetailsComponent,
     AdminDashboardComponent,
     UpdateDogRecordComponent,
     SignupPageComponent,
-    LoginPageComponent
-  , AddDogRecordComponent, UdDogItemComponent, DogRequestsComponent, AdDogItemComponent, WelcomePageComponent],
+    LoginPageComponent,
+    AddDogRecordComponent,
+    UdDogItemComponent,
+    DogRequestsComponent,
+    AdDogItemComponent,
+    WelcomePageComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
