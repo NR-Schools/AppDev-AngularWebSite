@@ -7,12 +7,17 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ViewDogDetailsComponent } from './components/view-dog-details/view-dog-details.component';
 import { AddDogRecordComponent } from './components/add-dog-record/add-dog-record.component';
 import { UpdateDogRecordComponent } from './components/update-dog-record/update-dog-record.component';
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/login',
+		redirectTo: '/welcome',
 		pathMatch: 'full'
+	},
+	{
+		path: 'welcome',
+		component: WelcomePageComponent
 	},
 	{
 		path: 'signup',
