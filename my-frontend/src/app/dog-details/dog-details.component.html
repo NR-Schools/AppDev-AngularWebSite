@@ -1,101 +1,81 @@
 <header>
-  <nav>
-    <img src="images/furever-logo.png" alt="logo image" />
+	<nav>
+		<img src="assets/images/furever-logo.png" alt="logo image" />
 
-    <div class="links">
-      <div class="favorites">
-        <img src="images/favorites-icon.png" alt="" />
-        <a href="">Favorites</a>
-      </div>
+		<div class="links">
+			<div class="favorites">
+				<img src="assets/images/favorites-icon.png" alt="" />
+				<a href="">Favorites</a>
+			</div>
 
-      <div class="dashboard">
-        <img src="images/dog-icon.png" alt="" />
-        <a href="">Dashboard</a>
-      </div>
+			<div class="dashboard">
+				<img src="assets/images/dog-icon.png" alt="" />
+				<a href="">Dashboard</a>
+			</div>
 
-      <div class="user">
-        <img src="images/user-icon.png" alt="" />
-        <a href="">Username</a>
-      </div>
-    </div>
-  </nav>
+			<div class="user">
+				<img src="assets/images/user-icon.png" alt="" />
+				<a href="">Username</a>
+			</div>
+		</div>
+	</nav>
 </header>
 
 <main>
-  <div class="details-container">
-    <div class="image-container">
-      <img src="images/sample-dog-details-image.png" alt="" />
-    </div>
+	<div class="details-container">
+		<div class="image-container">
+			<img src="images/sample-dog-details-image.png" alt="" />
+		</div>
 
-    <div class="dog-details-container">
-      <div class="dog-details-inner-container">
-        <div class="dog-details-labels">
-          <h2>Miles</h2>
-          <h3>ABOUT</h3>
-          <p class="labels">Breed</p>
-          <p class="labels">Color</p>
-          <p class="labels">Age</p>
-          <p class="labels">Sex</p>
-          <p class="labels">Arrived Date</p>
-          <p class="labels">Arrived From</p>
-          <p class="labels">Size</p>
-          <p class="labels">Location</p>
-        </div>
+		<div class="dog-details-container">
+			<div class="dog-details-inner-container">
+				<div class="dog-details-labels">
+					<h2>{{ dog.name }}</h2>
+					<h3>ABOUT</h3>
+					<p class="labels">Breed</p>
+					<p class="labels">Color</p>
+					<p class="labels">Age</p>
+					<p class="labels">Sex</p>
+					<p class="labels">Arrived Date</p>
+					<p class="labels">Arrived From</p>
+					<p class="labels">Size</p>
+					<p class="labels">Location</p>
+				</div>
 
-        <div class="dog-details-values">
-          <div>
-            <p>Available to Adopt</p>
-          </div>
-          <p class="values">Unknown / Mixture</p>
-          <p class="values">White, Grey</p>
-          <p class="values">1 year old</p>
-          <p class="values">Male</p>
-          <p class="values">07/10/23</p>
-          <p class="values">Surrenderer</p>
-          <p class="values">Large (15 - 30kg)</p>
-          <p class="values">Bandbridge</p>
-        </div>
-      </div>
+				<div class="dog-details-values">
+					<div>
+						<p>Available to Adopt</p>
+					</div>
+					<p class="values">{{ dog.breed}}</p>
+					<p class="values">{{ dog.colorCoat }}</p>
+					<p class="values">{{ dog.age }} year(s) old</p>
+					<p class="values">{{ dog.sex }}</p>
+					<p class="values">{{ dog.arrivedDate }}</p>
+					<p class="values">{{ dog.arrivedFrom }}</p>
+					<p class="values">{{ dog.size }}</p>
+					<p class="values">{{ dog.location }}</p>
+				</div>
+			</div>
 
-      <div class="buttons">
-        <a href="#" class="adopt-button">
-          <div>
-            <p>Adopt</p>
-          </div>
-        </a>
-        <a href="#" class="favorite-button">
-          <div>
-            <p>Favorite</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+			<div class="buttons">
+				<a href="#" class="adopt-button">
+					<div>
+						<p>Adopt</p>
+					</div>
+				</a>
+				<a href="#" class="favorite-button">
+					<div>
+						<p>Favorite</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
 
-  <div class="additional-information">
-    <h2>Meet Miles</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat eos
-      eveniet accusantium quibusdam nam recusandae quo officia voluptate minima
-      amet dolor tempora hic, soluta harum, autem sequi quaerat rerum velit
-      commodi. Commodi blanditiis aperiam in, totam rem laborum id sunt fugit
-      dolorem praesentium. Deserunt similique accusantium recusandae illum
-      aliquam quas dolores eos hic tempora possimus esse facilis voluptates
-      architecto enim, sequi sunt. Labore error dolore quam a unde voluptatum
-      laborum sunt necessitatibus exercitationem asperiores ad modi minus,
-      beatae cumque dicta quo dolorum earum commodi optio totam esse delectus
-      natus. Enim exercitationem corrupti nostrum facilis aliquam? Veritatis
-      quisquam aut maiores facere dolorum! Tempore, perferendis tempora sed
-      totam animi similique unde asperiores quod inventore, iste, quibusdam quas
-      soluta corporis voluptatibus numquam assumenda beatae itaque. Id sunt
-      iusto aut repudiandae accusantium aliquam a impedit excepturi
-      perspiciatis? In, sit aspernatur laudantium placeat eligendi repellendus
-      quasi minus sunt veniam inventore natus ullam esse odit dolorem labore
-      quibusdam itaque autem. Fugiat sed ab dolorem adipisci libero optio
-      recusandae quod beatae doloribus perspiciatis. Eos, velit amet ducimus
-      iure nam ratione placeat quaerat minus hic quibusdam accusantium, numquam
-      a rerum nostrum temporibus reprehenderit iusto nisi fuga id. Quam ipsum
-      vero laudantium doloribus rem aliquam natus doloremque repellendus totam.
-    </p>
-  </div>
+	<div class="additional-information">
+		<h2>Meet {{ dog.name }}</h2>
+		<p>
+			{{ dog.description }}
+		</p>
+	</div>
 </main>
