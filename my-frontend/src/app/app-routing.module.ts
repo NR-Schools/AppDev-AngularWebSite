@@ -4,6 +4,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { DogDetailsComponent } from './dog-details/dog-details.component';
+import { AddDogRecordComponent } from './add-dog-record/add-dog-record.component';
+import { UpdateDogRecordComponent } from './update-dog-record/update-dog-record.component';
 
 const routes: Routes = [
 	{
@@ -26,6 +29,18 @@ const routes: Routes = [
 	{
 		path: 'admin',
 		component: AdminDashboardComponent
+	},
+	{
+		path: 'dog/:id',
+		component: DogDetailsComponent
+	},
+	{
+		path: 'add-dog-record',
+		component: AddDogRecordComponent
+	},
+	{
+		path: 'update-dog-record',
+		component: UpdateDogRecordComponent
 	}
 ];
 
