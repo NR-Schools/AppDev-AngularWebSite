@@ -32,7 +32,6 @@ public class DogController {
 
         // Check if Admin
         if (!accountService.isAdmin(reqAccount)) {
-            System.out.println(reqAccount);
             return false;
         }
 
@@ -64,7 +63,6 @@ public class DogController {
 
         // Check if Admin
         if (!accountService.isAdmin(reqAccount)) {
-            System.out.println(reqAccount);
             return false;
         }
 
@@ -86,7 +84,6 @@ public class DogController {
 
         // Check if Admin
         if (!accountService.isAdmin(reqAccount)) {
-            System.out.println(reqAccount);
             return false;
         }
 

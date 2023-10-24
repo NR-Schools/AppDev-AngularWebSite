@@ -3,6 +3,7 @@ import { DogRecordService } from '../../services/dog-record.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Dog } from '../../models/dog';
 import { ImageUtils } from '../../utils/image-utils';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-add-dog-record',
@@ -10,8 +11,6 @@ import { ImageUtils } from '../../utils/image-utils';
 	styleUrls: ['./add-dog-record.component.css']
 })
 export class AddDogRecordComponent {
-	constructor(private formBuilder: FormBuilder,
-		private dogRecordService: DogRecordService) { }
 
 	addDogName?: string;
 	addDogImage?: Uint8Array;
@@ -30,6 +29,10 @@ export class AddDogRecordComponent {
 		Location: ['', Validators.required],
 	});
 
+	constructor(private router: Router,
+		private formBuilder: FormBuilder,
+		private dogRecordService: DogRecordService) { }
+
 	onImageSelected(event: Event): void {
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files && inputElement.files.length > 0) {
@@ -39,7 +42,7 @@ export class AddDogRecordComponent {
 			ImageUtils.fileToByteArray(selectedFile)
 				.then((byteArray: ArrayBuffer) => {
 					this.addDogImage = new Uint8Array(byteArray);
-					
+
 					// wait kina miguel
 					//const base64String = btoa(String.fromCharCode(...new Uint8Array(byteArray)));
 					//console.log(base64String);
@@ -82,14 +85,19 @@ export class AddDogRecordComponent {
 			newDog.photoBytes = this.addDogImage;
 		}
 
-		console.log(newDog)
-
 		this.dogRecordService.addDogRecord(newDog).subscribe({
 			next: (value: boolean) => {
-				console.log(value);
+				if (value) {
+					window.alert("Dog Record Added Successfully!");
+					this.router.navigate(['/admin']);
+				}
+				else {
+					window.alert("Failed to Add Dog Record!");
+				}
 			},
 			error: (err: any) => {
 				console.log(err);
+				window.alert("Error Encountered!");
 			}
 		});
 	}

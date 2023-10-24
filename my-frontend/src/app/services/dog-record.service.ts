@@ -30,24 +30,12 @@ export class DogRecordService extends BaseService {
 
 	viewAllDogRecords(): Observable<Array<Dog>> {
 		// Get all dogs
-		return this.http.get<Response>(this.MainUrl + 'dog/dogs').pipe(
-			map((response: Response) => {
-				if (response.status == 'success') return response.result as Array<Dog>;
-				return Array();
-			})
-		);
+		return this.http.get<Array<Dog>>(this.MainUrl + 'dog/dogs');
 	}
 
 	viewDogRecord(dog_id: number): Observable<Dog> {
 		// Get specific dog record
-		return this.http
-			.get<Response>(this.MainUrl + `dog/show-dog/${dog_id}`)
-			.pipe(
-				map((response: Response) => {
-					if (response.status == 'success') return response.result as Dog;
-					return Dog.NoDog();
-				})
-			);
+		return this.http.get<Dog>(this.MainUrl + `dog/show-dog/${dog_id}`);
 	}
 
 	updateDogRecord(dog_id: number, updated_dog_info: Dog): Observable<boolean> {
@@ -63,14 +51,7 @@ export class DogRecordService extends BaseService {
 			.set('session-auth-string', account.sessionAuthString!);
 
 		// Update dog on server
-		return this.http
-			.put<Response>(this.MainUrl + 'dog/update-dog', updated_dog_info, { headers: headers })
-			.pipe(
-				map((response: Response) => {
-					if (response.status == 'success') return true;
-					return false;
-				})
-			);
+		return this.http.put<boolean>(this.MainUrl + 'dog/update-dog', updated_dog_info, { headers: headers });
 	}
 
 	deleteDogRecord(dog_id: number): Observable<boolean> {
@@ -83,13 +64,6 @@ export class DogRecordService extends BaseService {
 			.set('session-auth-string', account.sessionAuthString!);
 
 		// Delete dog from server
-		return this.http
-			.delete<Response>(this.MainUrl + `dog/delete-dog/${dog_id}`, { headers: headers })
-			.pipe(
-				map((response: Response) => {
-					if (response.status == 'success') return true;
-					return false;
-				})
-			);
+		return this.http.delete<boolean>(this.MainUrl + `dog/delete-dog/${dog_id}`, { headers: headers });
 	}
 }

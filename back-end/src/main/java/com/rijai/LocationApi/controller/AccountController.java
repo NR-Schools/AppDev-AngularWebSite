@@ -3,7 +3,10 @@ package com.rijai.LocationApi.controller;
 import com.rijai.LocationApi.model.Account;
 import com.rijai.LocationApi.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
@@ -12,7 +15,7 @@ public class AccountController {
     @Autowired
     private IAccountService accountService;
 
-    @RequestMapping(value = "/api/account/signup", method = RequestMethod.POST)
+    @PostMapping("/api/account/signup")
     public boolean userSignUp(@RequestBody Account account)
     {
         Account newAccount = accountService.signUp(account);
@@ -20,7 +23,7 @@ public class AccountController {
         return true;
     }
 
-    @RequestMapping(value = "/api/account/login", method = RequestMethod.POST)
+    @PostMapping("/api/account/login")
     public Account userLogIn(@RequestBody Account account)
     {
         Account existingAccount = accountService.login(account);
@@ -30,7 +33,7 @@ public class AccountController {
         return existingAccount;
     }
 
-    @RequestMapping(value = "/api/account/logout", method = RequestMethod.POST)
+    @PostMapping("/api/account/logout")
     public Account userLogOut(@RequestBody Account account)
     {
         Account existingAccount = accountService.logout(account);

@@ -31,15 +31,16 @@ export class AccountService extends BaseService {
 		return this.http.post<Account>(this.MainUrl + 'account/login', account)
 			.pipe(
 				map((response: Account) => {
-					if (response === null) {
-						// Set Info on Local Storage
-						localStorage.setItem(
-							'account_info',
-							JSON.stringify(response)
-						);
-						return true;
+					if (response === null || response === undefined) {
+						return false;
 					}
-					return false;
+
+					// Set Info on Local Storage
+					localStorage.setItem(
+						'account_info',
+						JSON.stringify(response)
+					);
+					return true;
 				})
 			);
 	}
