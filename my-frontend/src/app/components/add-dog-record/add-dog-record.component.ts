@@ -14,7 +14,7 @@ export class AddDogRecordComponent {
 		private dogRecordService: DogRecordService) { }
 
 	addDogName?: string;
-	addDogImage?: any;
+	addDogImage?: Uint8Array;
 	addDogDescription?: string;
 
 	addDogPreviewImage: any;
@@ -37,8 +37,14 @@ export class AddDogRecordComponent {
 			console.log(selectedFile);
 
 			ImageUtils.fileToByteArray(selectedFile)
-				.then((byteArray) => {
-					this.addDogImage = byteArray;
+				.then((byteArray: ArrayBuffer) => {
+					this.addDogImage = new Uint8Array(byteArray);
+					
+					// wait kina miguel
+					//const base64String = btoa(String.fromCharCode(...new Uint8Array(byteArray)));
+					//console.log(base64String);
+					//const aaa = Uint8Array.from(atob(base64String), c => c.charCodeAt(0));
+
 					this.addDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
 				})
 				.catch((error) => {
@@ -68,12 +74,23 @@ export class AddDogRecordComponent {
 			this.addDogFormGroup.get("Location")?.value as string
 		)
 
-		newDog.description = this.addDogName.trim();
+		if (this.addDogDescription !== null) {
+			newDog.description = this.addDogDescription!.trim();
+		}
 
 		if (this.addDogImage !== null) {
 			newDog.photoBytes = this.addDogImage;
 		}
 
-		this.dogRecordService.addDogRecord(newDog);
+		console.log(newDog)
+
+		this.dogRecordService.addDogRecord(newDog).subscribe({
+			next: (value: boolean) => {
+				console.log(value);
+			},
+			error: (err: any) => {
+				console.log(err);
+			}
+		});
 	}
 }

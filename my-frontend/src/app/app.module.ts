@@ -16,6 +16,7 @@ import { UdDogItemComponent } from './components/user-dashboard/ud-dog-item/ud-d
 import { DogRequestsComponent } from './components/dog-requests/dog-requests.component';
 import { AdDogItemComponent } from './components/admin-dashboard/ad-dog-item/ad-dog-item.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { DrDogAdoptItemComponent } from './components/dog-requests/dr-dog-adopt-item/dr-dog-adopt-item.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { WelcomePageComponent } from './components/welcome-page/welcome-page.com
     UdDogItemComponent,
     DogRequestsComponent,
     AdDogItemComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    DrDogAdoptItemComponent
   ],
   imports: [
     BrowserModule,

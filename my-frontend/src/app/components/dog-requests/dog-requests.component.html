@@ -27,20 +27,6 @@
 
 <main>
 	<div class="dog-container">
-		<div class="dog-card">
-			<p class="username">From: Adrian B. Oraya</p>
-			<p class="user-email">aboraya@mymail.mapua.edu.ph</p>
-			<a href="/dog/69">
-				<img src="../../assets/images/sample-dog-image.png" alt="dog-image" />
-				<h2 class="dog-name">Miles</h2>
-				<h4 class="dog-details">Mixed Breed</h4>
-				<h4 class="dog-details">2 year(s) old</h4>
-
-				<div class="buttons">
-					<button class="decline-button">Decline</button>
-					<button class="confirm-button">Confirm</button>
-				</div>
-			</a>
-		</div>
+		<dr-dog-adopt-item class="dog-card" *ngFor="let dogAdaptReq of dogAdaptRequests" [dogAdoptItem]="dogAdaptReq" />
 	</div>
 </main>
