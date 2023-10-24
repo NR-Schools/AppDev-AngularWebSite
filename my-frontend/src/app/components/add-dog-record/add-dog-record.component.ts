@@ -74,11 +74,11 @@ export class AddDogRecordComponent {
 			this.addDogFormGroup.get("Location")?.value as string
 		)
 
-		if (this.addDogDescription !== null) {
+		if (this.addDogDescription !== null && this.addDogDescription !== undefined) {
 			newDog.description = this.addDogDescription!.trim();
 		}
 
-		if (this.addDogImage !== null) {
+		if (this.addDogImage !== null && this.addDogImage !== undefined) {
 			newDog.photoBytes = this.addDogImage;
 		}
 

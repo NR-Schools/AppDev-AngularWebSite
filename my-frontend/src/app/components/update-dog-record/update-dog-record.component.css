@@ -173,7 +173,7 @@ h3 {
     align-items: center;
     font-weight: bold;
 
-    >a {
+    >button {
         border: 1px solid black;
         display: flex;
         justify-content: center;
@@ -181,6 +181,7 @@ h3 {
         width: 40%;
         height: 40px;
         background-color: #e3bc7b;
+        cursor: pointer;
     }
 }
 

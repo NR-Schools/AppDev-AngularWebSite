@@ -14,6 +14,10 @@ export class AdDogItemComponent {
 	constructor(private dogRecordService: DogRecordService) {}
 
 	onItemRemove(): void {
-		this.dogRecordService.deleteDogRecord(this.dogItem.id!);
+		console.log(this.dogItem.id!);
+		this.dogRecordService.deleteDogRecord(this.dogItem.id!).subscribe({
+			next: (value: boolean) => {},
+			error: (err: any) => { console.log(err); }
+		});
 	}
 }

@@ -77,18 +77,12 @@ public class DogController {
         return new Response();
     }
 
-    @RequestMapping(value = "/api/dog/delete-dog/{id}", method = RequestMethod.DELETE)
-    public Response deleteDog(@PathVariable long dogId, @RequestBody Request request)
+    @RequestMapping(value = "/api/dog/delete-dog/{dogId}", method = RequestMethod.DELETE)
+    public Response deleteDog(@PathVariable long dogId)
     {
         Response response = new Response();
 
         // Check if Admin
-        if (!accountService.isAdmin(request.auth))
-        {
-            //response.status = "failed";
-            //response.result = null;
-            //return response;
-        }
 
         // Delete Dog
         Dog deletedDog = dogService.deleteDogRecord(dogId);

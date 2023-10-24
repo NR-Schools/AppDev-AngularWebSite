@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dog } from '../models/dog';
 import { Observable, map } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from './base_service';
 import { Account } from '../models/account';
 import { Request } from '../models/request';

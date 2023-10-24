@@ -68,11 +68,11 @@
 			</div>
 
 			<div class="buttons">
-				<a href="#" class="update-button">
+				<button href="#" class="update-button" (click)="onUpdateDogRecord()" [disabled]="!updateDogFormGroup.valid">
 					<div>
 						<p>Update</p>
 					</div>
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>

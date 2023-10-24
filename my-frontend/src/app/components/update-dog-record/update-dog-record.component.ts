@@ -15,6 +15,7 @@ export class UpdateDogRecordComponent implements OnInit {
 		private dogRecordService: DogRecordService,
 		private route: ActivatedRoute) { }
 
+	dogId?: number;
 	updateDogName?: string;
 	updateDogImage?: any;
 	updateDogDescription?: string;
@@ -36,6 +37,7 @@ export class UpdateDogRecordComponent implements OnInit {
 		this.route.params.forEach((params: Params) => {
 			if (params['id'] !== undefined) {
 				const id: number = params['id'];
+				this.dogId = id;
 				this.dogRecordService.viewDogRecord(id).subscribe({
 					next: (dog: Dog) => {
 						this.updateDogName = dog.name;
@@ -83,5 +85,45 @@ export class UpdateDogRecordComponent implements OnInit {
 					console.log('Error reading file:', error);
 				});
 		}
+	}
+
+	onUpdateDogRecord() {
+		// Check if Dog has a name and form is achieved
+		if (typeof this.updateDogName !== 'string' || this.updateDogName.trim() === '') {
+			window.alert("No name supplied for dog");
+			return;
+		}
+
+		// Send Info to Server
+		let newDog: Dog = new Dog(
+			this.updateDogName!.trim(),
+			this.updateDogFormGroup.get("Breed")?.value as string,
+			this.updateDogFormGroup.get("Age")?.value as unknown as number,
+			this.updateDogFormGroup.get("Sex")?.value as string,
+			this.updateDogFormGroup.get("Color")?.value as string,
+			this.updateDogFormGroup.get("ArrivedDate")?.value as unknown as Date,
+			this.updateDogFormGroup.get("ArrivedFrom")?.value as string,
+			this.updateDogFormGroup.get("Size")?.value as string,
+			this.updateDogFormGroup.get("Location")?.value as string
+		)
+
+		if (this.updateDogDescription !== null && this.updateDogDescription !== undefined) {
+			newDog.description = this.updateDogDescription!.trim();
+		}
+
+		if (this.updateDogImage !== null && this.updateDogImage !== undefined) {
+			newDog.photoBytes = this.updateDogImage;
+		}
+
+		console.log(newDog)
+
+		this.dogRecordService.updateDogRecord(this.dogId!, newDog).subscribe({
+			next: (value: boolean) => {
+				console.log(value);
+			},
+			error: (err: any) => {
+				console.log(err);
+			}
+		});
 	}
 }
