@@ -1,8 +1,6 @@
 package com.rijai.LocationApi.controller;
 
 import com.rijai.LocationApi.model.Account;
-import com.rijai.LocationApi.model.Request;
-import com.rijai.LocationApi.model.Response;
 import com.rijai.LocationApi.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,41 +13,30 @@ public class AccountController {
     private IAccountService accountService;
 
     @RequestMapping(value = "/api/account/signup", method = RequestMethod.POST)
-    public Response userSignUp(@RequestBody Request request)
+    public boolean userSignUp(@RequestBody Account account)
     {
-        Response response = new Response();
-        Account newAccount = accountService.signUp(request.accountPayload);
-
-        if (newAccount == null) response.status = "failed";
-        else response.status = "success";
-
-        response.result = newAccount;
-        return response;
+        Account newAccount = accountService.signUp(account);
+        if (newAccount == null) return false;
+        return true;
     }
 
     @RequestMapping(value = "/api/account/login", method = RequestMethod.POST)
-    public Response userLogIn(@RequestBody Request request)
+    public Account userLogIn(@RequestBody Account account)
     {
-        Response response = new Response();
-        Account existingAccount = accountService.login(request.accountPayload);
+        Account existingAccount = accountService.login(account);
 
-        if (existingAccount == null) response.status = "failed";
-        else response.status = "success";
-
-        response.result = existingAccount;
-        return response;
+        if (existingAccount == null) return null;
+        existingAccount.setPassword("");
+        return existingAccount;
     }
 
     @RequestMapping(value = "/api/account/logout", method = RequestMethod.POST)
-    public Response userLogOut(@RequestBody Request request)
+    public Account userLogOut(@RequestBody Account account)
     {
-        Response response = new Response();
-        Account existingAccount = accountService.logout(request.accountPayload);
+        Account existingAccount = accountService.logout(account);
 
-        if (existingAccount == null) response.status = "failed";
-        else response.status = "success";
-
-        response.result = existingAccount;
-        return response;
+        if (existingAccount == null) return null;
+        existingAccount.setPassword("");
+        return existingAccount;
     }
 }

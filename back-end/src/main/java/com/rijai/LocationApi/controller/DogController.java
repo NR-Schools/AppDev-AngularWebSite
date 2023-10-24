@@ -1,10 +1,12 @@
 package com.rijai.LocationApi.controller;
 
+import com.rijai.LocationApi.model.Account;
 import com.rijai.LocationApi.model.Dog;
-import com.rijai.LocationApi.model.Request;
-import com.rijai.LocationApi.model.Response;
 import com.rijai.LocationApi.service.IAccountService;
 import com.rijai.LocationApi.service.IDogService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,77 +19,79 @@ public class DogController {
     @Autowired
     private IDogService dogService;
 
-    @RequestMapping(value = "/api/dog/add-dog", method = RequestMethod.POST)
-    public Response addNewDog(@RequestBody Request request)
-    {
-        Response response = new Response();
+    @PostMapping("/api/dog/add-dog")
+    public boolean addNewDog(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
+            @RequestBody Dog dog) {
+
+        // Construct Account
+        Account reqAccount = new Account();
+        reqAccount.setEmail(email);
+        reqAccount.setSessionAuthString(sessionAuthString);
 
         // Check if Admin
-        if (!accountService.isAdmin(request.auth))
-        {
-            //response.status = "failed";
-            //response.result = null;
-            //return response;
+        if (!accountService.isAdmin(reqAccount)) {
+            System.out.println(reqAccount);
+            return false;
         }
 
         // Add Dog
-        Dog newDog = dogService.addDogRecord(request.dogPayload);
-        response.status = "success";
-        response.result = newDog;
-        return new Response();
+        dogService.addDogRecord(dog);
+        return true;
     }
 
-    @RequestMapping(value = "/api/dog/dogs", method = RequestMethod.GET)
-    public Response getAllDogs()
-    {
-        Response response = new Response();
-
-        response.status = "success";
-        response.result = dogService.getAllDogRecords();
-        return response;
+    @GetMapping("/api/dog/dogs")
+    public List<Dog> getAllDogs() {
+        return dogService.getAllDogRecords();
     }
 
-    @RequestMapping(value = "/api/dog/show-dog/{dogId}", method = RequestMethod.GET)
-    public Response getDog(@PathVariable long dogId)
-    {
-        Response response = new Response();
-
-        response.status = "success";
-        response.result = dogService.getDogRecord(dogId);
-        return response;
+    @GetMapping("/api/dog/show-dog/{dogId}")
+    public Dog getDog(@PathVariable long dogId) {
+        return dogService.getDogRecord(dogId);
     }
 
-    @RequestMapping(value = "/api/dog/update-dog", method = RequestMethod.PUT)
-    public Response updateDog(@RequestBody Request request)
-    {
-        Response response = new Response();
+    @PutMapping("/api/dog/update-dog")
+    public boolean updateDog(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
+            @RequestBody Dog dog) {
+
+        // Construct Account
+        Account reqAccount = new Account();
+        reqAccount.setEmail(email);
+        reqAccount.setSessionAuthString(sessionAuthString);
 
         // Check if Admin
-        if (!accountService.isAdmin(request.auth))
-        {
-            //response.status = "failed";
-            //response.result = null;
-            //return response;
+        if (!accountService.isAdmin(reqAccount)) {
+            System.out.println(reqAccount);
+            return false;
         }
 
         // Add Dog
-        Dog updatedDog = dogService.updateDogRecord(request.dogPayload);
-        response.status = "success";
-        response.result = updatedDog;
-        return new Response();
+        dogService.updateDogRecord(dog);
+        return true;
     }
 
-    @RequestMapping(value = "/api/dog/delete-dog/{dogId}", method = RequestMethod.DELETE)
-    public Response deleteDog(@PathVariable long dogId)
-    {
-        Response response = new Response();
+    @DeleteMapping("/api/dog/delete-dog/{dogId}")
+    public boolean deleteDog(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
+            @PathVariable long dogId) {
+
+        // Construct Account
+        Account reqAccount = new Account();
+        reqAccount.setEmail(email);
+        reqAccount.setSessionAuthString(sessionAuthString);
 
         // Check if Admin
+        if (!accountService.isAdmin(reqAccount)) {
+            System.out.println(reqAccount);
+            return false;
+        }
 
         // Delete Dog
-        Dog deletedDog = dogService.deleteDogRecord(dogId);
-        response.status = "success";
-        response.result = deletedDog;
-        return response;
+        dogService.deleteDogRecord(dogId);
+        return true;
     }
 }
