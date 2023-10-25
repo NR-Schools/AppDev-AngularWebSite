@@ -78,4 +78,16 @@ export class DogRecordService extends BaseService {
 		// Adopt Dog from server
 		return this.http.post<Dog>(this.MainUrl + `dog-adopt/user-dog-adopt`, dog, { headers: headers });
 	}
+
+	adminViewAllDogAdoptReq(): Observable<Array<Dog>> {
+		// Get Auth Data
+		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+		// Prepare headers
+		const headers = new HttpHeaders()
+			.set('email', account.email!)
+			.set('session-auth-string', account.sessionAuthString!);
+
+		return this.http.get<Array<Dog>>(this.MainUrl + "dog-adopt/admin-view-all-adopt-req", { headers: headers });
+	}
 }

@@ -109,4 +109,22 @@ public class DogController {
         reqAdoptedDog.getAccount().setPassword("");
         return reqAdoptedDog;
     }
+
+    @GetMapping("/api/dog-adopt/admin-view-all-adopt-req")
+    public List<Dog> adminViewAllDogAdoptReq(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString) {
+        
+        // Construct Account
+        Account reqAccount = new Account();
+        reqAccount.setEmail(email);
+        reqAccount.setSessionAuthString(sessionAuthString);
+
+        // Check if Admin
+        if (!accountService.isAdmin(reqAccount)) {
+            return List.of();
+        }
+
+        return dogService.adminViewAllDogAdoptReq();
+    }
 }
