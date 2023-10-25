@@ -17,6 +17,7 @@ import { DogRequestsComponent } from './components/dog-requests/dog-requests.com
 import { AdDogItemComponent } from './components/admin-dashboard/ad-dog-item/ad-dog-item.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { DrDogAdoptItemComponent } from './components/dog-requests/dr-dog-adopt-item/dr-dog-adopt-item.component';
+import { UserDogRequestsComponent } from './components/user-dog-requests/user-dog-requests.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DrDogAdoptItemComponent } from './components/dog-requests/dr-dog-adopt-
     DogRequestsComponent,
     AdDogItemComponent,
     WelcomePageComponent,
-    DrDogAdoptItemComponent
+    DrDogAdoptItemComponent,
+    UserDogRequestsComponent
   ],
   imports: [
     BrowserModule,
