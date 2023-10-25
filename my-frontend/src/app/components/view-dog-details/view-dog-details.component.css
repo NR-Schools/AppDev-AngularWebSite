@@ -158,9 +158,9 @@ h3 {
 }
 
 .buttons .favorite-button:hover {
-  background-color: #f3d6a4;
+  border: 1px solid black;
 }
 
 .buttons .adopt-button:hover {
-  background-color: #f3d6a4;
+  border: 1px solid black;
 }

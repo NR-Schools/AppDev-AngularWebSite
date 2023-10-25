@@ -175,13 +175,14 @@ h3 {
       background-color: #aeabab;
       border: 1px solid #aeabab;
 
-      &:hover {
+      &:disabled:hover {
         background-color: #aeabab;
+        border: 1px solid #aeabab;
       }
     }
   }
 
   > button:hover {
-    background-color: #f3d6a4;
+    border: 1px solid black;
   }
 }

@@ -1,97 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Farro:wght@300&display=swap');
-
 :host {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 
 .login-page {
-    background-color: #A7D7C5;
-    height: 100%;
-    width: 100%;
+  background-color: #a7d7c5;
+  height: 100%;
+  width: 100%;
 
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inner-page {
-    background-color: #FFFFFF;
-    width: 80%;
-    height: 80%;
+  background-color: #ffffff;
+  width: 90%;
+  height: 90%;
 
-    display: flex;
+  display: flex;
 }
 
 .login-section {
-    width: 45%;
+  width: 45%;
 }
 
 .image-display {
-    width: 55%;
-    background-color: #EFEFEF;
+  width: 55%;
+  background-color: #efefef;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    > img {
-        width: 98%;
-        height: 98%;
-        object-fit: cover;
-    }
+  > img {
+    width: 98%;
+    height: 98%;
+    object-fit: cover;
+  }
 }
 
 .login-info {
-    padding: 45px;
-    
-    & * {
-        font-family: 'Farro';
+  padding: 45px;
+
+  & * {
+    font-family: "Farro", "Courier New", Courier, monospace;
+  }
+
+  > p {
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  > form {
+    display: flex;
+    flex-direction: column;
+
+    > label {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 3.5px;
     }
 
-    > p {
-        font-size: 1.6em;
-        font-weight: 500;
+    > input {
+      margin-bottom: 20px;
+      height: 50px;
+      font-size: 20px;
     }
 
-    > form {
-        display: flex;
-        flex-direction: column;
-
-        > label {
-            font-size: 0.80em;
-            font-weight: 500;
-            margin-bottom: 3.5px;
-        }
-
-        > input {
-            margin-bottom: 20px;
-            height: 28px;
-        }
-
-        > button {
-            border: none;
-            border-radius: 5px;
-            height: 35px;
-            color: #FFFFFF;
-            background-color: #18C17C;
-            cursor: pointer;
-
-            font-weight: 500;
-            font-size: 1.1em;
-
-            &:disabled {
-                background-color: #626262;
-            }
-        }
+    > img {
+      width: 85%;
+      margin: auto;
     }
+
+    > button {
+      border: none;
+      border-radius: 5px;
+      height: 65px;
+      color: #ffffff;
+      background-color: #18c17c;
+      cursor: pointer;
+      margin-top: 20px;
+
+      font-weight: 500;
+      font-size: 25px;
+
+      &:disabled {
+        background-color: #18c17c;
+      }
+
+      &:disabled:hover {
+        background-color: #18c17c;
+        border: 2px solid #18c17c;
+      }
+    }
+
+    > button:hover {
+      border: 2px solid black;
+    }
+  }
 }
 
 .redirect_signup {
-    color: #0000004D;
-    font-size: 0.7em;
-    > a {
-        color: #18C17C;
-    }
+  color: #0000004d;
+  font-size: 20px;
+
+  > a {
+    color: #18c17c;
+  }
 }
