@@ -1,84 +1,93 @@
 <header>
-	<nav>
-		<img src="../../assets/images/furever-logo.png" alt="logo image" />
+  <nav>
+    <img src="../../assets/images/furever-logo.png" alt="logo image" />
 
-		<div class="links">
-			<div class="favorites">
-				<img src="../../assets/images/favorites-icon.png" alt="" />
-				<a href="">Request</a>
-			</div>
+    <div class="links">
+      <div class="favorites">
+        <img src="../../assets/images/request-icon.png" alt="" />
+        <a href="">Request</a>
+      </div>
 
-			<div class="dashboard">
-				<img src="../../assetsimages/dog-icon.png" alt="" />
-				<a href="">Dashboard</a>
-			</div>
+      <div class="dashboard">
+        <img src="../../assetsimages/dog-icon.png" alt="" />
+        <a href="">Dashboard</a>
+      </div>
 
-			<div class="user">
-				<img src="../../assets/images/user-icon.png" alt="" />
-				<a href="">Admin</a>
-			</div>
-		</div>
-	</nav>
+      <div class="user">
+        <img src="../../assets/images/admin-icon.png" alt="" />
+        <a href="">Admin</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <main>
-	<div class="details-container">
-		<div class="image-container">
-			<img [src]="updateDogPreviewImage">
-			<div class="choose-img-container">
-				<input type="file" (change)="onImageSelected($event)" accept="image/*">
-			</div>
-		</div>
+  <div class="details-container">
+    <div class="image-container">
+      <img [src]="updateDogPreviewImage" />
+      <div class="choose-img-container">
+        <input
+          type="file"
+          (change)="onImageSelected($event)"
+          accept="image/*"
+        />
+      </div>
+    </div>
 
-		<div class="dog-details-container">
-			<div class="dog-details-inner-container">
-				<div class="dog-details-labels">
-					<input class="dog-name" type="text" [(ngModel)]="updateDogName" />
-					<h3>ABOUT</h3>
-					<p class="labels">Breed</p>
-					<p class="labels">Color</p>
-					<p class="labels">Age</p>
-					<p class="labels">Sex</p>
-					<p class="labels">Arrived Date</p>
-					<p class="labels">Arrived From</p>
-					<p class="labels">Size</p>
-					<p class="labels">Location</p>
-				</div>
+    <div class="dog-details-container">
+      <div class="dog-details-inner-container">
+        <div class="dog-details-labels">
+          <input class="dog-name" type="text" [(ngModel)]="updateDogName" />
+          <h3>ABOUT</h3>
+          <p class="labels">Breed</p>
+          <p class="labels">Color</p>
+          <p class="labels">Age</p>
+          <p class="labels">Sex</p>
+          <p class="labels">Arrived Date</p>
+          <p class="labels">Arrived From</p>
+          <p class="labels">Size</p>
+          <p class="labels">Location</p>
+        </div>
 
-				<div class="dog-details-values">
-					<div>
-						<p>Available to Adopt</p>
-					</div>
+        <div class="dog-details-values">
+          <div>
+            <p>Available to Adopt</p>
+          </div>
 
-					<form [formGroup]="updateDogFormGroup">
-						<input class="values" type="text" formControlName="Breed" />
-						<input class="values" type="text" formControlName="Color" />
-						<input class="values" type="number" formControlName="Age" />
-						<input class="values" type="text" formControlName="Sex" />
-						<input class="values" type="text" formControlName="ArrivedDate" />
-						<input class="values" type="text" formControlName="ArrivedFrom" />
-						<select class="values" formControlName="Size">
-							<option>Small</option>
-							<option>Medium</option>
-							<option>Large</option>
-						</select>
-						<input class="values" type="text" formControlName="Location" />
-					</form>
-				</div>
-			</div>
+          <form [formGroup]="updateDogFormGroup">
+            <input class="values" type="text" formControlName="Breed" />
+            <input class="values" type="text" formControlName="Color" />
+            <input class="values" type="number" formControlName="Age" />
+            <input class="values" type="text" formControlName="Sex" />
+            <input class="values" type="text" formControlName="ArrivedDate" />
+            <input class="values" type="text" formControlName="ArrivedFrom" />
+            <select class="values" formControlName="Size">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+            </select>
+            <input class="values" type="text" formControlName="Location" />
+          </form>
+        </div>
+      </div>
 
-			<div class="buttons">
-				<button href="#" class="update-button" (click)="onUpdateDogRecord()" [disabled]="!updateDogFormGroup.valid">
-					<div>
-						<p>Update</p>
-					</div>
-				</button>
-			</div>
-		</div>
-	</div>
+      <div class="buttons">
+        <button
+          href="#"
+          class="update-button"
+          (click)="onUpdateDogRecord()"
+          [disabled]="!updateDogFormGroup.valid"
+        >
+          <div>
+            <p>Update</p>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
 
-	<div class="additional-information">
-		<h2>Meet dogName</h2>
-		<textarea cols="30" rows="10" [(ngModel)]="updateDogDescription"></textarea>
-	</div>
+  <div class="additional-information">
+    <h2>Meet dogName</h2>
+    <textarea cols="30" rows="10" [(ngModel)]="updateDogDescription"></textarea>
+  </div>
 </main>

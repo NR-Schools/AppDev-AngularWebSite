@@ -1,93 +1,93 @@
 <header>
-	<nav>
-		<img src="../../assets/images/furever-logo.png" alt="logo image" />
+  <nav>
+    <img src="../../assets/images/furever-logo.png" alt="logo image" />
 
-		<div class="links">
-			<div class="favorites">
-				<img src="../../assets/images/favorites-icon.png" alt="" />
-				<a href="/dog-requests">Request</a>
-			</div>
+    <div class="links">
+      <div class="favorites">
+        <img src="../../assets/images/request-icon.png" alt="" />
+        <a href="/dog-requests">Request</a>
+      </div>
 
-			<div class="dashboard">
-				<img src="../../assets/images/dog-icon.png" alt="" />
-				<a href="">Dashboard</a>
-			</div>
+      <div class="dashboard">
+        <img src="../../assets/images/dog-icon.png" alt="" />
+        <a href="">Dashboard</a>
+      </div>
 
-			<div class="user">
-				<img src="../../assets/images/user-icon.png" alt="" />
-				<a href="">Admin</a>
-			</div>
-		</div>
-	</nav>
+      <div class="user">
+        <img src="../../assets/images/admin-icon.png" alt="" />
+        <a href="">Admin</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <div class="search-container">
-	<input class="search-bar" type="text" placeholder="Dog Name" />
-	<div>
-		<img src="../../assets/images/search-icon.png" alt="search-icon" />
-	</div>
+  <input class="search-bar" type="text" placeholder="Dog Name" />
+  <div>
+    <img src="../../assets/images/search-icon.png" alt="search-icon" />
+  </div>
 </div>
 
 <main>
-	<aside>
-		<form action="">
-			<label for="breeds">Breed</label>
-			<select name="breeds" id="breeds">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option>
-			</select>
+  <aside>
+    <form action="">
+      <label for="breeds">Breed</label>
+      <select name="breeds" id="breeds">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
 
-			<label for="colors">Color</label>
-			<select name="colors" id="colors">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option>
-			</select>
+      <label for="colors">Color</label>
+      <select name="colors" id="colors">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
 
-			<label for="sizes">Size</label>
-			<select name="sizes" id="sizes">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option>
-			</select>
+      <label for="sizes">Size</label>
+      <select name="sizes" id="sizes">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
 
-			<label for="sex">Sex</label>
-			<select name="sex" id="sex">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option>
-			</select>
+      <label for="sex">Sex</label>
+      <select name="sex" id="sex">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
 
-			<label for="ages">Age</label>
-			<select name="ages" id="ages">
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="mercedes">Mercedes</option>
-				<option value="audi">Audi</option>
-			</select>
+      <label for="ages">Age</label>
+      <select name="ages" id="ages">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
 
-			<div class="button-container">
-				<button class="reset" type="reset">Reset</button>
-				<button class="search" type="submit">Filter</button>
-			</div>
-		</form>
-	</aside>
+      <div class="button-container">
+        <button class="reset" type="reset">Reset</button>
+        <button class="search" type="submit">Filter</button>
+      </div>
+    </form>
+  </aside>
 
-	<div class="dog-container">
-		<!-- Dog Items -->
-		<ad-dog-item *ngFor="let dog of dogs" class="dog-card" [dogItem]="dog" />
+  <div class="dog-container">
+    <!-- Dog Items -->
+    <ad-dog-item *ngFor="let dog of dogs" class="dog-card" [dogItem]="dog" />
 
-		<!-- Add Dog -->
-		<div class="add-dog-card">
-			<a href="/add-dog-record">
-				<img src="../../assets/images/add-icon.png" alt="add icon" />
-				<p>Add Dog</p>
-			</a>
-		</div>
-	</div>
+    <!-- Add Dog -->
+    <div class="add-dog-card">
+      <a href="/add-dog-record">
+        <img src="../../assets/images/add-icon.png" alt="add icon" />
+        <p>Add Dog</p>
+      </a>
+    </div>
+  </div>
 </main>
