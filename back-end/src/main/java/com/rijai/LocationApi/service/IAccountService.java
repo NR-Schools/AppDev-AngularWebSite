@@ -9,4 +9,5 @@ public interface IAccountService {
     Account logout(Account existingAccount);
 
     boolean isAdmin(Account possiblyAdminAccount);
+    Account getAccount(String email);
 }

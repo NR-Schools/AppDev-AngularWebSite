@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Dog } from 'src/app/models/dog';
+import { DogRecordService } from 'src/app/services/dog-record.service';
 
 @Component({
 	selector: 'app-dog-requests',
@@ -7,8 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DogRequestsComponent implements OnInit {
 
-	constructor() {}
+	dogItemWithReqs?: Array<Dog>;
+
+	constructor(private dogRecordService: DogRecordService) {}
 
 	ngOnInit(): void {
+		this.dogRecordService.adminViewAllDogAdoptReq().subscribe({
+			next: (value: Array<Dog>) => {
+				console.log(value);
+				this.dogItemWithReqs = value;
+			},
+			error: (err: any) => {
+				console.log(err);
+			}
+		})
 	}
 }

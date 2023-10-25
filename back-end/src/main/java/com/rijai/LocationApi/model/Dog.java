@@ -30,8 +30,8 @@ public class Dog {
     private boolean isAdoptRequested;
     private boolean isAdoptAccepted;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id", unique = true)
+    @ManyToOne()
+    @JoinColumn(name = "account_id", unique = false)
     private Account account;
 
     public Dog() {

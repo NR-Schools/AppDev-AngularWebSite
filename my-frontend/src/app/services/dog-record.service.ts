@@ -64,4 +64,30 @@ export class DogRecordService extends BaseService {
 		// Delete dog from server
 		return this.http.delete<boolean>(this.MainUrl + `dog/delete-dog/${dog_id}`, { headers: headers });
 	}
+
+	// For Adoption
+	userDogAdopt(dog: Dog): Observable<Dog> {
+		// Get Auth Data
+		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+		// Prepare headers
+		const headers = new HttpHeaders()
+			.set('email', account.email!)
+			.set('session-auth-string', account.sessionAuthString!);
+
+		// Adopt Dog from server
+		return this.http.post<Dog>(this.MainUrl + `dog-adopt/user-dog-adopt`, dog, { headers: headers });
+	}
+
+	adminViewAllDogAdoptReq(): Observable<Array<Dog>> {
+		// Get Auth Data
+		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+		// Prepare headers
+		const headers = new HttpHeaders()
+			.set('email', account.email!)
+			.set('session-auth-string', account.sessionAuthString!);
+
+		return this.http.get<Array<Dog>>(this.MainUrl + "dog-adopt/admin-view-all-adopt-req", { headers: headers });
+	}
 }
