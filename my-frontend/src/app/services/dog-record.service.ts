@@ -38,7 +38,7 @@ export class DogRecordService extends BaseService {
     return this.http.get<Dog>(this.MainUrl + `dog/show-dog/${dog_id}`);
   }
 
-  updateDogRecord(dog_id: number, updated_dog_info: Dog): Observable<boolean> {
+  updateDogRecord(dog_id: number, updated_dog_info: Dog): Observable<Dog> {
     // Get Auth Data
     let account: Account = JSON.parse(localStorage.getItem('account_info')!);
 
@@ -50,12 +50,32 @@ export class DogRecordService extends BaseService {
       .set('email', account.email!)
       .set('session-auth-string', account.sessionAuthString!);
 
+    // Change Dog -> FormData
+    let jsonData = JSON.parse(JSON.stringify(updated_dog_info));
+    console.log(jsonData);
+    const formData = new FormData();
+    for (const key in jsonData) {
+      console.log(key);
+      if (key === 'account') {
+        continue;
+      }
+
+      if (key == 'photoBytes') {
+        formData.append(
+          key,
+          updated_dog_info.photoBytes,
+          updated_dog_info.photoBytes.name
+        );
+        continue;
+      }
+
+      formData.append(key, jsonData[key]);
+    }
+
     // Update dog on server
-    return this.http.put<boolean>(
-      this.MainUrl + 'dog/update-dog',
-      updated_dog_info,
-      { headers: headers }
-    );
+    return this.http.put<Dog>(this.MainUrl + 'dog/update-dog', formData, {
+      headers: headers,
+    });
   }
 
   deleteDogRecord(dog_id: number): Observable<boolean> {
