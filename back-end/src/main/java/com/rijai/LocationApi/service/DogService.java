@@ -37,7 +37,8 @@ public class DogService implements IDogService {
         Optional<Dog> opt_dog = repository.findById(updatedDog.getId());
         if (opt_dog.isEmpty())
             return null;
-
+        
+        updatedDog.setAccount(opt_dog.get().getAccount());
         return repository.save(updatedDog);
     }
 
