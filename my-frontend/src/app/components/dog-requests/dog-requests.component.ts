@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DogAdopt } from 'src/app/models/dog-adopt';
-import { AdoptionService } from 'src/app/services/adoption.service';
 
 @Component({
 	selector: 'app-dog-requests',
@@ -8,15 +6,9 @@ import { AdoptionService } from 'src/app/services/adoption.service';
 	styleUrls: ['./dog-requests.component.css']
 })
 export class DogRequestsComponent implements OnInit {
-	dogAdaptRequests?: Array<DogAdopt>;
 
-	constructor(private adoptionService: AdoptionService) {}
+	constructor() {}
 
 	ngOnInit(): void {
-		this.adoptionService.adminViewAllAdoptRequests().subscribe({
-			next: (dogAdoptReqs: Array<DogAdopt>) => {
-				this.dogAdaptRequests = dogAdoptReqs;
-			}
-		});
 	}
 }

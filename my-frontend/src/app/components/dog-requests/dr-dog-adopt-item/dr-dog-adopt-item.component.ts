@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DogAdopt } from 'src/app/models/dog-adopt';
+import { Dog } from 'src/app/models/dog';
 
 @Component({
 	selector: 'dr-dog-adopt-item',
@@ -7,7 +7,7 @@ import { DogAdopt } from 'src/app/models/dog-adopt';
 	styleUrls: ['./dr-dog-adopt-item.component.css']
 })
 export class DrDogAdoptItemComponent {
-	@Input({required: true}) dogAdoptItem!: DogAdopt;
+	@Input({required: true}) dogItem!: Dog;
 
 	onDogAdoptStatus(status: boolean) {
 	}

@@ -1,3 +1,5 @@
+import { Account } from "./account";
+
 export class Dog {
   id?: number;
   name: string;
@@ -11,6 +13,12 @@ export class Dog {
   size: string;
   location: string;
   photoBytes?: any;
+
+  // For Adoption
+  isAdoptRequested?: boolean;
+  isAdoptAccepted?: boolean;
+
+  account?: Account;
 
   constructor(
     _name: string,

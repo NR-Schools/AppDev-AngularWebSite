@@ -4,8 +4,6 @@ import { Observable, map } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseService } from './base_service';
 import { Account } from '../models/account';
-import { Request } from '../models/request';
-import { Response } from '../models/response';
 
 @Injectable({
 	providedIn: 'root',

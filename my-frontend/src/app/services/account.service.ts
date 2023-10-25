@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base_service';
 import { HttpClient } from '@angular/common/http';
 import { Account } from '../models/account';
-import { Request } from '../models/request';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -49,12 +48,8 @@ export class AccountService extends BaseService {
 		// Get User Info
 		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
 
-		// Prepare Request
-		let request = new Request();
-		request.setAccountPayload(account);
-
 		// Send Info to Server
-		return this.http.post<Account>(this.MainUrl + 'account/login', request)
+		return this.http.post<Account>(this.MainUrl + 'account/login', account)
 			.pipe(
 				map((response: Account) => {
 					if (response === null) {

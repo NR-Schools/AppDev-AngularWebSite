@@ -91,4 +91,20 @@ public class DogController {
         dogService.deleteDogRecord(dogId);
         return true;
     }
+
+
+    // For Adoption
+    @PostMapping("/api/dog-adopt/user-dog-adopt")
+    public Dog userDogAdopt(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
+            @RequestBody Dog dog) {
+
+        // Construct Account
+        Account reqAccount = new Account();
+        reqAccount.setEmail(email);
+        reqAccount.setSessionAuthString(sessionAuthString);
+
+        return dogService.userAdoptDog(dog, reqAccount);
+    }
 }

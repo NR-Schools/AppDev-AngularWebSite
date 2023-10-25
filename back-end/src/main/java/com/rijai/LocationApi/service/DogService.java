@@ -1,5 +1,6 @@
 package com.rijai.LocationApi.service;
 
+import com.rijai.LocationApi.model.Account;
 import com.rijai.LocationApi.model.Dog;
 import com.rijai.LocationApi.repository.DogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class DogService implements IDogService {
 
     @Override
     public Dog addDogRecord(Dog newDog) {
+        newDog.setAdoptRequested(false);
+        newDog.setAdoptAccepted(false);
         return repository.save(newDog);
     }
 
@@ -46,5 +49,41 @@ public class DogService implements IDogService {
 
         repository.delete(opt_dog.get());
         return opt_dog.get();
+    }
+
+    @Override
+    public List<Dog> userViewAllReq(long id) {
+        return repository.getAllDogsAssocWithUser(id);
+    }
+
+    @Override
+    public Dog userAdoptDog(Dog dog, Account account) {
+        dog.setAccount(account);
+        dog.setAdoptRequested(true);
+        dog.setAdoptAccepted(false);
+        return repository.save(dog);
+    }
+
+    @Override
+    public List<Dog> adminViewAllDogAdoptReq() {
+        return repository.getAllRequestedDogs();
+    }
+
+    @Override
+    public boolean adminConfirmReqDogAdopt(Dog dog) {
+        // Check if Accepted Or Not
+        if (dog.isAdoptAccepted()) {
+            // Remove This Dog
+            repository.delete(dog);
+        }
+        else {
+            // Remove Adoption Info
+            dog.setAccount(null);
+            dog.setAdoptRequested(false);
+            dog.setAdoptAccepted(false);
+            repository.save(dog);
+        }
+
+        return true;
     }
 }
