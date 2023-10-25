@@ -92,7 +92,6 @@ public class DogController {
         return true;
     }
 
-
     // For Adoption
     @PostMapping("/api/dog-adopt/user-dog-adopt")
     public Dog userDogAdopt(
@@ -105,6 +104,9 @@ public class DogController {
         reqAccount.setEmail(email);
         reqAccount.setSessionAuthString(sessionAuthString);
 
-        return dogService.userAdoptDog(dog, reqAccount);
+        Dog reqAdoptedDog = dogService.userAdoptDog(dog, accountService.getAccount(email));
+        reqAdoptedDog.getAccount().setId(-1);
+        reqAdoptedDog.getAccount().setPassword("");
+        return reqAdoptedDog;
     }
 }

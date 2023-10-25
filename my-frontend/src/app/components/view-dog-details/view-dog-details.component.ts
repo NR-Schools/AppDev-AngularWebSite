@@ -36,7 +36,16 @@ export class ViewDogDetailsComponent implements OnInit {
 	onDogAdopt(): void {
 		// Get Dog
 		// Create New Dog Adopt Under this user
-		let sendDog: Dog = Dog.NoDog();
-		sendDog.id = this.dog.id;
+		let sendDog: Dog = this.dog;
+		sendDog.photoBytes = null;
+
+		this.dogRecordService.userDogAdopt(sendDog).subscribe({
+			next: (value: Dog) => {
+				console.log(value);
+			},
+			error: (err: any) => {
+				console.log(err);
+			}
+		});
 	}
 }

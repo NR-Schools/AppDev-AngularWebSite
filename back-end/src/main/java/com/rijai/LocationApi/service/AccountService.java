@@ -71,4 +71,9 @@ public class AccountService implements IAccountService {
         Account admin_act = repository.findByEmail(possiblyAdminAccount.getEmail());
         return admin_act.getSessionAuthString().equals(possiblyAdminAccount.getSessionAuthString());
     }
+
+    @Override
+    public Account getAccount(String email) {
+        return repository.findByEmail(email);
+    }
 }
