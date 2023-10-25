@@ -1,1 +1,36 @@
-<p>user-dog-requests works!</p>
+<header>
+  <nav>
+    <img src="../../assets/images/furever-logo.png" alt="logo image" />
+
+    <div class="links">
+      <div class="favorites">
+        <img src="../../assets/images/favorites-icon.png" alt="" />
+        <a href="">Requests</a>
+      </div>
+
+      <div class="dashboard">
+        <img src="../../assets/images/dog-icon.png" alt="" />
+        <a href="">Dashboard</a>
+      </div>
+
+      <div class="user">
+        <img src="../../assets/images/user-icon.png" alt="" />
+        <a href="">Admin</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="header-container">
+  <h1>Requests</h1>
+</div>
+
+<main>
+  <div class="dog-container">
+    <adr-dog-adopt-item
+      class="dog-card"
+      *ngFor="let dogItemWithReq of dogItemWithReqs"
+      [dogItem]="dogItemWithReq"
+    />
+  </div>
+</main>
