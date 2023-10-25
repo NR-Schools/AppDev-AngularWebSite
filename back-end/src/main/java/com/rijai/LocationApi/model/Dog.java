@@ -1,6 +1,9 @@
 package com.rijai.LocationApi.model;
 
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
@@ -19,10 +22,14 @@ public class Dog {
     private String sex;
     private String colorCoat;
     private String description;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate arrivedDate;
+
     private String arrivedFrom;
     private String size;
     private String location;
+
     @Lob
     private byte[] photoBytes;
 

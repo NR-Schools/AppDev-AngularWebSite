@@ -5,10 +5,14 @@ import com.rijai.LocationApi.model.Dog;
 import com.rijai.LocationApi.service.IAccountService;
 import com.rijai.LocationApi.service.IDogService;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
@@ -51,10 +55,36 @@ public class DogController {
     }
 
     @PutMapping("/api/dog/update-dog")
-    public boolean updateDog(
+    public Dog updateDog(
             @RequestHeader(name = "email", required = false) String email,
             @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
-            @RequestBody Dog dog) {
+            @RequestParam("id") long id,
+            @RequestParam("photoBytes") MultipartFile file,
+            @RequestParam("name") String name,
+            @RequestParam("breed") String breed,
+            @RequestParam("age") int age,
+            @RequestParam("sex") String sex,
+            @RequestParam("colorCoat") String colorCoat,
+            @RequestParam(value = "desciption", required = false) String desciption,
+            @RequestParam("arrivedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate arrivedDate,
+            @RequestParam("arrivedFrom") String arrivedFrom,
+            @RequestParam("size") String size,
+            @RequestParam("location") String location) throws IOException {
+        
+        // Create Dog
+        Dog dog = new Dog();
+        dog.setId(id);
+        dog.setPhotoBytes(file.getBytes());
+        dog.setName(name);
+        dog.setBreed(breed);
+        dog.setAge(age);
+        dog.setSex(sex);
+        dog.setColorCoat(colorCoat);
+        dog.setDescription(desciption);
+        dog.setArrivedDate(arrivedDate);
+        dog.setArrivedFrom(arrivedFrom);
+        dog.setSize(size);
+        dog.setLocation(location);
 
         // Construct Account
         Account reqAccount = new Account();
@@ -63,12 +93,11 @@ public class DogController {
 
         // Check if Admin
         if (!accountService.isAdmin(reqAccount)) {
-            return false;
+            return null;
         }
 
         // Add Dog
-        dogService.updateDogRecord(dog);
-        return true;
+        return dogService.updateDogRecord(dog);
     }
 
     @DeleteMapping("/api/dog/delete-dog/{dogId}")

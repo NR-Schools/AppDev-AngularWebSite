@@ -15,6 +15,8 @@ export class UpdateDogRecordComponent implements OnInit {
 		private dogRecordService: DogRecordService,
 		private route: ActivatedRoute) { }
 
+	selectedFile?: File;
+
 	dogId?: number;
 	updateDogName?: string;
 	updateDogImage?: any;
@@ -73,10 +75,10 @@ export class UpdateDogRecordComponent implements OnInit {
 	onImageSelected(event: Event): void {
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files && inputElement.files.length > 0) {
-			let selectedFile = inputElement.files[0];
-			console.log(selectedFile);
+			this.selectedFile = inputElement.files[0];
+			console.log(this.selectedFile);
 
-			ImageUtils.fileToByteArray(selectedFile)
+			ImageUtils.fileToByteArray(this.selectedFile)
 				.then((byteArray) => {
 					this.updateDogImage = byteArray;
 					this.updateDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
@@ -114,12 +116,21 @@ export class UpdateDogRecordComponent implements OnInit {
 		if (this.updateDogImage !== null && this.updateDogImage !== undefined) {
 			newDog.photoBytes = this.updateDogImage;
 		}
-
-		console.log(newDog)
+		newDog.photoBytes = this.selectedFile;
 
 		this.dogRecordService.updateDogRecord(this.dogId!, newDog).subscribe({
-			next: (value: boolean) => {
+			next: (value: Dog) => {
 				console.log(value);
+
+				const binaryString = atob(value.photoBytes);
+				const length = binaryString.length;
+				const byteArray = new Uint8Array(length);
+
+				for (let i = 0; i < length; i++) {
+					byteArray[i] = binaryString.charCodeAt(i);
+				}
+
+				this.updateDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray.buffer);
 			},
 			error: (err: any) => {
 				console.log(err);
