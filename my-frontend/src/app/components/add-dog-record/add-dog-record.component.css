@@ -164,7 +164,7 @@ h3 {
   > button {
     font-family: "Farro", "Courier New", Courier, monospace;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #e3bc7b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,6 +177,15 @@ h3 {
 
     &:disabled {
       background-color: #aeabab;
+      border: 1px solid #aeabab;
+
+      &:hover {
+        background-color: #aeabab;
+      }
     }
+  }
+
+  > button:hover {
+    background-color: #f3d6a4;
   }
 }

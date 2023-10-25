@@ -125,19 +125,23 @@ h3 {
 }
 
 .buttons {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 15px;
 }
 
 .buttons a {
-  border: 1px solid black;
+  border: 1px solid #e3bc7b;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 40%;
   height: 40px;
   background-color: #e3bc7b;
+}
+
+.button > a:hover {
+  border: 1px solid black;
 }
 
 .buttons {
@@ -147,13 +151,16 @@ h3 {
   font-weight: bold;
 }
 
-.adopt-button {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+.adopt-button,
+.favorite-button {
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.favorite-button {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+.buttons .favorite-button:hover {
+  background-color: #f3d6a4;
+}
+
+.buttons .adopt-button:hover {
+  background-color: #f3d6a4;
 }
