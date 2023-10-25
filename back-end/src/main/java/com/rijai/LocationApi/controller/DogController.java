@@ -114,7 +114,7 @@ public class DogController {
     public List<Dog> adminViewAllDogAdoptReq(
             @RequestHeader(name = "email", required = false) String email,
             @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString) {
-        
+
         // Construct Account
         Account reqAccount = new Account();
         reqAccount.setEmail(email);
@@ -126,5 +126,23 @@ public class DogController {
         }
 
         return dogService.adminViewAllDogAdoptReq();
+    }
+
+    @PostMapping("/api/dog-adopt/admin-confirm-req")
+    public boolean adminConfirmReq(@RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
+            @RequestBody Dog dog) {
+
+        // Construct Account
+        Account reqAccount = new Account();
+        reqAccount.setEmail(email);
+        reqAccount.setSessionAuthString(sessionAuthString);
+
+        // Check if Admin
+        if (!accountService.isAdmin(reqAccount)) {
+            return false;
+        }
+
+        return dogService.adminConfirmReqDogAdopt(dog);
     }
 }

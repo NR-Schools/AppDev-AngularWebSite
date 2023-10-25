@@ -8,7 +8,7 @@ import { ViewDogDetailsComponent } from './components/view-dog-details/view-dog-
 import { AddDogRecordComponent } from './components/add-dog-record/add-dog-record.component';
 import { UpdateDogRecordComponent } from './components/update-dog-record/update-dog-record.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
-import { DogRequestsComponent } from './components/dog-requests/dog-requests.component';
+import { AdminDogRequestsComponent } from './components/admin-dog-requests/admin-dog-requests.component';
 
 const routes: Routes = [
 	{
@@ -50,7 +50,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'dog-requests',
-		component: DogRequestsComponent
+		component: AdminDogRequestsComponent
 	}
 ];
 

@@ -90,4 +90,16 @@ export class DogRecordService extends BaseService {
 
 		return this.http.get<Array<Dog>>(this.MainUrl + "dog-adopt/admin-view-all-adopt-req", { headers: headers });
 	}
+
+	adminConfirmDogAdopt(dog: Dog): Observable<boolean> {
+		// Get Auth Data
+		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+		// Prepare headers
+		const headers = new HttpHeaders()
+			.set('email', account.email!)
+			.set('session-auth-string', account.sessionAuthString!);
+		
+		return this.http.post<boolean>(this.MainUrl + "dog-adopt/admin-confirm-req", dog, { headers: headers });
+	}
 }

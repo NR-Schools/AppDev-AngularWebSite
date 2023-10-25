@@ -15,8 +15,8 @@ export class Dog {
   photoBytes?: any;
 
   // For Adoption
-  isAdoptRequested?: boolean;
-  isAdoptAccepted?: boolean;
+  adoptRequested?: boolean;
+  adoptAccepted?: boolean;
 
   account?: Account;
 

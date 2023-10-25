@@ -3,11 +3,11 @@ import { Dog } from 'src/app/models/dog';
 import { DogRecordService } from 'src/app/services/dog-record.service';
 
 @Component({
-	selector: 'app-dog-requests',
-	templateUrl: './dog-requests.component.html',
-	styleUrls: ['./dog-requests.component.css']
+	selector: 'app-admin-dog-requests',
+	templateUrl: './admin-dog-requests.component.html',
+	styleUrls: ['./admin-dog-requests.component.css']
 })
-export class DogRequestsComponent implements OnInit {
+export class AdminDogRequestsComponent implements OnInit {
 
 	dogItemWithReqs?: Array<Dog>;
 
