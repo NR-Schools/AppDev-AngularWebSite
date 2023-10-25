@@ -1,81 +1,76 @@
 <header>
-	<nav>
-		<img src="assets/images/furever-logo.png" alt="logo image" />
+  <nav>
+    <img src="assets/images/furever-logo.png" alt="logo image" />
 
-		<div class="links">
-			<div class="favorites">
-				<img src="assets/images/favorites-icon.png" alt="" />
-				<a href="">Favorites</a>
-			</div>
+    <div class="links">
+      <div class="favorites">
+        <img src="assets/images/favorites-icon.png" alt="" />
+        <a href="">Requests</a>
+      </div>
 
-			<div class="dashboard">
-				<img src="assets/images/dog-icon.png" alt="" />
-				<a href="/user">Dashboard</a>
-			</div>
+      <div class="dashboard">
+        <img src="assets/images/dog-icon.png" alt="" />
+        <a href="/user">Dashboard</a>
+      </div>
 
-			<div class="user">
-				<img src="assets/images/user-icon.png" alt="" />
-				<a href="">Username</a>
-			</div>
-		</div>
-	</nav>
+      <div class="user">
+        <img src="assets/images/user-icon.png" alt="" />
+        <a href="">Username</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <main>
-	<div class="details-container">
-		<div class="image-container">
-			<img src="images/sample-dog-details-image.png" alt="" />
-		</div>
+  <div class="details-container">
+    <div class="image-container">
+      <img src="images/sample-dog-details-image.png" alt="" />
+    </div>
 
-		<div class="dog-details-container">
-			<div class="dog-details-inner-container">
-				<div class="dog-details-labels">
-					<h2>{{ dog.name }}</h2>
-					<h3>ABOUT</h3>
-					<p class="labels">Breed</p>
-					<p class="labels">Color</p>
-					<p class="labels">Age</p>
-					<p class="labels">Sex</p>
-					<p class="labels">Arrived Date</p>
-					<p class="labels">Arrived From</p>
-					<p class="labels">Size</p>
-					<p class="labels">Location</p>
-				</div>
+    <div class="dog-details-container">
+      <div class="dog-details-inner-container">
+        <div class="dog-details-labels">
+          <h2>{{ dog.name }}</h2>
+          <h3>ABOUT</h3>
+          <p class="labels">Breed</p>
+          <p class="labels">Color</p>
+          <p class="labels">Age</p>
+          <p class="labels">Sex</p>
+          <p class="labels">Arrived Date</p>
+          <p class="labels">Arrived From</p>
+          <p class="labels">Size</p>
+          <p class="labels">Location</p>
+        </div>
 
-				<div class="dog-details-values">
-					<div>
-						<p>Available to Adopt</p>
-					</div>
-					<p class="values">{{ dog.breed}}</p>
-					<p class="values">{{ dog.colorCoat }}</p>
-					<p class="values">{{ dog.age }} year(s) old</p>
-					<p class="values">{{ dog.sex }}</p>
-					<p class="values">{{ dog.arrivedDate }}</p>
-					<p class="values">{{ dog.arrivedFrom }}</p>
-					<p class="values">{{ dog.size }}</p>
-					<p class="values">{{ dog.location }}</p>
-				</div>
-			</div>
+        <div class="dog-details-values">
+          <div>
+            <p>Available to Adopt</p>
+          </div>
+          <p class="values">{{ dog.breed }}</p>
+          <p class="values">{{ dog.colorCoat }}</p>
+          <p class="values">{{ dog.age }} year(s) old</p>
+          <p class="values">{{ dog.sex }}</p>
+          <p class="values">{{ dog.arrivedDate }}</p>
+          <p class="values">{{ dog.arrivedFrom }}</p>
+          <p class="values">{{ dog.size }}</p>
+          <p class="values">{{ dog.location }}</p>
+        </div>
+      </div>
 
-			<div class="buttons">
-				<a class="adopt-button" (click)="onDogAdopt()">
-					<div>
-						<p>Adopt</p>
-					</div>
-				</a>
-				<a href="#" class="favorite-button">
-					<div>
-						<p>Favorite</p>
-					</div>
-				</a>
-			</div>
-		</div>
-	</div>
+      <div class="buttons">
+        <a class="adopt-button" (click)="onDogAdopt()">
+          <div>
+            <p>Adopt</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 
-	<div class="additional-information">
-		<h2>Meet {{ dog.name }}</h2>
-		<p>
-			{{ dog.description }}
-		</p>
-	</div>
+  <div class="additional-information">
+    <h2>Meet {{ dog.name }}</h2>
+    <p>
+      {{ dog.description }}
+    </p>
+  </div>
 </main>
