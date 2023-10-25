@@ -5,7 +5,7 @@
     <div class="links">
       <div class="favorites">
         <img src="assets/images/favorites-icon.png" alt="" />
-        <a href="">Requests</a>
+        <a href="/user-dog-requests">Requests</a>
       </div>
 
       <div class="dashboard">
@@ -58,7 +58,11 @@
       </div>
 
       <div class="buttons">
-        <a class="adopt-button" (click)="onDogAdopt()">
+        <a
+          class="adopt-button"
+          (click)="onDogAdopt()"
+          onclick="window.location.href = '/user';"
+        >
           <div>
             <p>Adopt</p>
           </div>

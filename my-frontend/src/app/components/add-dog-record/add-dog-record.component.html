@@ -5,17 +5,17 @@
     <div class="links">
       <div class="favorites">
         <img src="../../assets/images/request-icon.png" alt="" />
-        <a href="">Request</a>
+        <a href="/admin-dog-requests">Request</a>
       </div>
 
       <div class="dashboard">
         <img src="../../assets/images/dog-icon.png" alt="" />
-        <a href="">Dashboard</a>
+        <a href="/admin">Dashboard</a>
       </div>
 
       <div class="user">
         <img src="../../assets/images/user-icon.png" alt="" />
-        <a href="">Admin</a>
+        <a href="#">Admin</a>
       </div>
     </div>
   </nav>
@@ -116,6 +116,7 @@
           class="add-button"
           (click)="onAddDogRecord()"
           [disabled]="!addDogFormGroup.valid"
+          onclick="window.location.href = '/admin';"
         >
           <div>
             <p>Add Dog Record</p>

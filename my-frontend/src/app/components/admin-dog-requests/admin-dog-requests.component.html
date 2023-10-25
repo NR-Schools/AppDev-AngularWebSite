@@ -5,7 +5,7 @@
     <div class="links">
       <div class="favorites">
         <img src="../../assets/images/favorites-icon.png" alt="" />
-        <a href="/dog-requests">Requests</a>
+        <a href="/admin-dog-requests">Requests</a>
       </div>
 
       <div class="dashboard">
@@ -31,6 +31,7 @@
       class="dog-card"
       *ngFor="let dogItemWithReq of dogItemWithReqs"
       [dogItem]="dogItemWithReq"
+      onclick="window.location.href = '/admin-dog-requests';"
     />
   </div>
 </main>

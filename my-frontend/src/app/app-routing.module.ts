@@ -9,53 +9,58 @@ import { AddDogRecordComponent } from './components/add-dog-record/add-dog-recor
 import { UpdateDogRecordComponent } from './components/update-dog-record/update-dog-record.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { AdminDogRequestsComponent } from './components/admin-dog-requests/admin-dog-requests.component';
+import { UserDogRequestsComponent } from './components/user-dog-requests/user-dog-requests.component';
 
 const routes: Routes = [
-	{
-		path: '',
-		redirectTo: '/welcome',
-		pathMatch: 'full'
-	},
-	{
-		path: 'welcome',
-		component: WelcomePageComponent
-	},
-	{
-		path: 'signup',
-		component: SignupPageComponent
-	},
-	{
-		path: 'login',
-		component: LoginPageComponent
-	},
-	{
-		path: 'user',
-		component: UserDashboardComponent
-	},
-	{
-		path: 'admin',
-		component: AdminDashboardComponent
-	},
-	{
-		path: 'dog/:id',
-		component: ViewDogDetailsComponent
-	},
-	{
-		path: 'add-dog-record',
-		component: AddDogRecordComponent
-	},
-	{
-		path: 'update-dog-record/:id',
-		component: UpdateDogRecordComponent
-	},
-	{
-		path: 'dog-requests',
-		component: AdminDogRequestsComponent
-	}
+  {
+    path: '',
+    redirectTo: '/welcome',
+    pathMatch: 'full',
+  },
+  {
+    path: 'welcome',
+    component: WelcomePageComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupPageComponent,
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'user',
+    component: UserDashboardComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+  },
+  {
+    path: 'dog/:id',
+    component: ViewDogDetailsComponent,
+  },
+  {
+    path: 'add-dog-record',
+    component: AddDogRecordComponent,
+  },
+  {
+    path: 'update-dog-record/:id',
+    component: UpdateDogRecordComponent,
+  },
+  {
+    path: 'admin-dog-requests',
+    component: AdminDogRequestsComponent,
+  },
+  {
+    path: 'user-dog-requests',
+    component: UserDogRequestsComponent,
+  },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

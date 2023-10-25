@@ -13,7 +13,7 @@ export class UserDogRequestsComponent implements OnInit {
   constructor(private dogRecordService: DogRecordService) {}
 
   ngOnInit(): void {
-    this.dogRecordService.adminViewAllDogAdoptReq().subscribe({
+    this.dogRecordService.userViewAllDogAdoptReq().subscribe({
       next: (value: Array<Dog>) => {
         console.log(value);
         this.dogItemWithReqs = value;
