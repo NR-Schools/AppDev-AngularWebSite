@@ -83,7 +83,7 @@ nav {
 }
 
 .dog-card:hover {
-  box-shadow: 0 0 20px rgba(24, 193, 124, 0.7);
+  box-shadow: 0 0 10px rgba(24, 193, 124, 0.7);
 }
 
 aside {
@@ -170,5 +170,5 @@ aside button {
 }
 
 .add-dog-card:hover {
-  box-shadow: 0 0 20px rgba(24, 193, 124, 0.7);
+  box-shadow: 0 0 10px rgba(24, 193, 124, 0.7);
 }
