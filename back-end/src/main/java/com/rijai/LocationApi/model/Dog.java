@@ -27,8 +27,8 @@ public class Dog {
     private byte[] photoBytes;
 
     // For Dog Adoption
-    private boolean isAdoptRequested;
-    private boolean isAdoptAccepted;
+    private boolean adoptRequested;
+    private boolean adoptAccepted;
 
     @ManyToOne()
     @JoinColumn(name = "account_id", unique = false)
@@ -50,8 +50,8 @@ public class Dog {
         this.size = size;
         this.location = location;
         this.photoBytes = photoBytes;
-        this.isAdoptRequested = isAdoptRequested;
-        this.isAdoptAccepted = isAdoptAccepted;
+        this.adoptRequested = isAdoptRequested;
+        this.adoptAccepted = isAdoptAccepted;
         this.account = account;
     }
 
@@ -152,19 +152,19 @@ public class Dog {
     }
 
     public boolean isAdoptRequested() {
-        return isAdoptRequested;
+        return adoptRequested;
     }
 
     public void setAdoptRequested(boolean adoptRequested) {
-        isAdoptRequested = adoptRequested;
+        this.adoptRequested = adoptRequested;
     }
 
     public boolean isAdoptAccepted() {
-        return isAdoptAccepted;
+        return adoptAccepted;
     }
 
     public void setAdoptAccepted(boolean adoptAccepted) {
-        isAdoptAccepted = adoptAccepted;
+        this.adoptAccepted = adoptAccepted;
     }
 
     public Account getAccount() {
@@ -180,12 +180,12 @@ public class Dog {
         if (this == o) return true;
         if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-        return id == dog.id && age == dog.age && isAdoptRequested == dog.isAdoptRequested && isAdoptAccepted == dog.isAdoptAccepted && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Arrays.equals(photoBytes, dog.photoBytes) && Objects.equals(account, dog.account);
+        return id == dog.id && age == dog.age && adoptRequested == dog.adoptRequested && adoptAccepted == dog.adoptAccepted && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Arrays.equals(photoBytes, dog.photoBytes) && Objects.equals(account, dog.account);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location, isAdoptRequested, isAdoptAccepted, account);
+        int result = Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location, adoptRequested, adoptAccepted, account);
         result = 31 * result + Arrays.hashCode(photoBytes);
         return result;
     }
@@ -205,8 +205,8 @@ public class Dog {
                 ", size='" + size + '\'' +
                 ", location='" + location + '\'' +
                 ", photoBytes=" + Arrays.toString(photoBytes) +
-                ", isAdoptRequested=" + isAdoptRequested +
-                ", isAdoptAccepted=" + isAdoptAccepted +
+                ", isAdoptRequested=" + adoptRequested +
+                ", isAdoptAccepted=" + adoptAccepted +
                 ", account=" + account +
                 '}';
     }

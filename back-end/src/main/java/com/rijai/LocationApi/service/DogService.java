@@ -71,6 +71,10 @@ public class DogService implements IDogService {
 
     @Override
     public boolean adminConfirmReqDogAdopt(Dog dog) {
+        if (!dog.isAdoptRequested()) {
+            return false;
+        }
+
         // Check if Accepted Or Not
         if (dog.isAdoptAccepted()) {
             // Remove This Dog

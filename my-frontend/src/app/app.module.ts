@@ -13,10 +13,10 @@ import { AddDogRecordComponent } from './components/add-dog-record/add-dog-recor
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { UdDogItemComponent } from './components/user-dashboard/ud-dog-item/ud-dog-item.component';
-import { DogRequestsComponent } from './components/dog-requests/dog-requests.component';
+import { AdminDogRequestsComponent } from './components/admin-dog-requests/admin-dog-requests.component';
 import { AdDogItemComponent } from './components/admin-dashboard/ad-dog-item/ad-dog-item.component';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
-import { DrDogAdoptItemComponent } from './components/dog-requests/dr-dog-adopt-item/dr-dog-adopt-item.component';
+import { AdrDogAdoptItemComponent } from './components/admin-dog-requests/adr-dog-adopt-item/adr-dog-adopt-item.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +29,10 @@ import { DrDogAdoptItemComponent } from './components/dog-requests/dr-dog-adopt-
     LoginPageComponent,
     AddDogRecordComponent,
     UdDogItemComponent,
-    DogRequestsComponent,
+    AdminDogRequestsComponent,
     AdDogItemComponent,
     WelcomePageComponent,
-    DrDogAdoptItemComponent
+    AdrDogAdoptItemComponent
   ],
   imports: [
     BrowserModule,

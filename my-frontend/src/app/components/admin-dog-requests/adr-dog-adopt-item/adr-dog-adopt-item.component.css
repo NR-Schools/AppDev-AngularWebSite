@@ -35,6 +35,7 @@ img {
         height: 40px;
         border-radius: 5px;
         font-family: "Farro", "Courier New", Courier, monospace;
+        cursor: pointer;
     }
 }
 

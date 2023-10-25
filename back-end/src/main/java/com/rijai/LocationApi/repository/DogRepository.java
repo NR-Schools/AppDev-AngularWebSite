@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface DogRepository extends CrudRepository<Dog, Long> {
     @Query(
-            value = "SELECT * FROM dogs WHERE is_adopt_requested=true",
+            value = "SELECT * FROM dogs WHERE adopt_requested=true",
             nativeQuery = true
     )
     List<Dog> getAllRequestedDogs();
