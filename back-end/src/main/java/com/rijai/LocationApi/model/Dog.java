@@ -26,10 +26,18 @@ public class Dog {
     @Lob
     private byte[] photoBytes;
 
+    // For Dog Adoption
+    private boolean isAdoptRequested;
+    private boolean isAdoptAccepted;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", unique = true)
+    private Account account;
+
     public Dog() {
     }
 
-    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, String arrivedFrom, String size, String location, byte[] photoBytes) {
+    public Dog(long id, String name, String breed, int age, String sex, String colorCoat, String description, LocalDate arrivedDate, String arrivedFrom, String size, String location, byte[] photoBytes, boolean isAdoptRequested, boolean isAdoptAccepted, Account account) {
         this.id = id;
         this.name = name;
         this.breed = breed;
@@ -42,6 +50,9 @@ public class Dog {
         this.size = size;
         this.location = location;
         this.photoBytes = photoBytes;
+        this.isAdoptRequested = isAdoptRequested;
+        this.isAdoptAccepted = isAdoptAccepted;
+        this.account = account;
     }
 
     public long getId() {
@@ -140,17 +151,41 @@ public class Dog {
         this.photoBytes = photoBytes;
     }
 
+    public boolean isAdoptRequested() {
+        return isAdoptRequested;
+    }
+
+    public void setAdoptRequested(boolean adoptRequested) {
+        isAdoptRequested = adoptRequested;
+    }
+
+    public boolean isAdoptAccepted() {
+        return isAdoptAccepted;
+    }
+
+    public void setAdoptAccepted(boolean adoptAccepted) {
+        isAdoptAccepted = adoptAccepted;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Dog)) return false;
         Dog dog = (Dog) o;
-        return id == dog.id && age == dog.age && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Arrays.equals(photoBytes, dog.photoBytes);
+        return id == dog.id && age == dog.age && isAdoptRequested == dog.isAdoptRequested && isAdoptAccepted == dog.isAdoptAccepted && Objects.equals(name, dog.name) && Objects.equals(breed, dog.breed) && Objects.equals(sex, dog.sex) && Objects.equals(colorCoat, dog.colorCoat) && Objects.equals(description, dog.description) && Objects.equals(arrivedDate, dog.arrivedDate) && Objects.equals(arrivedFrom, dog.arrivedFrom) && Objects.equals(size, dog.size) && Objects.equals(location, dog.location) && Arrays.equals(photoBytes, dog.photoBytes) && Objects.equals(account, dog.account);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location);
+        int result = Objects.hash(id, name, breed, age, sex, colorCoat, description, arrivedDate, arrivedFrom, size, location, isAdoptRequested, isAdoptAccepted, account);
         result = 31 * result + Arrays.hashCode(photoBytes);
         return result;
     }
@@ -166,10 +201,13 @@ public class Dog {
                 ", colorCoat='" + colorCoat + '\'' +
                 ", description='" + description + '\'' +
                 ", arrivedDate=" + arrivedDate +
-                ", arrivedFrom=" + arrivedFrom +
+                ", arrivedFrom='" + arrivedFrom + '\'' +
                 ", size='" + size + '\'' +
                 ", location='" + location + '\'' +
                 ", photoBytes=" + Arrays.toString(photoBytes) +
+                ", isAdoptRequested=" + isAdoptRequested +
+                ", isAdoptAccepted=" + isAdoptAccepted +
+                ", account=" + account +
                 '}';
     }
 }
