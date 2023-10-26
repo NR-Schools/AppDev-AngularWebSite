@@ -11,6 +11,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String username;
     private String email;
     private String password;
     private String sessionAuthString;
@@ -18,8 +19,9 @@ public class Account {
     public Account() {
     }
 
-    public Account(long id, String email, String password, String sessionAuthString) {
+    public Account(long id, String username, String email, String password, String sessionAuthString) {
         this.id = id;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.sessionAuthString = sessionAuthString;
@@ -31,6 +33,14 @@ public class Account {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -62,18 +72,19 @@ public class Account {
         if (this == o) return true;
         if (!(o instanceof Account)) return false;
         Account account = (Account) o;
-        return id == account.id && Objects.equals(email, account.email) && Objects.equals(password, account.password) && Objects.equals(sessionAuthString, account.sessionAuthString);
+        return id == account.id && Objects.equals(username, account.username) && Objects.equals(email, account.email) && Objects.equals(password, account.password) && Objects.equals(sessionAuthString, account.sessionAuthString);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, sessionAuthString);
+        return Objects.hash(id, username, email, password, sessionAuthString);
     }
 
     @Override
     public String toString() {
         return "Account{" +
                 "id=" + id +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", sessionAuthString='" + sessionAuthString + '\'' +

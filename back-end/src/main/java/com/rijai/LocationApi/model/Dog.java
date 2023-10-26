@@ -34,7 +34,8 @@ public class Dog {
 
     @Lob
     private byte[] photoBytes;
-    @JsonIgnore
+
+    @Transient
     private boolean isPhotoUpdated;
 
     // For Dog Adoption
@@ -186,6 +187,7 @@ public class Dog {
         this.account = account;
     }
 
+    @JsonIgnore
     public boolean isPhotoChanged() {
         return isPhotoUpdated;
     }
