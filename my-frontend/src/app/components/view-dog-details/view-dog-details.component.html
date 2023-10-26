@@ -29,11 +29,7 @@
 <main>
   <div class="details-container">
     <div class="image-container">
-      <img
-        [src]="thumbnail"
-        alt=""
-        onerror="this.src='assets/images/sample-dog-image.png';"
-      />
+      <img [src]="thumbnail" alt="" onerror="this.src='assets/images/sample-dog-image.png';" />
     </div>
 
     <div class="dog-details-container">
@@ -53,7 +49,7 @@
 
         <div class="dog-details-values">
           <div>
-            <p>Available to Adopt</p>
+            <p>{{ dogAdoptString }}</p>
           </div>
           <p class="values">{{ dog.breed }}</p>
           <p class="values">{{ dog.colorCoat }}</p>
@@ -67,15 +63,11 @@
       </div>
 
       <div class="buttons">
-        <a
-          class="adopt-button"
-          (click)="onDogAdopt()"
-          onclick="window.location.href = '/user';"
-        >
+        <button class="adopt-button" (click)="onDogAdopt()" [disabled]="isAdoptButtonDisabled">
           <div>
             <p>Adopt</p>
           </div>
-        </a>
+        </button>
       </div>
     </div>
   </div>

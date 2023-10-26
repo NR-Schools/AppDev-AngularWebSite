@@ -32,10 +32,6 @@
 
 <main>
   <div class="dog-container">
-    <udr-dog-adopt-item
-      class="dog-card"
-      *ngFor="let dogItemWithReq of dogItemWithReqs"
-      [dogItem]="dogItemWithReq"
-    />
+    <udr-dog-adopt-item class="dog-card" *ngFor="let dogItemWithReq of dogItemWithReqs" [dogItem]="dogItemWithReq" (itemReloadEvent)="onItemsReload()" />
   </div>
 </main>

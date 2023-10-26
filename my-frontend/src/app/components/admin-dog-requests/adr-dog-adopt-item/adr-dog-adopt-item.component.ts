@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dog } from 'src/app/models/dog';
 import { DogRecordService } from 'src/app/services/dog-record.service';
 import { ImageUtils } from 'src/app/utils/image-utils';
@@ -10,6 +10,7 @@ import { ImageUtils } from 'src/app/utils/image-utils';
 })
 export class AdrDogAdoptItemComponent implements OnInit {
 	@Input({ required: true }) dogItem!: Dog;
+	@Output() itemReloadEvent =  new EventEmitter<void>();
 	thumbnail: any;
 
 	constructor(private dogRecordService: DogRecordService) { }
@@ -22,12 +23,9 @@ export class AdrDogAdoptItemComponent implements OnInit {
 	onDogAdoptStatus(status: boolean) {
 		this.dogItem.adoptAccepted = status;
 
-		console.log(status);
-		console.log(this.dogItem);
-
 		this.dogRecordService.adminConfirmDogAdopt(this.dogItem).subscribe({
 			next: (value: boolean) => {
-				console.log(value);
+				this.itemReloadEvent.emit();
 			},
 			error: (err: any) => {
 				console.log(err);
