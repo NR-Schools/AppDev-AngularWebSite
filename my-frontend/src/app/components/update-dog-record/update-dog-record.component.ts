@@ -19,6 +19,8 @@ export class UpdateDogRecordComponent implements OnInit {
 	updateDogDescription?: string;
 	updateDogPreviewImage: any;
 
+	dogAdoptString: string;
+
 	updateDogFormGroup = this.formBuilder.group({
 		Breed: ['', Validators.required],
 		Age: [0, Validators.required],
@@ -35,6 +37,7 @@ export class UpdateDogRecordComponent implements OnInit {
 		private activeRoute: ActivatedRoute,
 		private router: Router) {
 			this.isDogImageUpdated = false;
+			this.dogAdoptString = "Available to Adopt";
 		}
 
 	ngOnInit(): void {
@@ -64,6 +67,10 @@ export class UpdateDogRecordComponent implements OnInit {
 
 						// Attempt to display image
 						this.updateDogPreviewImage = ImageUtils.base64ToImage(this.updateDogImage);
+
+						if (dog.adoptRequested) {
+							this.dogAdoptString = "Requested for Adoption";
+						}
 					},
 					error: (err: any) => {
 						console.error(err);
