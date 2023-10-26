@@ -79,6 +79,9 @@ public class DogService implements IDogService {
 
         Dog requestedDog = opt_dog.get();
 
+        // If dog is already requested, exit immediately
+        if (requestedDog.isAdoptRequested()) return null;
+
         requestedDog.setAccount(account);
         requestedDog.setAdoptRequested(true);
         requestedDog.setAdoptAccepted(false);
