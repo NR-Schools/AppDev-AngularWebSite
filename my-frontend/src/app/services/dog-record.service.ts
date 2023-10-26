@@ -13,7 +13,7 @@ export class DogRecordService extends BaseService {
 		super();
 	}
 
-	addDogRecord(dog: Dog): Observable<boolean> {
+	addDogRecord(add_dog_info: Dog): Observable<boolean> {
 		// Get Auth Data
 		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
 
@@ -21,9 +21,30 @@ export class DogRecordService extends BaseService {
 		const headers = new HttpHeaders()
 			.set('email', account.email!)
 			.set('session-auth-string', account.sessionAuthString!);
+		
+		// Change Dog -> FormData
+		let jsonData = JSON.parse(JSON.stringify(add_dog_info));
+		const formData = new FormData();
+		for (const key in jsonData) {
+			console.log(key);
+			if (key === 'account') {
+				continue;
+			}
+
+			if (key == 'photoBytes') {
+				formData.append(
+					key,
+					add_dog_info.photoBytes,
+					add_dog_info.photoBytes.name
+				);
+				continue;
+			}
+
+			formData.append(key, jsonData[key]);
+		}
 
 		// Add dog to server
-		return this.http.post<boolean>(this.MainUrl + 'dog/add-dog', dog, {
+		return this.http.post<boolean>(this.MainUrl + 'dog/add-dog', formData, {
 			headers: headers,
 		});
 	}

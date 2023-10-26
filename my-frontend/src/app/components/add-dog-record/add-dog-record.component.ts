@@ -13,9 +13,8 @@ import { Router } from '@angular/router';
 export class AddDogRecordComponent {
 
 	addDogName?: string;
-	addDogImage?: Uint8Array;
+	addDogImage?: any;
 	addDogDescription?: string;
-
 	addDogPreviewImage: any;
 
 	addDogFormGroup = this.formBuilder.group({
@@ -37,18 +36,11 @@ export class AddDogRecordComponent {
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files && inputElement.files.length > 0) {
 			let selectedFile = inputElement.files[0];
-			console.log(selectedFile);
 
 			ImageUtils.fileToByteArray(selectedFile)
 				.then((byteArray: ArrayBuffer) => {
-					this.addDogImage = new Uint8Array(byteArray);
-
-					// wait kina miguel
-					//const base64String = btoa(String.fromCharCode(...new Uint8Array(byteArray)));
-					//console.log(base64String);
-					//const aaa = Uint8Array.from(atob(base64String), c => c.charCodeAt(0));
-
-					//this.addDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
+					this.addDogImage = selectedFile;
+					this.addDogPreviewImage = ImageUtils.byteArrayToImage(byteArray);
 				})
 				.catch((error) => {
 					console.log('Error reading file:', error);
@@ -89,7 +81,7 @@ export class AddDogRecordComponent {
 			next: (value: boolean) => {
 				if (value) {
 					window.alert("Dog Record Added Successfully!");
-					this.router.navigate(['/admin']);
+					//this.router.navigate(['/admin']);
 				}
 				else {
 					window.alert("Failed to Add Dog Record!");
