@@ -26,7 +26,6 @@ export class DogRecordService extends BaseService {
 		let jsonData = JSON.parse(JSON.stringify(add_dog_info));
 		const formData = new FormData();
 		for (const key in jsonData) {
-			console.log(key);
 			if (key === 'account') {
 				continue;
 			}
@@ -75,7 +74,6 @@ export class DogRecordService extends BaseService {
 		let jsonData = JSON.parse(JSON.stringify(updated_dog_info));
 		const formData = new FormData();
 		for (const key in jsonData) {
-			console.log(key);
 			if (key === 'account') {
 				continue;
 			}

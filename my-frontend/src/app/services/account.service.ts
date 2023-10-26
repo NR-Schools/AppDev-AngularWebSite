@@ -49,10 +49,10 @@ export class AccountService extends BaseService {
 		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
 
 		// Send Info to Server
-		return this.http.post<Account>(this.MainUrl + 'account/login', account)
+		return this.http.post<Account>(this.MainUrl + 'account/logout', account)
 			.pipe(
 				map((response: Account) => {
-					if (response === null) {
+					if (response !== null) {
 						// Clear Info on Local Storage
 						localStorage.setItem('account_info', '');
 						return true;

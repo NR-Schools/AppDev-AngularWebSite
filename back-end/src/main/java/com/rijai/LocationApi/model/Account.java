@@ -62,7 +62,7 @@ public class Account {
         if (this == o) return true;
         if (!(o instanceof Account)) return false;
         Account account = (Account) o;
-        return id == account.id && Objects.equals(email, account.email);
+        return id == account.id && Objects.equals(email, account.email) && Objects.equals(password, account.password) && Objects.equals(sessionAuthString, account.sessionAuthString);
     }
 
     @Override
