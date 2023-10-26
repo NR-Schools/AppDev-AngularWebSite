@@ -1,37 +1,41 @@
 <header>
-	<nav>
-		<img src="../../assets/images/furever-logo.png" alt="logo image" />
+  <nav>
+    <img src="../../assets/images/furever-logo.png" alt="logo image" />
 
-		<div class="links">
-			<div class="favorites">
-				<img src="../../assets/images/favorites-icon.png" alt="" />
-				<a href="/user-dog-requests">Requests</a>
-			</div>
+    <div class="links">
+      <div class="favorites">
+        <img src="../../assets/images/request-icon.png" alt="" />
+        <a href="/user-dog-requests">Requests</a>
+      </div>
 
-			<div class="dashboard">
-				<img src="../../assets/images/dog-icon.png" alt="" />
-				<a href="/user">Dashboard</a>
-			</div>
+      <div class="dashboard">
+        <img src="../../assets/images/dog-icon.png" alt="" />
+        <a href="/user">Dashboard</a>
+      </div>
 
-			<div class="user">
-				<img src="../../assets/images/user-icon.png" alt="" />
-				<a href="/user">User</a>
-			</div>
+      <div class="user">
+        <img src="../../assets/images/user-icon.png" alt="" />
+        <a href="/user">User</a>
+      </div>
 
-			<div class="logout">
-				<img src="../../assets/images/logout-icon.png" alt="" />
-				<a href="/welcome">Logout</a>
-			</div>
-		</div>
-	</nav>
+      <div class="logout">
+        <img src="../../assets/images/logout-icon.png" alt="" />
+        <a href="/welcome">Logout</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <div class="header-container">
-	<h1>Requests</h1>
+  <h1>Requests</h1>
 </div>
 
 <main>
-	<div class="dog-container">
-		<udr-dog-adopt-item class="dog-card" *ngFor="let dogItemWithReq of dogItemWithReqs" [dogItem]="dogItemWithReq"/>
-	</div>
+  <div class="dog-container">
+    <udr-dog-adopt-item
+      class="dog-card"
+      *ngFor="let dogItemWithReq of dogItemWithReqs"
+      [dogItem]="dogItemWithReq"
+    />
+  </div>
 </main>

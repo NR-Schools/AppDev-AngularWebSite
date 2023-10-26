@@ -23,6 +23,14 @@ nav {
   align-items: center;
   margin-left: 20px;
   cursor: pointer;
+
+  > a {
+    margin-left: 5px;
+  }
+
+  > :hover {
+    color: var(--accent-color);
+  }
 }
 
 main {
