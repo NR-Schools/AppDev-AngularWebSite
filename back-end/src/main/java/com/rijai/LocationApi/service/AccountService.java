@@ -31,6 +31,16 @@ public class AccountService implements IAccountService {
         Account opt_account = repository.findByEmail(existingAccount.getEmail());
         if (opt_account == null)
             return null;
+        
+        // No Empty Passwords
+        if (existingAccount.getPassword().equals("")) {
+            return null;
+        }
+
+        // Compare Passwords
+        if (!opt_account.getPassword().equals(existingAccount.getPassword())) {
+            return null;
+        }
 
         // Generate session auth string
         // String format: 16 Random Characters + Date (yyyymmdd) + time (hhmmss)
