@@ -31,7 +31,7 @@ public class AccountService implements IAccountService {
         Account opt_account = repository.findByEmail(existingAccount.getEmail());
         if (opt_account == null)
             return null;
-        
+
         // No Empty Passwords
         if (existingAccount.getPassword().equals("")) {
             return null;
@@ -45,7 +45,10 @@ public class AccountService implements IAccountService {
         // Generate session auth string
         // String format: 16 Random Characters + Date (yyyymmdd) + time (hhmmss)
         String randomChars = new Random().ints(16, 0, 62)
-                .collect(StringBuilder::new, (sb, value) -> sb.append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".charAt(value)), StringBuilder::append)
+                .collect(StringBuilder::new,
+                        (sb, value) -> sb
+                                .append("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".charAt(value)),
+                        StringBuilder::append)
                 .toString();
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
         String sessionAuthString = randomChars + dateTime;
@@ -80,6 +83,21 @@ public class AccountService implements IAccountService {
         // Check session_auth_string
         Account admin_act = repository.findByEmail(possiblyAdminAccount.getEmail());
         return admin_act.getSessionAuthString().equals(possiblyAdminAccount.getSessionAuthString());
+    }
+
+    @Override
+    public boolean isValidUser(Account possiblyValidUserAccount) {
+        // Check if non-null
+        if (possiblyValidUserAccount == null)
+            return false;
+
+        Account userAccount = repository.findByEmail(possiblyValidUserAccount.getEmail());
+
+        if (userAccount == null)
+            return false;
+
+        // Check session_auth_string
+        return userAccount.getSessionAuthString().equals(possiblyValidUserAccount.getSessionAuthString());
     }
 
     @Override

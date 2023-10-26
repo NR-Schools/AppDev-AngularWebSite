@@ -169,11 +169,17 @@ public class DogController {
             @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString) {
 
         // Construct Account
-        Account reqAccount = accountService.getAccount(email);
+        Account uncheckedAccount = new Account();
+        uncheckedAccount.setEmail(email);
+        uncheckedAccount.setSessionAuthString(sessionAuthString);
 
-        if (reqAccount == null) {
+        // Check Account
+        if (!accountService.isValidUser(uncheckedAccount)) {
             return List.of();
         }
+
+        // Get Account
+        Account reqAccount = accountService.getAccount(email);
 
         // Find all from email
         return dogService.userViewAllReq(reqAccount.getId());
@@ -186,11 +192,19 @@ public class DogController {
             @RequestBody Dog dog) {
 
         // Construct Account
-        Account reqAccount = new Account();
-        reqAccount.setEmail(email);
-        reqAccount.setSessionAuthString(sessionAuthString);
+        Account uncheckedAccount = new Account();
+        uncheckedAccount.setEmail(email);
+        uncheckedAccount.setSessionAuthString(sessionAuthString);
 
-        Dog reqAdoptedDog = dogService.userAdoptDog(dog, accountService.getAccount(email));
+        // Check Account
+        if (!accountService.isValidUser(uncheckedAccount)) {
+            return null;
+        }
+
+        // Get Account
+        Account reqAccount = accountService.getAccount(email);
+
+        Dog reqAdoptedDog = dogService.userAdoptDog(dog, reqAccount);
         reqAdoptedDog.getAccount().setId(-1);
         reqAdoptedDog.getAccount().setPassword("");
         return reqAdoptedDog;
@@ -203,9 +217,17 @@ public class DogController {
             @RequestBody Dog dog) {
         
         // Construct Account
+        Account uncheckedAccount = new Account();
+        uncheckedAccount.setEmail(email);
+        uncheckedAccount.setSessionAuthString(sessionAuthString);
+
+        // Check Account
+        if (!accountService.isValidUser(uncheckedAccount)) {
+            return false;
+        }
+
+        // Get Account
         Account reqAccount = accountService.getAccount(email);
-        
-        if (reqAccount == null) return false;
 
         // Try to cancel dog adopt request
         return dogService.userCancelDogAdoptRequest(dog, reqAccount);
