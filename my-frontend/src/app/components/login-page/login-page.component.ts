@@ -34,7 +34,7 @@ export class LoginPageComponent {
 				if (!value) return;
 
 				// Redirect
-				if (Email.trim() === "Admin") {
+				if (Email.trim().toLowerCase() === "admin") {
 					this.router.navigate(['/admin']);
 				}
 				else {
