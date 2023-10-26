@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DogRecordService } from '../../services/dog-record.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Dog } from '../../models/dog';
 import { ImageUtils } from '../../utils/image-utils';
 
@@ -11,17 +11,12 @@ import { ImageUtils } from '../../utils/image-utils';
 	styleUrls: ['./update-dog-record.component.css']
 })
 export class UpdateDogRecordComponent implements OnInit {
-	constructor(private formBuilder: FormBuilder,
-		private dogRecordService: DogRecordService,
-		private route: ActivatedRoute) { }
-
-	selectedFile?: File;
 
 	dogId?: number;
 	updateDogName?: string;
 	updateDogImage?: any;
+	isDogImageUpdated: boolean;
 	updateDogDescription?: string;
-
 	updateDogPreviewImage: any;
 
 	updateDogFormGroup = this.formBuilder.group({
@@ -35,8 +30,15 @@ export class UpdateDogRecordComponent implements OnInit {
 		Location: ['', Validators.required],
 	});
 
+	constructor(private formBuilder: FormBuilder,
+		private dogRecordService: DogRecordService,
+		private activeRoute: ActivatedRoute,
+		private router: Router) {
+			this.isDogImageUpdated = false;
+		}
+
 	ngOnInit(): void {
-		this.route.params.forEach((params: Params) => {
+		this.activeRoute.params.forEach((params: Params) => {
 			if (params['id'] !== undefined) {
 				const id: number = params['id'];
 				this.dogId = id;
@@ -61,7 +63,7 @@ export class UpdateDogRecordComponent implements OnInit {
 						this.updateDogFormGroup.setValue(initialValues);
 
 						// Attempt to display image
-						this.updateDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(this.updateDogImage);
+						this.updateDogPreviewImage = ImageUtils.base64ToImage(this.updateDogImage);
 					},
 					error: (err: any) => {
 						console.error(err);
@@ -75,13 +77,14 @@ export class UpdateDogRecordComponent implements OnInit {
 	onImageSelected(event: Event): void {
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files && inputElement.files.length > 0) {
-			this.selectedFile = inputElement.files[0];
-			console.log(this.selectedFile);
+			const selectedFile = inputElement.files[0];
+			console.log(selectedFile);
 
-			ImageUtils.fileToByteArray(this.selectedFile)
+			ImageUtils.fileToByteArray(selectedFile)
 				.then((byteArray) => {
-					this.updateDogImage = byteArray;
-					this.updateDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
+					this.updateDogImage = selectedFile;
+					this.updateDogPreviewImage = ImageUtils.byteArrayToImage(byteArray);
+					this.isDogImageUpdated = true;
 				})
 				.catch((error) => {
 					console.log('Error reading file:', error);
@@ -110,27 +113,18 @@ export class UpdateDogRecordComponent implements OnInit {
 		)
 
 		if (this.updateDogDescription !== null && this.updateDogDescription !== undefined) {
+			console.log(this.updateDogDescription);
 			newDog.description = this.updateDogDescription!.trim();
 		}
 
-		if (this.updateDogImage !== null && this.updateDogImage !== undefined) {
+		if (this.updateDogImage !== null && this.updateDogImage !== undefined && this.isDogImageUpdated) {
 			newDog.photoBytes = this.updateDogImage;
+			newDog.isPhotoUpdated = true;
 		}
-		newDog.photoBytes = this.selectedFile;
 
 		this.dogRecordService.updateDogRecord(this.dogId!, newDog).subscribe({
 			next: (value: Dog) => {
-				console.log(value);
-
-				const binaryString = atob(value.photoBytes);
-				const length = binaryString.length;
-				const byteArray = new Uint8Array(length);
-
-				for (let i = 0; i < length; i++) {
-					byteArray[i] = binaryString.charCodeAt(i);
-				}
-
-				this.updateDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray.buffer);
+				this.router.navigate(['/admin']);
 			},
 			error: (err: any) => {
 				console.log(err);

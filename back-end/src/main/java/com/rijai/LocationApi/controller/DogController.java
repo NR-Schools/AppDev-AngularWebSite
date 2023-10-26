@@ -59,32 +59,42 @@ public class DogController {
             @RequestHeader(name = "email", required = false) String email,
             @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
             @RequestParam("id") long id,
-            @RequestParam("photoBytes") MultipartFile file,
+            @RequestParam(value = "photoBytes", required = false) MultipartFile file,
+            @RequestParam("isPhotoUpdated") boolean isPhotoUpdated,
             @RequestParam("name") String name,
             @RequestParam("breed") String breed,
             @RequestParam("age") int age,
             @RequestParam("sex") String sex,
             @RequestParam("colorCoat") String colorCoat,
-            @RequestParam(value = "desciption", required = false) String desciption,
+            @RequestParam(value = "description", required = false) String description,
             @RequestParam("arrivedDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate arrivedDate,
             @RequestParam("arrivedFrom") String arrivedFrom,
             @RequestParam("size") String size,
-            @RequestParam("location") String location) throws IOException {
+            @RequestParam("location") String location) {
         
         // Create Dog
         Dog dog = new Dog();
         dog.setId(id);
-        dog.setPhotoBytes(file.getBytes());
+        try {
+            dog.setPhotoBytes(null);
+            if (file != null) {
+                dog.setPhotoBytes(file.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         dog.setName(name);
         dog.setBreed(breed);
         dog.setAge(age);
         dog.setSex(sex);
         dog.setColorCoat(colorCoat);
-        dog.setDescription(desciption);
+        dog.setDescription(description);
         dog.setArrivedDate(arrivedDate);
         dog.setArrivedFrom(arrivedFrom);
         dog.setSize(size);
         dog.setLocation(location);
+
+        dog.setPhotoChanged(isPhotoUpdated);
 
         // Construct Account
         Account reqAccount = new Account();

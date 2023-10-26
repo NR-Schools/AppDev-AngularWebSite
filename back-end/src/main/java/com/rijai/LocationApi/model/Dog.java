@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
@@ -32,6 +34,8 @@ public class Dog {
 
     @Lob
     private byte[] photoBytes;
+    @JsonIgnore
+    private boolean isPhotoUpdated;
 
     // For Dog Adoption
     private boolean adoptRequested;
@@ -180,6 +184,14 @@ public class Dog {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public boolean isPhotoChanged() {
+        return isPhotoUpdated;
+    }
+
+    public void setPhotoChanged(boolean photoChangedStatus) {
+        this.isPhotoUpdated = photoChangedStatus;
     }
 
     @Override

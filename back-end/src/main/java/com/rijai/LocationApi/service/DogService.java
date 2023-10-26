@@ -39,7 +39,16 @@ public class DogService implements IDogService {
             return null;
         
         updatedDog.setAccount(opt_dog.get().getAccount());
-        return repository.save(updatedDog);
+
+        // If Photo Updated, Proceed As Usual
+        // Else, Use Stored
+        if (updatedDog.isPhotoChanged()) {
+            return repository.save(updatedDog);
+        }
+        else {
+            updatedDog.setPhotoBytes(opt_dog.get().getPhotoBytes());
+            return repository.save(updatedDog);
+        }
     }
 
     @Override

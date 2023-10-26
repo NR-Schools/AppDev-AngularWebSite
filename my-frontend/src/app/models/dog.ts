@@ -17,8 +17,10 @@ export class Dog {
   // For Adoption
   adoptRequested?: boolean;
   adoptAccepted?: boolean;
-
   account?: Account;
+
+  // Not Included In Persistence
+  isPhotoUpdated: boolean;
 
   constructor(
     _name: string,
@@ -40,6 +42,10 @@ export class Dog {
     this.arrivedFrom = _arrivedFrom;
     this.size = _size;
     this.location = _location;
+    
+
+    // By Default
+    this.isPhotoUpdated = false;
   }
 
   static NoDog(): Dog {

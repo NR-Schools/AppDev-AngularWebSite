@@ -48,7 +48,7 @@ export class AddDogRecordComponent {
 					//console.log(base64String);
 					//const aaa = Uint8Array.from(atob(base64String), c => c.charCodeAt(0));
 
-					this.addDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
+					//this.addDogPreviewImage = ImageUtils.byteArrayToImageDataUrl(byteArray);
 				})
 				.catch((error) => {
 					console.log('Error reading file:', error);
