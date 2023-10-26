@@ -15,7 +15,7 @@
 
       <div class="user">
         <img src="../../assets/images/user-icon.png" alt="" />
-        <a href="/admin">Admin</a>
+        <a style="pointer-events: none" href="/admin">Admin</a>
       </div>
 
       <div class="logout">
@@ -120,7 +120,8 @@
         <button
           class="add-button"
           (click)="onAddDogRecord()"
-          [disabled]="!addDogFormGroup.valid">
+          [disabled]="!addDogFormGroup.valid"
+        >
           <div>
             <p>Add Dog Record</p>
           </div>

@@ -15,7 +15,7 @@
 
       <div class="user">
         <img src="../../assets/images/user-icon.png" alt="" />
-        <a href="/user">User</a>
+        <a style="pointer-events: none" href="/user">User</a>
       </div>
 
       <div class="logout">
@@ -32,6 +32,11 @@
 
 <main>
   <div class="dog-container">
-    <udr-dog-adopt-item class="dog-card" *ngFor="let dogItemWithReq of dogItemWithReqs" [dogItem]="dogItemWithReq" (itemReloadEvent)="onItemsReload()" />
+    <udr-dog-adopt-item
+      class="dog-card"
+      *ngFor="let dogItemWithReq of dogItemWithReqs"
+      [dogItem]="dogItemWithReq"
+      (itemReloadEvent)="onItemsReload()"
+    />
   </div>
 </main>

@@ -15,7 +15,7 @@
 
       <div class="user">
         <img src="assets/images/user-icon.png" alt="" />
-        <a href="/user">User</a>
+        <a style="pointer-events: none" href="/user">User</a>
       </div>
 
       <div class="logout">
@@ -29,7 +29,11 @@
 <main>
   <div class="details-container">
     <div class="image-container">
-      <img [src]="thumbnail" alt="" onerror="this.src='assets/images/sample-dog-image.png';" />
+      <img
+        [src]="thumbnail"
+        alt=""
+        onerror="this.src='assets/images/sample-dog-image.png';"
+      />
     </div>
 
     <div class="dog-details-container">
@@ -63,7 +67,11 @@
       </div>
 
       <div class="buttons">
-        <button class="adopt-button" (click)="onDogAdopt()" [disabled]="isAdoptButtonDisabled">
+        <button
+          class="adopt-button"
+          (click)="onDogAdopt()"
+          [disabled]="isAdoptButtonDisabled"
+        >
           <div>
             <p>Adopt</p>
           </div>

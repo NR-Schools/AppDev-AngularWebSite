@@ -4,8 +4,8 @@
 
     <div class="links">
       <div class="favorites">
-        <img class="active" src="../../assets/images/request-icon.png" alt="" />
-        <a class="acitve" href="/admin-dog-requests">Requests</a>
+        <img src="../../assets/images/request-icon.png" alt="" />
+        <a class="active" href="/admin-dog-requests">Requests</a>
       </div>
 
       <div class="dashboard">
@@ -15,7 +15,7 @@
 
       <div class="user">
         <img src="../../assets/images/user-icon.png" alt="" />
-        <a href="/admin">Admin</a>
+        <a style="pointer-events: none" href="/admin">Admin</a>
       </div>
 
       <div class="logout">
@@ -32,6 +32,11 @@
 
 <main>
   <div class="dog-container">
-    <adr-dog-adopt-item class="dog-card" *ngFor="let dogItemWithReq of dogItemWithReqs" [dogItem]="dogItemWithReq" (itemReloadEvent)="onItemsReload()" />
+    <adr-dog-adopt-item
+      class="dog-card"
+      *ngFor="let dogItemWithReq of dogItemWithReqs"
+      [dogItem]="dogItemWithReq"
+      (itemReloadEvent)="onItemsReload()"
+    />
   </div>
 </main>
