@@ -1,3 +1,7 @@
+.dog-requested {
+  color: #FF4242 !important;
+}
+
 .dog-name {
   color: var(--accent-color);
   font-size: 20px;
