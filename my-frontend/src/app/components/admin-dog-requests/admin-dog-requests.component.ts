@@ -16,12 +16,22 @@ export class AdminDogRequestsComponent implements OnInit {
 	ngOnInit(): void {
 		this.dogRecordService.adminViewAllDogAdoptReq().subscribe({
 			next: (value: Array<Dog>) => {
-				console.log(value);
 				this.dogItemWithReqs = value;
 			},
 			error: (err: any) => {
 				console.log(err);
 			}
-		})
+		});
+	}
+
+	onItemsReload(): void {
+		this.dogRecordService.adminViewAllDogAdoptReq().subscribe({
+			next: (value: Array<Dog>) => {
+				this.dogItemWithReqs = value;
+			},
+			error: (err: any) => {
+				console.log(err);
+			}
+		});
 	}
 }
