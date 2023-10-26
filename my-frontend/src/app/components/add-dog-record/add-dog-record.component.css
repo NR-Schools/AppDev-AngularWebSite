@@ -183,12 +183,8 @@ h3 {
 
     &:disabled {
       background-color: #aeabab;
-      border: 1px solid #aeabab;
-
-      &:hover {
-        background-color: #aeabab;
-        border: 1px solid #aeabab;
-      }
+      border: 1px solid black;
+      cursor: default;
     }
   }
 

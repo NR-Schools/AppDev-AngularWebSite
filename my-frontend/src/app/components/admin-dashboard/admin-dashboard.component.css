@@ -128,6 +128,8 @@ select {
   background-color: var(--bg-color);
   border: none;
   padding: 5px;
+  font-family: "Farro", "Courier New", Courier, monospace;
+  font-size: 15px;
 }
 
 aside button {
