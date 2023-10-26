@@ -117,13 +117,17 @@ export class DogRecordService extends BaseService {
 		// Get Auth Data
 		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
 
+		// Only send dog id
+		let dog_requested = Dog.NoDog();
+		dog_requested.id = dog.id;
+
 		// Prepare headers
 		const headers = new HttpHeaders()
 			.set('email', account.email!)
 			.set('session-auth-string', account.sessionAuthString!);
 
 		// Adopt Dog from server
-		return this.http.post<Dog>(this.MainUrl + `dog-adopt/user-dog-adopt`, dog, {
+		return this.http.post<Dog>(this.MainUrl + `dog-adopt/user-dog-adopt`, dog_requested, {
 			headers: headers,
 		});
 	}
@@ -161,6 +165,12 @@ export class DogRecordService extends BaseService {
 	adminConfirmDogAdopt(dog: Dog): Observable<boolean> {
 		// Get Auth Data
 		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+		// Only send adoption details
+		let dog_requested = Dog.NoDog();
+		dog_requested.id = dog.id;
+		dog_requested.adoptAccepted = dog.adoptAccepted;
+		dog_requested.adoptRequested = dog.adoptRequested;
 
 		// Prepare headers
 		const headers = new HttpHeaders()

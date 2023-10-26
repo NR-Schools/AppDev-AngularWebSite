@@ -1,20 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Dog } from 'src/app/models/dog';
 import { DogRecordService } from 'src/app/services/dog-record.service';
+import { ImageUtils } from 'src/app/utils/image-utils';
 
 @Component({
 	selector: 'adr-dog-adopt-item',
 	templateUrl: './adr-dog-adopt-item.component.html',
 	styleUrls: ['./adr-dog-adopt-item.component.css']
 })
-export class AdrDogAdoptItemComponent {
-	@Input({required: true}) dogItem!: Dog;
+export class AdrDogAdoptItemComponent implements OnInit {
+	@Input({ required: true }) dogItem!: Dog;
+	thumbnail: any;
 
-	constructor(private dogRecordService: DogRecordService) {}
+	constructor(private dogRecordService: DogRecordService) { }
+
+	ngOnInit(): void {
+		this.thumbnail = ImageUtils.base64ToImage(this.dogItem.photoBytes);
+
+	}
 
 	onDogAdoptStatus(status: boolean) {
 		this.dogItem.adoptAccepted = status;
 
+		console.log(status);
 		console.log(this.dogItem);
 
 		this.dogRecordService.adminConfirmDogAdopt(this.dogItem).subscribe({

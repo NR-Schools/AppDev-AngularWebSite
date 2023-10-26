@@ -97,6 +97,8 @@ public class DogService implements IDogService {
         if (opt_dog.isEmpty()) return false;
 
         Dog requestedDog = opt_dog.get();
+        requestedDog.setAdoptAccepted(dog.isAdoptAccepted());
+        requestedDog.setAdoptRequested(dog.isAdoptRequested());
 
         if (!requestedDog.isAdoptRequested()) {
             return false;
