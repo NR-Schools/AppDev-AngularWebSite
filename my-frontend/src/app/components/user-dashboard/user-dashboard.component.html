@@ -27,7 +27,7 @@
 </header>
 
 <div class="search-container">
-  <input class="search-bar" type="text" placeholder="Dog Name" />
+  <input class="search-bar" type="text" placeholder="Dog Name" [(ngModel)]="nameFilter" (input)="onFilterApplied()" />
   <div>
     <img src="../../assets/images/search-icon.png" alt="search-icon" />
   </div>
@@ -36,33 +36,38 @@
 <main>
   <aside>
     <!-- Filters -->
-    <form action="">
+    <div>
       <label for="breeds">Breed</label>
-      <input type="text" placeholder="Breed" />
+      <input type="text" placeholder="Breed" [(ngModel)]="breedFilter" (input)="onFilterApplied()" />
 
       <label for="colors">Color</label>
-      <input type="text" placeholder="Color" />
+      <input type="text" placeholder="Color" [(ngModel)]="colorFilter" (input)="onFilterApplied()" />
 
       <label for="sizes">Size</label>
-      <input type="text" placeholder="Size" />
+      <select class="values" [(ngModel)]="sizeFilter" (change)="onFilterApplied()">
+        <option value=""></option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
 
-      <label for="sex">Sex</label>
-      <select class="values" formControlName="Sex">
+      <label for="sexes">Sex</label>
+      <select class="values" [(ngModel)]="sexFilter" (change)="onFilterApplied()">
+        <option value=""></option>
         <option>Male</option>
         <option>Female</option>
       </select>
 
       <label for="ages">Age</label>
-      <input type="text" placeholder="Age" />
+      <input type="number" placeholder="Age" [(ngModel)]="ageFilter" (input)="onFilterApplied()" />
 
       <div class="button-container">
-        <button class="reset" type="reset">Reset</button>
-        <button class="search" type="submit">Filter</button>
+        <button class="reset" (click)="onFiltersReset()">Reset</button>
       </div>
-    </form>
+    </div>
   </aside>
   <div class="dog-container">
     <!-- Container for Dog Items -->
-    <ud-dog-item *ngFor="let dog of dogs" [dogItem]="dog" class="dog-card" />
+    <ud-dog-item *ngFor="let dog of filteredDogs" [dogItem]="dog" class="dog-card" />
   </div>
 </main>
