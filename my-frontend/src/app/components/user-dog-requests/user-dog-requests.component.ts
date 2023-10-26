@@ -15,7 +15,6 @@ export class UserDogRequestsComponent implements OnInit {
   ngOnInit(): void {
     this.dogRecordService.userViewAllDogAdoptReq().subscribe({
       next: (value: Array<Dog>) => {
-        console.log(value);
         this.dogItemWithReqs = value;
       },
       error: (err: any) => {

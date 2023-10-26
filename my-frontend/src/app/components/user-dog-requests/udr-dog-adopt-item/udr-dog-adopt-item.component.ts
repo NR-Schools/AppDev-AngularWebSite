@@ -1,28 +1,32 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Dog } from 'src/app/models/dog';
 import { DogRecordService } from 'src/app/services/dog-record.service';
+import { ImageUtils } from 'src/app/utils/image-utils';
 @Component({
-  selector: 'app-udr-dog-adopt-item',
-  templateUrl: './udr-dog-adopt-item.component.html',
-  styleUrls: ['./udr-dog-adopt-item.component.css'],
+	selector: 'udr-dog-adopt-item',
+	templateUrl: './udr-dog-adopt-item.component.html',
+	styleUrls: ['./udr-dog-adopt-item.component.css'],
 })
-export class UdrDogAdoptItemComponent {
-  @Input({ required: true }) dogItem!: Dog;
+export class UdrDogAdoptItemComponent implements OnInit {
+	@Input({ required: true }) dogItem!: Dog;
+	thumbnail: any;
 
-  constructor(private dogRecordService: DogRecordService) {}
+	constructor(private dogRecordService: DogRecordService) { }
 
-  onDogAdoptStatus(status: boolean) {
-    this.dogItem.adoptAccepted = status;
+	ngOnInit(): void {
+		this.thumbnail = ImageUtils.base64ToImage(this.dogItem.photoBytes);
+	}
 
-    console.log(this.dogItem);
+	onUserCancelDogAdoptRequest() {
+		console.log(this.dogItem);
 
-    this.dogRecordService.adminConfirmDogAdopt(this.dogItem).subscribe({
-      next: (value: boolean) => {
-        console.log(value);
-      },
-      error: (err: any) => {
-        console.log(err);
-      },
-    });
-  }
+		this.dogRecordService.userCancelDogAdopt(this.dogItem).subscribe({
+			next: (value: boolean) => {
+				console.log(value);
+			},
+			error: (err: any) => {
+				console.log(err);
+			},
+		});
+	}
 }

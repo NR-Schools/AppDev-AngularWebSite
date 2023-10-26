@@ -132,6 +132,25 @@ export class DogRecordService extends BaseService {
 		});
 	}
 
+	userCancelDogAdopt(dog: Dog): Observable<boolean> {
+		// Get Auth Data
+		let account: Account = JSON.parse(localStorage.getItem('account_info')!);
+
+		// Only send dog id
+		let dog_requested = Dog.NoDog();
+		dog_requested.id = dog.id;
+
+		// Prepare headers
+		const headers = new HttpHeaders()
+			.set('email', account.email!)
+			.set('session-auth-string', account.sessionAuthString!);
+
+		// Adopt Dog from server
+		return this.http.post<boolean>(this.MainUrl + `dog-adopt/user-cancel-dog-adopt`, dog_requested, {
+			headers: headers,
+		});
+	}
+
 	adminViewAllDogAdoptReq(): Observable<Array<Dog>> {
 		// Get Auth Data
 		let account: Account = JSON.parse(localStorage.getItem('account_info')!);

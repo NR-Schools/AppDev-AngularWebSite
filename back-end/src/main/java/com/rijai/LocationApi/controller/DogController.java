@@ -38,7 +38,7 @@ public class DogController {
             @RequestParam("arrivedFrom") String arrivedFrom,
             @RequestParam("size") String size,
             @RequestParam("location") String location) {
-        
+
         // Create Dog
         Dog dog = new Dog();
         try {
@@ -102,7 +102,7 @@ public class DogController {
             @RequestParam("arrivedFrom") String arrivedFrom,
             @RequestParam("size") String size,
             @RequestParam("location") String location) {
-        
+
         // Create Dog
         Dog dog = new Dog();
         dog.setId(id);
@@ -163,6 +163,22 @@ public class DogController {
     }
 
     // For Adoption
+    @GetMapping("/api/dog-adopt/user-view-all-adopt-req")
+    public List<Dog> userViewAllDogAdoptReq(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString) {
+
+        // Construct Account
+        Account reqAccount = accountService.getAccount(email);
+
+        if (reqAccount == null) {
+            return List.of();
+        }
+
+        // Find all from email
+        return dogService.userViewAllReq(reqAccount.getId());
+    }
+
     @PostMapping("/api/dog-adopt/user-dog-adopt")
     public Dog userDogAdopt(
             @RequestHeader(name = "email", required = false) String email,
