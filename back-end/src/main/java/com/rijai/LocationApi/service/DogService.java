@@ -40,6 +40,11 @@ public class DogService implements IDogService {
         
         updatedDog.setAccount(opt_dog.get().getAccount());
 
+        // Exclude Adoption Details
+        updatedDog.setAdoptRequested(opt_dog.get().isAdoptRequested());
+        updatedDog.setAdoptAccepted(opt_dog.get().isAdoptAccepted());
+        updatedDog.setAccount(opt_dog.get().getAccount());
+
         // If Photo Updated, Proceed As Usual
         // Else, Use Stored
         if (updatedDog.isPhotoChanged()) {
@@ -68,10 +73,16 @@ public class DogService implements IDogService {
 
     @Override
     public Dog userAdoptDog(Dog dog, Account account) {
-        dog.setAccount(account);
-        dog.setAdoptRequested(true);
-        dog.setAdoptAccepted(false);
-        return repository.save(dog);
+        // Get Dog
+        Optional<Dog> opt_dog = repository.findById(dog.getId());
+        if (opt_dog.isEmpty()) return null;
+
+        Dog requestedDog = opt_dog.get();
+
+        requestedDog.setAccount(account);
+        requestedDog.setAdoptRequested(true);
+        requestedDog.setAdoptAccepted(false);
+        return repository.save(requestedDog);
     }
 
     @Override
@@ -81,21 +92,27 @@ public class DogService implements IDogService {
 
     @Override
     public boolean adminConfirmReqDogAdopt(Dog dog) {
-        if (!dog.isAdoptRequested()) {
+        // Get Dog
+        Optional<Dog> opt_dog = repository.findById(dog.getId());
+        if (opt_dog.isEmpty()) return false;
+
+        Dog requestedDog = opt_dog.get();
+
+        if (!requestedDog.isAdoptRequested()) {
             return false;
         }
 
         // Check if Accepted Or Not
-        if (dog.isAdoptAccepted()) {
+        if (requestedDog.isAdoptAccepted()) {
             // Remove This Dog
-            repository.delete(dog);
+            repository.delete(requestedDog);
         }
         else {
             // Remove Adoption Info
-            dog.setAccount(null);
-            dog.setAdoptRequested(false);
-            dog.setAdoptAccepted(false);
-            repository.save(dog);
+            requestedDog.setAccount(null);
+            requestedDog.setAdoptRequested(false);
+            requestedDog.setAdoptAccepted(false);
+            repository.save(requestedDog);
         }
 
         return true;
