@@ -117,7 +117,8 @@ aside label {
   margin-bottom: 10px;
 }
 
-aside input {
+aside input,
+select {
   margin: auto;
   width: 100%;
   display: block;
