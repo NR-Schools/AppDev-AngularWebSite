@@ -2,9 +2,11 @@
   <img
     [src]="thumbnail"
     alt="dog-image"
-    onerror="this.src='assets/images/sample-dog-image.png';"
+    onerror="this.src='assets/images/no-dog-placeholder.png';"
   />
-  <h2 class="dog-name" [ngClass]="{ 'dog-requested' : dogItem.adoptRequested }">{{ dogItem.name }}</h2>
+  <h2 class="dog-name" [ngClass]="{ 'dog-requested': dogItem.adoptRequested }">
+    {{ dogItem.name }}
+  </h2>
   <h4 class="dog-details">{{ dogItem.breed }}</h4>
   <h4 class="dog-details">{{ dogItem.age }} year(s) old</h4>
 </a>
