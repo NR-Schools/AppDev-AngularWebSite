@@ -22,6 +22,7 @@ nav {
   justify-content: center;
   align-items: center;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 main {

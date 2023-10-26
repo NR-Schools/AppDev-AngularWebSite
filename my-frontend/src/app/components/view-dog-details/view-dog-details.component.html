@@ -29,7 +29,11 @@
 <main>
   <div class="details-container">
     <div class="image-container">
-      <img [src]="thumbnail" alt="" />
+      <img
+        [src]="thumbnail"
+        alt=""
+        onerror="this.src='assets/images/sample-dog-image.png';"
+      />
     </div>
 
     <div class="dog-details-container">

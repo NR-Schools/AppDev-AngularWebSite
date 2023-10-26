@@ -46,10 +46,7 @@ img {
   font-weight: 500;
 }
 
-.confirm-button {
-  border: none;
+.decline-button:hover {
   background-color: var(--secondary-color);
   color: white;
-  font-size: 15px;
-  font-weight: 500;
 }

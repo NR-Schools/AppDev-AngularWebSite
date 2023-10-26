@@ -1,6 +1,10 @@
-<p class="user-email">{{ dogItem.account!.email }}</p>
+<p class="user-email">From: {{ dogItem.account!.email }}</p>
 <a>
-  <img [src]="thumbnail" alt="dog-image" onerror="this.src='assets/images/no_dog_placeholder.png'" />
+  <img
+    [src]="thumbnail"
+    alt="dog-image"
+    onerror="this.src='assets/images/sample-dog-image.png'"
+  />
   <h2 class="dog-name">{{ dogItem.name }}</h2>
   <h4 class="dog-details">{{ dogItem.breed }}</h4>
   <h4 class="dog-details">{{ dogItem.age }} year(s) old</h4>
