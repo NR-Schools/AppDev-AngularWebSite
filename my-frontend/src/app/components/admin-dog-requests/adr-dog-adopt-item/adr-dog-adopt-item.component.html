@@ -1,13 +1,21 @@
-<p>{{ dogItem.account!.username }}</p>
+<p class="username">From: {{ dogItem.account!.username }}</p>
 <p class="user-email">{{ dogItem.account!.email }}</p>
 <a>
-    <img [src]="thumbnail" alt="dog-image" />
-    <h2 class="dog-name">{{ dogItem.name }}</h2>
-    <h4 class="dog-details">{{ dogItem.breed }}</h4>
-    <h4 class="dog-details">{{ dogItem.age }} year(s) old</h4>
+  <img
+    [src]="thumbnail"
+    alt="dog-image"
+    onerror="this.src='assets/images/sample-dog-image.png';"
+  />
+  <h2 class="dog-name">{{ dogItem.name }}</h2>
+  <h4 class="dog-details">{{ dogItem.breed }}</h4>
+  <h4 class="dog-details">{{ dogItem.age }} year(s) old</h4>
 
-    <div class="buttons">
-        <button class="decline-button" (click)="onDogAdoptStatus(false)">Decline</button>
-        <button class="confirm-button" (click)="onDogAdoptStatus(true)">Confirm</button>
-    </div>
+  <div class="buttons">
+    <button class="decline-button" (click)="onDogAdoptStatus(false)">
+      Decline
+    </button>
+    <button class="confirm-button" (click)="onDogAdoptStatus(true)">
+      Confirm
+    </button>
+  </div>
 </a>
