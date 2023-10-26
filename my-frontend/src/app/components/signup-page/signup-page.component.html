@@ -1,20 +1,12 @@
 <div class="signup-page">
   <div class="inner-page">
     <div class="signup-section">
-      <img
-        src="assets/images/furever-logo.png"
-        width="58px"
-        style="float: right; margin: 10px 10px 0 0"
-      />
+      <img src="assets/images/furever-logo.png" width="58px" style="float: right; margin: 10px 10px 0 0" />
       <div class="signup-info">
         <p>Sign up</p>
-        <span style="color: #0000004d; font-size: 15px"
-          >Sign up for free and search for your ideal companion on four
-          legs.</span
-        >
-        <span style="color: #18c17c; font-size: 15px"
-          >Save a dog's life and discover the joy of adoption</span
-        >
+        <span style="color: #0000004d; font-size: 15px">Sign up for free and search for your ideal companion on four
+          legs.</span>
+        <span style="color: #18c17c; font-size: 15px">Save a dog's life and discover the joy of adoption</span>
 
         <br />
         <br />
@@ -22,39 +14,20 @@
         <!-- Form Group -->
         <form [formGroup]="signupFormGroup">
           <label for="username">Username:</label>
-          <input
-            type="text"
-            name="username"
-            formControlName="Username"
-            required
-          />
+          <input type="text" name="username" formControlName="Username" required />
 
           <label for="email">Email Address:</label>
           <input type="email" name="email" formControlName="Email" required />
 
           <label for="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            formControlName="Password"
-            required
-          />
+          <input type="password" name="password" formControlName="Password" required />
 
           <label for="confirm_password">Confirm Password:</label>
-          <input
-            type="password"
-            name="confirm_password"
-            formControlName="ConfirmPassword"
-            required
-          />
+          <input type="password" name="confirm_password" formControlName="ConfirmPassword" required />
 
           <img src="assets/images/line.png" alt="" />
 
-          <button
-            type="submit"
-            [disabled]="!signupFormGroup.valid"
-            (click)="signupAccount()"
-          >
+          <button type="submit" [disabled]="!signupFormGroup.valid" (click)="signupAccount()">
             SIGN UP
           </button>
           <p class="redirect_login">

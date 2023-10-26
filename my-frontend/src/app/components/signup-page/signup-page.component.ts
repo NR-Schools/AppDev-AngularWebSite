@@ -16,6 +16,7 @@ export class SignupPageComponent {
   ) {}
 
   signupFormGroup = this.formBuilder.group({
+    Username: ['', Validators.required],
     Email: ['', Validators.required],
     Password: ['', Validators.required],
     ConfirmPassword: ['', Validators.required],
@@ -23,6 +24,7 @@ export class SignupPageComponent {
 
   signupAccount() {
     // Get Values From Controls
+    const Username = this.signupFormGroup.get('Username')?.value as string;
     const Email = this.signupFormGroup.get('Email')?.value as string;
     const Password = this.signupFormGroup.get('Password')?.value as string;
     const ConfirmPassword = this.signupFormGroup.get('ConfirmPassword')
@@ -35,7 +37,7 @@ export class SignupPageComponent {
     }
 
     // Signup
-    this.accountService.signUp(Email, Password).subscribe({
+    this.accountService.signUp(Username, Email, Password).subscribe({
       next: (value: boolean) => {
         if (value) {
           window.alert('Account Signed Up Successfully!');

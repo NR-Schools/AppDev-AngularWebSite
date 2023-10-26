@@ -12,10 +12,10 @@ export class AccountService extends BaseService {
 		super();
 	}
 
-	signUp(email: string, password: string): Observable<boolean> {
+	signUp(username: string, email: string, password: string): Observable<boolean> {
 		// Get User Info
 		let account = new Account();
-		account.signup_login(email, password);
+		account.signup(username, email, password);
 
 		// Send to Server
 		return this.http.post<boolean>(this.MainUrl + 'account/signup', account);
@@ -24,7 +24,7 @@ export class AccountService extends BaseService {
 	login(email: string, password: string): Observable<boolean> {
 		// Get User Info
 		let account = new Account();
-		account.signup_login(email, password);
+		account.login(email, password);
 
 		// Validate from Server
 		return this.http.post<Account>(this.MainUrl + 'account/login', account)
