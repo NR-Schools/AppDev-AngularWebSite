@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Dog } from '../../models/dog';
 import { DogRecordService } from '../../services/dog-record.service';
 import { ImageUtils } from 'src/app/utils/image-utils';
@@ -12,10 +12,16 @@ import { ImageUtils } from 'src/app/utils/image-utils';
 export class ViewDogDetailsComponent implements OnInit {
 	dog: Dog;
 	thumbnail: any;
+	isAdoptButtonDisabled: boolean;
+	dogAdoptString: string;
 
-	constructor(private route: ActivatedRoute,
+	constructor(
+		private router: Router,
+		private route: ActivatedRoute,
 		private dogRecordService: DogRecordService) {
 		this.dog = Dog.NoDog();
+		this.isAdoptButtonDisabled = false;
+		this.dogAdoptString = "Available to Adopt";
 	}
 
 	ngOnInit(): void {
@@ -28,6 +34,11 @@ export class ViewDogDetailsComponent implements OnInit {
 
 						// Convert Bytes to Image
 						this.thumbnail = ImageUtils.base64ToImage(this.dog.photoBytes);
+
+						if(this.dog.adoptRequested) {
+							this.isAdoptButtonDisabled = true;
+							this.dogAdoptString = "Requested for Adoption";
+						}
 					},
 					error: (err: any) => {
 						console.error(err);
@@ -46,7 +57,7 @@ export class ViewDogDetailsComponent implements OnInit {
 
 		this.dogRecordService.userDogAdopt(sendDog).subscribe({
 			next: (value: Dog) => {
-				console.log(value);
+				this.router.navigate(['/user']);
 			},
 			error: (err: any) => {
 				console.log(err);
