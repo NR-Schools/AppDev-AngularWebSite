@@ -16,7 +16,8 @@ nav {
 
 .user,
 .favorites,
-.dashboard {
+.dashboard,
+.logout {
   display: flex;
   justify-content: center;
   align-items: center;
