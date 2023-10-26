@@ -13,17 +13,14 @@ export class UserDogRequestsComponent implements OnInit {
 	constructor(private dogRecordService: DogRecordService) { }
 
 	ngOnInit(): void {
-		this.dogRecordService.userViewAllDogAdoptReq().subscribe({
-			next: (value: Array<Dog>) => {
-				this.dogItemWithReqs = value;
-			},
-			error: (err: any) => {
-				console.error(err);
-			},
-		});
+		this.loadItems();
 	}
 
 	onItemsReload(): void {
+		this.loadItems();
+	}
+
+	loadItems(): void {
 		this.dogRecordService.userViewAllDogAdoptReq().subscribe({
 			next: (value: Array<Dog>) => {
 				this.dogItemWithReqs = value;

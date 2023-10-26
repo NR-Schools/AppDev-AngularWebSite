@@ -26,13 +26,14 @@ export class AdminDashboardComponent implements OnInit {
 		private dogRecordService: DogRecordService) { }
 
 	ngOnInit(): void {
-		this.dogRecordService.viewAllDogRecords().subscribe((data: Dog[]) => {
-			this.dogs = data;
-			this.filteredDogs = this.dogs;
-		});
+		this.loadItems();
 	}
 
 	onItemsReload(): void {
+		this.loadItems();
+	}
+
+	loadItems(): void {
 		this.dogRecordService.viewAllDogRecords().subscribe((data: Dog[]) => {
 			this.dogs = data;
 			this.filteredDogs = this.dogs;
