@@ -196,6 +196,21 @@ public class DogController {
         return reqAdoptedDog;
     }
 
+    @PostMapping("/api/dog-adopt/user-cancel-dog-adopt-req")
+    public boolean userCancelDogAdoptRequest(
+            @RequestHeader(name = "email", required = false) String email,
+            @RequestHeader(name = "session-auth-string", required = false) String sessionAuthString,
+            @RequestBody Dog dog) {
+        
+        // Construct Account
+        Account reqAccount = accountService.getAccount(email);
+        
+        if (reqAccount == null) return false;
+
+        // Try to cancel dog adopt request
+        return dogService.userCancelDogAdoptRequest(dog, reqAccount);
+    }
+
     @GetMapping("/api/dog-adopt/admin-view-all-adopt-req")
     public List<Dog> adminViewAllDogAdoptReq(
             @RequestHeader(name = "email", required = false) String email,

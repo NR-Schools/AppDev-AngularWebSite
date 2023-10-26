@@ -146,7 +146,7 @@ export class DogRecordService extends BaseService {
 			.set('session-auth-string', account.sessionAuthString!);
 
 		// Adopt Dog from server
-		return this.http.post<boolean>(this.MainUrl + `dog-adopt/user-cancel-dog-adopt`, dog_requested, {
+		return this.http.post<boolean>(this.MainUrl + `dog-adopt/user-cancel-dog-adopt-req`, dog_requested, {
 			headers: headers,
 		});
 	}

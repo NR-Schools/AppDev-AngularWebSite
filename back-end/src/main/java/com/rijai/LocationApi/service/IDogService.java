@@ -15,7 +15,7 @@ public interface IDogService {
     // For Adoption
     List<Dog> userViewAllReq(long id);
     Dog userAdoptDog(Dog dog, Account account);
+    boolean userCancelDogAdoptRequest(Dog dog, Account account);
     List<Dog> adminViewAllDogAdoptReq();
-
     boolean adminConfirmReqDogAdopt(Dog dog);
 }

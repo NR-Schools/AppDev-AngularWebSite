@@ -37,7 +37,7 @@ public class DogService implements IDogService {
         Optional<Dog> opt_dog = repository.findById(updatedDog.getId());
         if (opt_dog.isEmpty())
             return null;
-        
+
         updatedDog.setAccount(opt_dog.get().getAccount());
 
         // Exclude Adoption Details
@@ -49,8 +49,7 @@ public class DogService implements IDogService {
         // Else, Use Stored
         if (updatedDog.isPhotoChanged()) {
             return repository.save(updatedDog);
-        }
-        else {
+        } else {
             updatedDog.setPhotoBytes(opt_dog.get().getPhotoBytes());
             return repository.save(updatedDog);
         }
@@ -75,7 +74,8 @@ public class DogService implements IDogService {
     public Dog userAdoptDog(Dog dog, Account account) {
         // Get Dog
         Optional<Dog> opt_dog = repository.findById(dog.getId());
-        if (opt_dog.isEmpty()) return null;
+        if (opt_dog.isEmpty())
+            return null;
 
         Dog requestedDog = opt_dog.get();
 
@@ -83,6 +83,31 @@ public class DogService implements IDogService {
         requestedDog.setAdoptRequested(true);
         requestedDog.setAdoptAccepted(false);
         return repository.save(requestedDog);
+    }
+
+    @Override
+    public boolean userCancelDogAdoptRequest(Dog dog, Account account) {
+        // Remove Information [About User]
+
+        // Get All Dog Info
+        Optional<Dog> opt_dog = repository.findById(dog.getId());
+
+        if (opt_dog.isEmpty())
+            return false;
+
+        // Check if account id is same as account on dog
+        if (opt_dog.get().getAccount() == null)
+            return false;
+        if (account.getId() != opt_dog.get().getAccount().getId())
+            return false;
+
+        Dog requestedDog = opt_dog.get();
+        requestedDog.setAccount(null);
+        requestedDog.setAdoptRequested(false);
+        requestedDog.setAdoptAccepted(false);
+        repository.save(requestedDog);
+
+        return true;
     }
 
     @Override
@@ -94,7 +119,8 @@ public class DogService implements IDogService {
     public boolean adminConfirmReqDogAdopt(Dog dog) {
         // Get Dog
         Optional<Dog> opt_dog = repository.findById(dog.getId());
-        if (opt_dog.isEmpty()) return false;
+        if (opt_dog.isEmpty())
+            return false;
 
         Dog requestedDog = opt_dog.get();
         requestedDog.setAdoptAccepted(dog.isAdoptAccepted());
@@ -108,8 +134,7 @@ public class DogService implements IDogService {
         if (requestedDog.isAdoptAccepted()) {
             // Remove This Dog
             repository.delete(requestedDog);
-        }
-        else {
+        } else {
             // Remove Adoption Info
             requestedDog.setAccount(null);
             requestedDog.setAdoptRequested(false);
