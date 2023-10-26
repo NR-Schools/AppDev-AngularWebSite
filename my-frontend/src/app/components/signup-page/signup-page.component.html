@@ -21,6 +21,14 @@
 
         <!-- Form Group -->
         <form [formGroup]="signupFormGroup">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            name="username"
+            formControlName="Username"
+            required
+          />
+
           <label for="email">Email Address:</label>
           <input type="email" name="email" formControlName="Email" required />
 
