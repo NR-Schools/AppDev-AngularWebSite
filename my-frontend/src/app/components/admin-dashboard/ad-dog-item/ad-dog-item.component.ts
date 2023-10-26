@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Dog } from 'src/app/models/dog';
 import { DogRecordService } from 'src/app/services/dog-record.service';
 import { ImageUtils } from 'src/app/utils/image-utils';
@@ -10,6 +10,7 @@ import { ImageUtils } from 'src/app/utils/image-utils';
 })
 export class AdDogItemComponent implements OnInit {
 	@Input({ required: true }) dogItem!: Dog;
+	@Output() itemReloadEvent = new EventEmitter<void>();
 	thumbnail: any;
 
 	constructor(private dogRecordService: DogRecordService) {}
@@ -22,8 +23,12 @@ export class AdDogItemComponent implements OnInit {
 	onItemRemove(): void {
 		console.log(this.dogItem.id!);
 		this.dogRecordService.deleteDogRecord(this.dogItem.id!).subscribe({
-			next: (value: boolean) => {},
-			error: (err: any) => { console.log(err); }
+			next: (value: boolean) => {
+				if (value) {
+					this.itemReloadEvent.emit();
+				}
+			},
+			error: (err: any) => { console.error(err); }
 		});
 	}
 }

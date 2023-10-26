@@ -57,7 +57,9 @@ export class ViewDogDetailsComponent implements OnInit {
 
 		this.dogRecordService.userDogAdopt(sendDog).subscribe({
 			next: (value: Dog) => {
-				this.router.navigate(['/user']);
+				if (value) {
+					this.router.navigate(['/user']);
+				}
 			},
 			error: (err: any) => {
 				console.log(err);

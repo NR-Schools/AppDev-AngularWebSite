@@ -1,7 +1,7 @@
 export class Account {
   id?: number;
   username?: string;
-  email?: string; // For Admin, email will always be Admin
+  email?: string;
   password?: string;
 
   sessionAuthString?: string;

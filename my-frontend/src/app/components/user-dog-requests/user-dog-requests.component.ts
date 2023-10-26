@@ -18,18 +18,18 @@ export class UserDogRequestsComponent implements OnInit {
 				this.dogItemWithReqs = value;
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			},
 		});
 	}
 
-	onItemsReload() {
+	onItemsReload(): void {
 		this.dogRecordService.userViewAllDogAdoptReq().subscribe({
 			next: (value: Array<Dog>) => {
 				this.dogItemWithReqs = value;
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			},
 		});
 	}

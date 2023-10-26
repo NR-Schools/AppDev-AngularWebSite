@@ -19,7 +19,7 @@ export class LoginPageComponent {
 		Password: ['', Validators.required],
 	});
 
-	loginAccount() {
+	loginAccount(): void {
 		// Get Values From Controls
 		const Email = this.loginFormGroup.get("Email")?.value as string;
 		const Password = this.loginFormGroup.get("Password")?.value as string;
@@ -43,7 +43,7 @@ export class LoginPageComponent {
 			},
 			error: (err: any) => {
 				window.alert("Error encountered!");
-				console.log(err);
+				console.error(err);
 			}
 		});
 	}

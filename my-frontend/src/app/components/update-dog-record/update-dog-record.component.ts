@@ -85,7 +85,6 @@ export class UpdateDogRecordComponent implements OnInit {
 		const inputElement = event.target as HTMLInputElement;
 		if (inputElement.files && inputElement.files.length > 0) {
 			const selectedFile = inputElement.files[0];
-			console.log(selectedFile);
 
 			ImageUtils.fileToByteArray(selectedFile)
 				.then((byteArray) => {
@@ -94,12 +93,13 @@ export class UpdateDogRecordComponent implements OnInit {
 					this.isDogImageUpdated = true;
 				})
 				.catch((error) => {
-					console.log('Error reading file:', error);
+					window.alert("Cannot read uploaded image!");
+					console.error('Error reading file:', error);
 				});
 		}
 	}
 
-	onUpdateDogRecord() {
+	onUpdateDogRecord(): void {
 		// Check if Dog has a name and form is achieved
 		if (typeof this.updateDogName !== 'string' || this.updateDogName.trim() === '') {
 			window.alert("No name supplied for dog");
@@ -120,7 +120,6 @@ export class UpdateDogRecordComponent implements OnInit {
 		)
 
 		if (this.updateDogDescription !== null && this.updateDogDescription !== undefined) {
-			console.log(this.updateDogDescription);
 			newDog.description = this.updateDogDescription!.trim();
 		}
 
@@ -131,10 +130,12 @@ export class UpdateDogRecordComponent implements OnInit {
 
 		this.dogRecordService.updateDogRecord(this.dogId!, newDog).subscribe({
 			next: (value: Dog) => {
-				this.router.navigate(['/admin']);
+				if (value !== null) {
+					this.router.navigate(['/admin']);
+				}
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			}
 		});
 	}

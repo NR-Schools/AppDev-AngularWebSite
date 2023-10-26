@@ -20,15 +20,17 @@ export class AdrDogAdoptItemComponent implements OnInit {
 
 	}
 
-	onDogAdoptStatus(status: boolean) {
+	onDogAdoptStatus(status: boolean): void {
 		this.dogItem.adoptAccepted = status;
 
 		this.dogRecordService.adminConfirmDogAdopt(this.dogItem).subscribe({
 			next: (value: boolean) => {
-				this.itemReloadEvent.emit();
+				if (value) {
+					this.itemReloadEvent.emit();
+				}
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			}
 		});
 	}

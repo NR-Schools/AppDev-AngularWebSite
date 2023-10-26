@@ -22,7 +22,7 @@ export class SignupPageComponent {
     ConfirmPassword: ['', Validators.required],
   });
 
-  signupAccount() {
+  signupAccount(): void {
     // Get Values From Controls
     const Username = this.signupFormGroup.get('Username')?.value as string;
     const Email = this.signupFormGroup.get('Email')?.value as string;
@@ -32,7 +32,7 @@ export class SignupPageComponent {
 
     // Check Password == ConfirmPassword
     if (Password !== ConfirmPassword) {
-      window.alert('"Password" does not match "ConfirmPassword"');
+      window.alert('"Password" does not match "Confirm Password"');
       return;
     }
 
@@ -46,7 +46,7 @@ export class SignupPageComponent {
       },
       error: (err: any) => {
         window.alert('Error encountered!');
-        console.log(err);
+        console.error(err);
       },
     });
   }

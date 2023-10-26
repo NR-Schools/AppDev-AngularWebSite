@@ -19,7 +19,7 @@ export class AdminDogRequestsComponent implements OnInit {
 				this.dogItemWithReqs = value;
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			}
 		});
 	}
@@ -30,7 +30,7 @@ export class AdminDogRequestsComponent implements OnInit {
 				this.dogItemWithReqs = value;
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			}
 		});
 	}

@@ -32,19 +32,26 @@ export class AdminDashboardComponent implements OnInit {
 		});
 	}
 
-	onAdminLogout() {
+	onItemsReload(): void {
+		this.dogRecordService.viewAllDogRecords().subscribe((data: Dog[]) => {
+			this.dogs = data;
+			this.filteredDogs = this.dogs;
+		});
+	}
+
+	onAdminLogout(): void {
 		this.accountService.logout().subscribe({
 			next: (value: boolean) => {
 				this.router.navigate(['/login']);
 			},
 			error: (err: any) => {
-				console.log(err);
+				console.error(err);
 			}
 		});
 	}
 
 	// Filters
-	onFilterApplied() {
+	onFilterApplied(): void {
 		const nameQuery = this.nameFilter.toLowerCase();
 		const breedQuery = this.breedFilter.toLowerCase();
 		const colorQuery = this.colorFilter.toLowerCase();
@@ -69,12 +76,11 @@ export class AdminDashboardComponent implements OnInit {
 		if (sexQuery.trim() !== "")
 			this.filteredDogs = this.filteredDogs.filter(dog => dog.sex.toLowerCase().includes(sexQuery))
 
-		console.log(ageQuery)
 		if (ageQuery !== "" && ageQuery !== null)
 			this.filteredDogs = this.filteredDogs.filter(dog => dog.age.toString().toLowerCase().includes(ageQuery));
 	}
 
-	onFiltersReset() {
+	onFiltersReset(): void {
 		this.breedFilter = "";
 		this.nameFilter = "";
 		this.colorFilter = "";
