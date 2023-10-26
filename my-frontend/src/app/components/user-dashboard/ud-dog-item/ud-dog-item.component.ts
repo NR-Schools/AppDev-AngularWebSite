@@ -13,7 +13,6 @@ export class UdDogItemComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Convert Bytes to Image
-		console.log(this.dogItem);
 		this.thumbnail = ImageUtils.base64ToImage(this.dogItem.photoBytes);
 	}
 }

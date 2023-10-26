@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Dog } from '../../models/dog';
 import { DogRecordService } from '../../services/dog-record.service';
+import { ImageUtils } from 'src/app/utils/image-utils';
 
 @Component({
 	selector: 'app-view-dog-details',
@@ -10,6 +11,7 @@ import { DogRecordService } from '../../services/dog-record.service';
 })
 export class ViewDogDetailsComponent implements OnInit {
 	dog: Dog;
+	thumbnail: any;
 
 	constructor(private route: ActivatedRoute,
 		private dogRecordService: DogRecordService) {
@@ -23,6 +25,9 @@ export class ViewDogDetailsComponent implements OnInit {
 				this.dogRecordService.viewDogRecord(id).subscribe({
 					next: (dog: Dog) => {
 						this.dog = dog;
+
+						// Convert Bytes to Image
+						this.thumbnail = ImageUtils.base64ToImage(this.dog.photoBytes);
 					},
 					error: (err: any) => {
 						console.error(err);
