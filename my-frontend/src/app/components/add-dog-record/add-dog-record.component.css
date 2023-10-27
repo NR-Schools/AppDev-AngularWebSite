@@ -24,7 +24,7 @@ nav {
   margin-left: 20px;
   cursor: pointer;
 
-  > a {
+  >a {
     margin-left: 5px;
   }
 
@@ -57,19 +57,19 @@ main {
   align-items: center;
   position: relative;
 
-  > img {
+  >img {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
   }
 
-  > div {
+  >div {
     display: flex;
     justify-content: center;
     flex-direction: column;
   }
 
-  > .choose-img-container {
+  >.choose-img-container {
     position: absolute;
     z-index: 2;
   }
@@ -117,7 +117,7 @@ h3 {
 }
 
 .dog-details-values {
-  > div {
+  >div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,7 +127,7 @@ h3 {
     font-weight: bold;
     margin-bottom: 49px;
 
-    > p {
+    >p {
       color: #18c17c;
       font-weight: 500;
     }
@@ -167,7 +167,7 @@ h3 {
   justify-content: center;
   align-items: center;
 
-  > button {
+  >button {
     font-family: "Farro", "Courier New", Courier, monospace;
     border-radius: 5px;
     border: 1px solid #e3bc7b;
@@ -188,7 +188,32 @@ h3 {
     }
   }
 
-  > button:hover {
+  >button:hover {
     border: 1px solid black;
+  }
+}
+
+
+/* Upload Image Style Section */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  transition: all 0.15s ease-in-out;
+  border: 2px solid #000000;
+  padding: 12px 22px;
+  background-color: #ffffff28;
+  color: #000000;
+
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    transition: all 0.15s ease-in-out;
+    border: 2px solid #ffffff;
+    padding: 15px 30px;
+    background-color: #000000;
+    color: #ffffff;
   }
 }

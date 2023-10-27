@@ -31,11 +31,10 @@
     <div class="image-container">
       <img [src]="updateDogPreviewImage" />
       <div class="choose-img-container">
-        <input
-          type="file"
-          (change)="onImageSelected($event)"
-          accept="image/*"
-        />
+        <label for="file-upload" class="custom-file-upload">
+          Upload Photo
+        </label>
+        <input id="file-upload" type="file" (change)="onImageSelected($event)" accept="image/*" />
       </div>
     </div>
 
@@ -80,11 +79,7 @@
       </div>
 
       <div class="buttons">
-        <button
-          class="update-button"
-          (click)="onUpdateDogRecord()"
-          [disabled]="!updateDogFormGroup.valid"
-        >
+        <button class="update-button" (click)="onUpdateDogRecord()" [disabled]="!updateDogFormGroup.valid">
           <div>
             <p>Update Dog Record</p>
           </div>
