@@ -32,11 +32,12 @@
 
 <main>
   <div class="dog-container">
-    <adr-dog-adopt-item
-      class="dog-card"
-      *ngFor="let dogItemWithReq of dogItemWithReqs"
-      [dogItem]="dogItemWithReq"
-      (itemReloadEvent)="onItemsReload()"
-    />
+    <ng-template [ngIf]="dogItemWithReqs.length === 0">
+      <div class="no-admin-dog-requests">
+        There are currently no dog requests made by any user
+      </div>
+    </ng-template>
+    <adr-dog-adopt-item class="dog-card" *ngFor="let dogItemWithReq of dogItemWithReqs" [dogItem]="dogItemWithReq"
+      (itemReloadEvent)="onItemsReload()" />
   </div>
 </main>

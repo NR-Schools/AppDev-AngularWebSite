@@ -31,23 +31,17 @@
     <div class="image-container">
       <img [src]="addDogPreviewImage" />
       <div class="choose-img-container">
-        <input
-          type="file"
-          (change)="onImageSelected($event)"
-          accept="image/*"
-        />
+        <label for="file-upload" class="custom-file-upload">
+          Upload Photo
+        </label>
+        <input id="file-upload" type="file" (change)="onImageSelected($event)" accept="image/*" />
       </div>
     </div>
 
     <div class="dog-details-container">
       <div class="dog-details-inner-container">
         <div class="dog-details-labels">
-          <input
-            class="dog-name"
-            type="text"
-            placeholder="Dog Name"
-            [(ngModel)]="addDogName"
-          />
+          <input class="dog-name" type="text" placeholder="Dog Name" [(ngModel)]="addDogName" />
           <h3>ABOUT</h3>
           <p class="labels">Breed</p>
           <p class="labels">Color</p>
@@ -65,63 +59,29 @@
           </div>
 
           <form [formGroup]="addDogFormGroup">
-            <input
-              class="values"
-              type="text"
-              formControlName="Breed"
-              placeholder="Dog Breed"
-            />
-            <input
-              class="values"
-              type="text"
-              formControlName="Color"
-              placeholder="Dog Color"
-            />
-            <input
-              class="values"
-              type="number"
-              formControlName="Age"
-              placeholder="Dog Age"
-            />
+            <input class="values" type="text" formControlName="Breed" placeholder="Dog Breed" />
+            <input class="values" type="text" formControlName="Color" placeholder="Dog Color" />
+            <input class="values" type="number" formControlName="Age" placeholder="Dog Age" />
 
             <select class="values" formControlName="Sex">
               <option>Male</option>
               <option>Female</option>
             </select>
 
-            <input
-              class="values"
-              type="date"
-              formControlName="ArrivedDate"
-              placeholder="Arrived Date"
-            />
-            <input
-              class="values"
-              type="text"
-              formControlName="ArrivedFrom"
-              placeholder="Arrived From"
-            />
+            <input class="values" type="date" formControlName="ArrivedDate" placeholder="Arrived Date" />
+            <input class="values" type="text" formControlName="ArrivedFrom" placeholder="Arrived From" />
             <select class="values" formControlName="Size">
               <option>Small</option>
               <option>Medium</option>
               <option>Large</option>
             </select>
-            <input
-              class="values"
-              type="text"
-              formControlName="Location"
-              placeholder="Dog Location"
-            />
+            <input class="values" type="text" formControlName="Location" placeholder="Dog Location" />
           </form>
         </div>
       </div>
 
       <div class="buttons">
-        <button
-          class="add-button"
-          (click)="onAddDogRecord()"
-          [disabled]="!addDogFormGroup.valid"
-        >
+        <button class="add-button" (click)="onAddDogRecord()" [disabled]="!addDogFormGroup.valid">
           <div>
             <p>Add Dog Record</p>
           </div>
@@ -132,11 +92,6 @@
 
   <div class="additional-information">
     <h2>Description</h2>
-    <textarea
-      cols="30"
-      rows="10"
-      placeholder="Add dog description"
-      [(ngModel)]="addDogDescription"
-    ></textarea>
+    <textarea cols="30" rows="10" placeholder="Add dog description" [(ngModel)]="addDogDescription"></textarea>
   </div>
 </main>

@@ -8,7 +8,7 @@ import { DogRecordService } from 'src/app/services/dog-record.service';
 	styleUrls: ['./user-dog-requests.component.css'],
 })
 export class UserDogRequestsComponent implements OnInit {
-	dogItemWithReqs?: Array<Dog>;
+	dogItemWithReqs: Array<Dog> = [];
 
 	constructor(private dogRecordService: DogRecordService) { }
 

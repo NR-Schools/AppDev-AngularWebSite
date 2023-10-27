@@ -7,6 +7,7 @@ img {
   height: 195px;
   border-radius: 20px;
   margin-top: 11px;
+  object-fit: cover;
 }
 
 .dog-name {

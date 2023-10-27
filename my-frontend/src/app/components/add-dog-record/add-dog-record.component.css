@@ -193,3 +193,27 @@ h3 {
     border: 1px solid black;
   }
 }
+
+/* Upload Image Style Section */
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  transition: all 0.15s ease-in-out;
+  border: 2px solid #000000;
+  padding: 12px 22px;
+  background-color: #ffffff28;
+  color: #000000;
+
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    transition: all 0.15s ease-in-out;
+    border: 2px solid #ffffff;
+    padding: 15px 30px;
+    background-color: #000000;
+    color: #ffffff;
+  }
+}

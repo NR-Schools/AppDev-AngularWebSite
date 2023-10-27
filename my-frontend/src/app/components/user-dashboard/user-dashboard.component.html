@@ -27,13 +27,7 @@
 </header>
 
 <div class="search-container">
-  <input
-    class="search-bar"
-    type="text"
-    placeholder="Search..."
-    [(ngModel)]="nameFilter"
-    (input)="onFilterApplied()"
-  />
+  <input class="search-bar" type="text" placeholder="Search..." [(ngModel)]="nameFilter" (input)="onFilterApplied()" />
   <div>
     <img src="../../assets/images/search-icon.png" alt="search-icon" />
   </div>
@@ -44,27 +38,13 @@
     <!-- Filters -->
     <div>
       <label for="breeds">Breed</label>
-      <input
-        type="text"
-        placeholder="Breed"
-        [(ngModel)]="breedFilter"
-        (input)="onFilterApplied()"
-      />
+      <input type="text" placeholder="Breed" [(ngModel)]="breedFilter" (input)="onFilterApplied()" />
 
       <label for="colors">Color</label>
-      <input
-        type="text"
-        placeholder="Color"
-        [(ngModel)]="colorFilter"
-        (input)="onFilterApplied()"
-      />
+      <input type="text" placeholder="Color" [(ngModel)]="colorFilter" (input)="onFilterApplied()" />
 
       <label for="sizes">Size</label>
-      <select
-        class="values"
-        [(ngModel)]="sizeFilter"
-        (change)="onFilterApplied()"
-      >
+      <select class="values" [(ngModel)]="sizeFilter" (change)="onFilterApplied()">
         <option value=""></option>
         <option>Small</option>
         <option>Medium</option>
@@ -72,23 +52,14 @@
       </select>
 
       <label for="sexes">Sex</label>
-      <select
-        class="values"
-        [(ngModel)]="sexFilter"
-        (change)="onFilterApplied()"
-      >
+      <select class="values" [(ngModel)]="sexFilter" (change)="onFilterApplied()">
         <option value=""></option>
         <option>Male</option>
         <option>Female</option>
       </select>
 
       <label for="ages">Age</label>
-      <input
-        type="number"
-        placeholder="Age"
-        [(ngModel)]="ageFilter"
-        (input)="onFilterApplied()"
-      />
+      <input type="number" placeholder="Age" [(ngModel)]="ageFilter" (input)="onFilterApplied()" />
 
       <div class="button-container">
         <button class="reset" (click)="onFiltersReset()">Reset</button>
@@ -97,10 +68,13 @@
   </aside>
   <div class="dog-container">
     <!-- Container for Dog Items -->
-    <ud-dog-item
-      *ngFor="let dog of filteredDogs"
-      [dogItem]="dog"
-      class="dog-card"
-    />
+
+    <ng-template [ngIf]="filteredDogs.length === 0">
+      <div class="no-dogs">
+        No Dogs To Show :&lt;
+      </div>
+    </ng-template>
+
+    <ud-dog-item *ngFor="let dog of filteredDogs" [dogItem]="dog" class="dog-card" />
   </div>
 </main>
