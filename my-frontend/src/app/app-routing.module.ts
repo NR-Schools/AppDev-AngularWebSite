@@ -10,6 +10,7 @@ import { UpdateDogRecordComponent } from './components/update-dog-record/update-
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { AdminDogRequestsComponent } from './components/admin-dog-requests/admin-dog-requests.component';
 import { UserDogRequestsComponent } from './components/user-dog-requests/user-dog-requests.component';
+import { AdminAuthGuard, AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -32,30 +33,37 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserDashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin',
     component: AdminDashboardComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'dog/:id',
     component: ViewDogDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-dog-record',
     component: AddDogRecordComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'update-dog-record/:id',
     component: UpdateDogRecordComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'admin-dog-requests',
     component: AdminDogRequestsComponent,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'user-dog-requests',
     component: UserDogRequestsComponent,
+    canActivate: [AuthGuard]
   },
 ];
 

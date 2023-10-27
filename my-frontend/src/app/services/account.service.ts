@@ -8,8 +8,12 @@ import { Observable, map } from 'rxjs';
 	providedIn: 'root',
 })
 export class AccountService extends BaseService {
+
+	isAuthenticated: boolean;
+
 	constructor(private http: HttpClient) {
 		super();
+		this.isAuthenticated = false;
 	}
 
 	signUp(username: string, email: string, password: string): Observable<boolean> {
@@ -39,6 +43,7 @@ export class AccountService extends BaseService {
 						'account_info',
 						JSON.stringify(response)
 					);
+					this.isAuthenticated = true;
 					return true;
 				})
 			);
@@ -55,6 +60,7 @@ export class AccountService extends BaseService {
 					if (response !== null) {
 						// Clear Info on Local Storage
 						localStorage.setItem('account_info', '');
+						this.isAuthenticated = false;
 						return true;
 					}
 					return false;
