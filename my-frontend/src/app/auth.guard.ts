@@ -8,8 +8,23 @@ export const AuthGuard: CanActivateFn = (
     state: RouterStateSnapshot
 ) => {
     const accountService: AccountService = inject(AccountService);
-    if (accountService.isAuthenticated) return true;
-    return false;
+
+    const storedAcc = localStorage.getItem('account_info');
+
+    if (storedAcc === null || storedAcc === undefined || storedAcc === "")
+        return false;
+
+    const account: Account = JSON.parse(storedAcc);
+
+    if (account === null || account === undefined)
+        return false;
+
+    const email = account.email;
+
+    if (email === null || email === undefined)
+        return false;
+
+    return true;
 };
 
 
