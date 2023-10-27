@@ -32,6 +32,11 @@
 
 <main>
   <div class="dog-container">
+    <ng-template [ngIf]="dogItemWithReqs.length === 0">
+      <div class="no-user-dog-requests">
+        There are currently no dog requests made by user
+      </div>
+    </ng-template>
     <udr-dog-adopt-item
       class="dog-card"
       *ngFor="let dogItemWithReq of dogItemWithReqs"

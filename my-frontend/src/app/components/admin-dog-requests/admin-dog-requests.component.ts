@@ -9,7 +9,7 @@ import { DogRecordService } from 'src/app/services/dog-record.service';
 })
 export class AdminDogRequestsComponent implements OnInit {
 
-	dogItemWithReqs?: Array<Dog>;
+	dogItemWithReqs: Array<Dog> = [];
 
 	constructor(private dogRecordService: DogRecordService) {}
 
