@@ -19,7 +19,7 @@ export const AdminAuthGuard: CanActivateFn = (
 ) => {
     const storedAcc = localStorage.getItem('account_info');
 
-    if (storedAcc === null || storedAcc === undefined)
+    if (storedAcc === null || storedAcc === undefined || storedAcc === "")
         return false;
 
     const account: Account = JSON.parse(storedAcc);
