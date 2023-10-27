@@ -107,7 +107,7 @@ export class UpdateDogRecordComponent implements OnInit {
 		}
 
 		// Send Info to Server
-		let newDog: Dog = new Dog(
+		let updatedDog: Dog = new Dog(
 			this.updateDogName!.trim(),
 			this.updateDogFormGroup.get("Breed")?.value as string,
 			this.updateDogFormGroup.get("Age")?.value as unknown as number,
@@ -120,15 +120,20 @@ export class UpdateDogRecordComponent implements OnInit {
 		)
 
 		if (this.updateDogDescription !== null && this.updateDogDescription !== undefined) {
-			newDog.description = this.updateDogDescription!.trim();
+			updatedDog.description = this.updateDogDescription!.trim();
+
+			if (updatedDog.description!.length > 350) {
+				window.alert("Description Too Long!");
+				return;
+			}
 		}
 
 		if (this.updateDogImage !== null && this.updateDogImage !== undefined && this.isDogImageUpdated) {
-			newDog.photoBytes = this.updateDogImage;
-			newDog.isPhotoUpdated = true;
+			updatedDog.photoBytes = this.updateDogImage;
+			updatedDog.isPhotoUpdated = true;
 		}
 
-		this.dogRecordService.updateDogRecord(this.dogId!, newDog).subscribe({
+		this.dogRecordService.updateDogRecord(this.dogId!, updatedDog).subscribe({
 			next: (value: Dog) => {
 				if (value !== null) {
 					this.router.navigate(['/admin']);

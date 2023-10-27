@@ -75,6 +75,11 @@ export class AddDogRecordComponent {
 			this.addDogDescription !== undefined
 		) {
 			newDog.description = this.addDogDescription!.trim();
+
+			if (newDog.description!.length > 350) {
+				window.alert("Description Too Long!");
+				return;
+			}
 		}
 
 		if (this.addDogImage !== null && this.addDogImage !== undefined) {

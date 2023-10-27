@@ -23,6 +23,8 @@ public class Dog {
     private int age;
     private String sex;
     private String colorCoat;
+
+    @Column(length=400)
     private String description;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
